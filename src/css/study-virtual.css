@@ -1,0 +1,120 @@
+:root{
+    --part-height: calc(100vh - var(--header-height));
+
+    --part1-logo-height: 20%;
+    --part1-step-height: 10%;
+    --part1-info-height: calc(100% - var(--part1-logo-height) - var(--part1-step-height));
+    
+    --part2-graph-height: 40%;
+    --part2-line-height: 10%;
+    --part2-view-height: calc(100% - var(--part2-graph-height) - var(--part2-line-height));
+    
+    --part3-interact-height: calc(var(--part2-graph-height) + var(--part2-line-height));
+    --part3-margin-height: calc(100% - var(--part3-interact-height) - var(--part3-next-height));
+    --part3-next-height: 10%;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: var(--part-height);
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#part1 {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: #F5F5F5;
+}
+
+#part2 {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    background-color: #E0E0E0;
+}
+
+#part3 {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: #8e8e8e;
+}
+
+.part > * {
+    width: 100%;
+}
+
+.logo{
+    height: var(--part1-logo-height);
+}
+
+.step{
+    height: var(--part1-step-height);
+    background-color: #8e8e8e;
+}
+
+.info{
+    height: var(--part1-info-height);
+}
+
+.graph{
+    height: var(--part2-graph-height);
+    background-color: #c1c1c1;
+}
+
+.button-line{
+    height: var(--part2-line-height);
+    background-color: #8e8e8e;
+}
+
+.view{
+    height: var(--part2-view-height);
+}
+
+#table{
+    background-color: #ececec;
+}
+#news{
+    background-color: #c27979;
+}
+
+.interact{
+    height: var(--part3-interact-height);
+}
+
+.margin{
+    height: var(--part3-margin-height);
+    background-color: #bcbcbc;
+}
+
+.next{
+    height: var(--part3-next-height);
+}
+
+.detail{
+    z-index: 9999;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.paper{
+    width: 60vw;
+    height: 60vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
