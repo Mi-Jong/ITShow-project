@@ -40,7 +40,11 @@ function App() {
 
             <div className="detail" id={isHidden ? 'hidden' : ''}>
                 <div className="paper">
-                    <button id='x-btn' onClick={toggleHidden}>X</button>
+                    <div className='title'>결과화면</div>
+                    <div className='result'></div>
+                    <div className='next'>
+                        <button id='next-btn' onClick={toggleHidden}>다음화면</button>
+                    </div>
                 </div>
             </div>
         </div>

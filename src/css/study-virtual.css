@@ -119,7 +119,10 @@ main {
 }
 
 .paper{
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     width: 60vw;
     height: 60vh;
     background-color: #F5F5F5;
@@ -127,13 +130,28 @@ main {
     padding: 30px;
 }
 
-#x-btn{
-    cursor: pointer;
-    position: absolute;
-    top: 30px;
-    right: 30px;
+.paper > .title{
+    width: 85%;
     font-size: 30px;
-    color: black;
+    font-weight: 800;
+    height: auto;
+}
+
+.paper > .result{
+    width: 85%;
+    height: 70%;
+    background-color: #8e8e8e;
+}
+
+.paper > .next{
+    width: 85%;
+    height: auto;
+    text-align: end;
+}
+
+#next-btn{
+    cursor: pointer;
+    width: fit-content;
+    font-size: 30px;
     background-color: #ffffff00;
-    border: 0px;
 }
