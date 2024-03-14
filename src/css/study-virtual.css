@@ -1,14 +1,14 @@
-:root{
+:root {
     --part-height: calc(100vh - var(--header-height));
 
     --part1-logo-height: 20%;
     --part1-step-height: 10%;
     --part1-info-height: calc(100% - var(--part1-logo-height) - var(--part1-step-height));
-    
+
     --part2-graph-height: 40%;
     --part2-line-height: 10%;
     --part2-view-height: calc(100% - var(--part2-graph-height) - var(--part2-line-height));
-    
+
     --part3-interact-height: calc(var(--part2-graph-height) + var(--part2-line-height));
     --part3-margin-height: calc(100% - var(--part3-interact-height) - var(--part3-next-height));
     --part3-next-height: 10%;
@@ -48,64 +48,75 @@ main {
     background-color: #8e8e8e;
 }
 
-.part > * {
+.part>* {
     width: 100%;
 }
 
-.logo{
+.logo {
     height: var(--part1-logo-height);
 }
 
-.step{
+.step {
     height: var(--part1-step-height);
     background-color: #8e8e8e;
 }
 
-.step > button{
+.step>button {
     cursor: pointer;
     width: 100%;
     height: 100%;
 }
 
-.info{
+.info {
     height: var(--part1-info-height);
 }
 
-.graph{
+.graph {
     height: var(--part2-graph-height);
     background-color: #c1c1c1;
 }
 
-.button-line{
+.button-line {
+    display: flex;
+    flex-direction: row ;
     height: var(--part2-line-height);
     background-color: #8e8e8e;
+    gap: 10px;
 }
 
-.view{
+.button-line>button {
+    display: flex;
+    text-align: center;
+    width: 10%;
+    height: 100%;
+}
+
+.view {
     height: var(--part2-view-height);
 }
 
-#table{
+#table {
     background-color: #ececec;
 }
-#news{
+
+#news {
     background-color: #c27979;
 }
 
-.interact{
+.interact {
     height: var(--part3-interact-height);
 }
 
-.margin{
+.margin {
     height: var(--part3-margin-height);
     background-color: #bcbcbc;
 }
 
-.next{
+.next {
     height: var(--part3-next-height);
 }
 
-.detail{
+.detail {
     z-index: 9999;
     position: absolute;
     display: flex;
@@ -118,7 +129,7 @@ main {
     backdrop-filter: blur(10px);
 }
 
-.paper{
+.paper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -130,26 +141,26 @@ main {
     padding: 30px;
 }
 
-.paper > .title{
+.paper>.title {
     width: 85%;
     font-size: 30px;
     font-weight: 800;
     height: auto;
 }
 
-.paper > .result{
+.paper>.result {
     width: 85%;
     height: 70%;
     background-color: #8e8e8e;
 }
 
-.paper > .next{
+.paper>.next {
     width: 85%;
     height: auto;
     text-align: end;
 }
 
-#next-btn{
+#next-btn {
     cursor: pointer;
     width: fit-content;
     font-size: 30px;
