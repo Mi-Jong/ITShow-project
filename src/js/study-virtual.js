@@ -1,18 +1,26 @@
-// import React from 'react';
+import React, { useState } from 'react';
 import '../css/style.css';
 import Header from './header';
 import '../css/study-virtual.css';
 
 function App() {
+    const [isHidden, setIsHidden] = useState(true);
+
+    const toggleHidden = () => {
+        setIsHidden(!isHidden);
+    };
+
     return (
         <div>
-            
+
             <Header />
 
             <main>
                 <section className="part" id="part1">
                     <div className="logo"></div>
-                    <div className="step"></div>
+                    <div className="step">
+                        <button onClick={toggleHidden}></button>
+                    </div>
                     <div className="info"></div>
                 </section>
 
@@ -30,11 +38,12 @@ function App() {
                 </section>
             </main>
 
-            <div className="detail" id="hidden">
-                <div className="paper"></div>
+            <div className="detail" id={isHidden ? 'hidden' : ''}>
+                <div className="paper">
+                    <button id='x-btn' onClick={toggleHidden}>X</button>
+                </div>
             </div>
         </div>
     );
 }
-
 export default App;
