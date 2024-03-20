@@ -1,6 +1,6 @@
 import './App.css';
 
-import StudyVirtual from './js/study-virtual.js'; // StudyVirtual 컴포넌트 import
+import StudyVirtual from './js/virtual/study-virtual.js'; // StudyVirtual 컴포넌트 import
 
 function App() {
   return (

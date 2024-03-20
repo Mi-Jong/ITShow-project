@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/virtual/part1.css';
 
 function Part1({ toggleNext }) {
     return (
