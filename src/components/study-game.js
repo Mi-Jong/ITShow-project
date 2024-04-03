@@ -3,7 +3,7 @@ import '../css/globals.css';
 import Header from './header';
 import Footer from './footer';
 import '../css/study-game.css';
-import '../logic/study-game-logic.js';
+//import '../logic/study-game-logic.js';
 
 
 const useInterval = (callback, delay) => {
