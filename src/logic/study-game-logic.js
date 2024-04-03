@@ -65,11 +65,11 @@ let answerArray = [];
 let round = 1;
 let score = 0;
 
-// 타이머 바 업데이트 함수
-function updateProgressBar() {
-  const progress = (timeElapsed / totalTime) * 100;
-  document.getElementById('timer').style.height = progress + '%';
-}
+// // 타이머 바 업데이트 함수
+// function updateProgressBar() {
+//   const progress = (timeElapsed / totalTime) * 100;
+//   document.getElementById('timer').style.height = progress + '%';
+// }
 
 // 게임 진행 함수
 function gameAnswerAppear() {
@@ -128,7 +128,6 @@ function gameStart() {
       alert(`타이머가 종료되었습니다. 점수는 ${score}입니다.`);
     } else {
       timeElapsed++;
-      updateProgressBar();
     }
   }, 1000);
 
