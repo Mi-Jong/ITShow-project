@@ -36,6 +36,7 @@
     min-height: calc(300px+100px);
     height: 30vh;
     width: 100vw;
+    padding-top: 40px;
     overflow: hidden;
   }
   
@@ -73,4 +74,14 @@
   
   .slide-show-container button:nth-of-type(2) {
     right: 150px;
+  }
+
+  .slide-show-container p{
+    z-index: 99999;
+    position: absolute;
+    top: 30px;
+    left: 150px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
   }
