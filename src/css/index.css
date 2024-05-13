@@ -162,8 +162,13 @@
 .learn:hover .overlay {
   opacity: 1;
 }
-.learn > button,
-.learn > h2 {
+.learn:hover button,
+.learn:hover h2 {
+  display: block;
+}
+.learn button,
+.learn h2 {
   position: relative;
   z-index: 1; 
+  display: none;
 }
