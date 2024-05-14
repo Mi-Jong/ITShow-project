@@ -13,9 +13,11 @@
     --part3-margin-height: calc(100% - var(--part3-interact-height) - var(--part3-next-height));
     --part3-next-height: 10%;
 }
-body{
+
+body {
     overflow-x: hidden;
 }
+
 main {
     display: flex;
     flex-direction: row;
@@ -42,21 +44,22 @@ main {
     background-color: #F5F5F5;
 }
 
-.wer{    
+.wer {
     width: 90%;
     height: 30vh;
     margin: 10px;
-    border: 2px solid black ;
+    border: 2px solid black;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:white;
+    background-color: white;
     z-index: 1;
 }
-.balance{
+
+.balance {
     background-color: #FFD601;
     width: 100%;
     height: 40%;
@@ -67,18 +70,20 @@ main {
     gap: 10px;
     padding: 10%;
 }
-.list-stock{
+
+.list-stock {
     margin: 10%;
 }
-.bal-title{
+
+.bal-title {
     font-size: 20px;
 }
 
-.bal-pay{
+.bal-pay {
     font-size: 30px;
 }
 
-.purchase{
+.purchase {
     width: 100%;
     height: 40%;
     display: flex;
@@ -88,7 +93,7 @@ main {
     gap: 10px;
 }
 
-.purchase > button{
+.purchase>button {
     width: 40%;
     height: 40%;
     border: 0;
@@ -96,22 +101,72 @@ main {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-.buy{
+.buy {
     color: white;
     background-color: #142B6F;
 }
 
-.sell{
+.sell {
     color: black;
     background-color: white;
 }
 
+.list-stock {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
 
+.customIcon {
+    font-size: 24px;
+  }
+.list-stock>div {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
+    margin-bottom: 0;
+    padding: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+.list-stock>ul {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;   
+    margin: 5%;
+    margin-top: 0;
+}
+
+.list-stock > ul > li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+.list-stock > ul :hover {
+    cursor: pointer;
+    background-color:#8e8e8e ;
+}
+.coin-name{
+    font-size: 20px;
+    font-weight: 400;
+}
+.change{
+    position: absolute;
+    left: 100px;
+}
+
+.pay-coin{
+    position: absolute;
+    right: 20px;
+}
 #part2 {
     display: flex;
     flex-direction: column;
     width: 60vw;
-    background-color: #ffffff;  
+    background-color: #ffffff;
 }
 
 
@@ -122,7 +177,7 @@ main {
 
 .button-line {
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     height: var(--part2-line-height);
     padding-left: 10px;
     background-color: white;
@@ -134,7 +189,7 @@ main {
 .button-line>button {
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
     text-align: center;
     width: 10%;
     height: 100%;
@@ -146,7 +201,8 @@ main {
     display: none;
     height: var(--part2-view-height);
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
 
@@ -159,18 +215,24 @@ button:hover{
 table {
     width: 100%;
     border-collapse: collapse;
-  }
-  th, td {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
     height: 30px;
-  }
-  tr:nth-child(1){
+}
+
+tr:nth-child(1) {
     background-color: #EDEDED;
     border-radius: 0;
     height: 20px;
-  }
+}
+
 #news {
     display: flex;
     flex-direction: column;
@@ -180,7 +242,8 @@ table {
     overflow-y: scroll;
     box-sizing: border-box;
 }
-.news{
+
+.news {
     display: flex;
     align-items: flex-start;
     justify-content: left;
@@ -188,19 +251,20 @@ table {
     gap: 20px;
 }
 
-.news > img{
+.news>img {
     width: 120px;
     height: 120px;
 }
 
-.text{
+.text {
     padding-top: 10px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
     width: 50%;
 }
-.text > h5{
+
+.text>h5 {
     padding-top: 10px
 }
 
@@ -212,19 +276,19 @@ table {
     flex-direction: column;
     width: 20vw;
     background-color: #EDEDED;
-    box-sizing : border-box;
+    box-sizing: border-box;
 }
 
-.quarter{
+.quarter {
     padding: 10px;
-    box-sizing : border-box;
+    box-sizing: border-box;
     background-color: white;
     border: 0;
     border-radius: 10px;
 }
 
 .quarter-list {
-    display:flex;
+    display: flex;
     flex-direction: row;
     padding: 10px;
     list-style: none;
@@ -244,17 +308,18 @@ table {
 }
 
 .quarter-list li:last-child {
-    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100% );
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
     border-radius: 0 10px 10px 0;
 }
-.name{
+
+.name {
     display: flex;
     justify-content: center;
     align-self: center;
     flex-direction: row;
 }
 
-.grid{
+.grid {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -276,39 +341,39 @@ table {
 }
 
 
-.rate{
+.rate {
     position: relative;
     padding: 20px;
     background-color: white;
-    border-radius: 5px; 
+    border-radius: 5px;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
 }
 
-.percent{
+.percent {
     position: absolute;
     right: 20px;
     bottom: 20px;
     text-align: end;
 }
 
-.percent > h2{
+.percent>h2 {
     font-size: 40px;
 }
 
-.percent > h3{
+.percent>h3 {
     font-size: 30px;
     font-weight: 400;
     color: #8e8e8e;
 }
 
-.list-grid > :last-child {
-    grid-column: 1 / -1; 
+.list-grid> :last-child {
+    grid-column: 1 / -1;
     margin: 10px;
     width: calc(16vw - 5px);
     height: 6vw;
 }
 
-#part3 > button{
+#part3>button {
     width: calc(16vw + 30px);
     height: 3vw;
     background-color: #142B6F;
@@ -318,13 +383,15 @@ table {
     border-radius: 10px;
 }
 
-h6{
+h6 {
     font-weight: 400;
     color: #8e8e8e;
 }
-h5{
+
+h5 {
     font-weight: 500;
 }
-h4{
+
+h4 {
     font-weight: 700;
 }

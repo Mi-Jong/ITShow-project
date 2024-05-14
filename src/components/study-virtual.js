@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp, FaSortDown, FaSortUp } from 'react-icons/fa';
 import Header from './header';
 import '../css/style.css';
 import '../css/study-virtual.css';
@@ -17,53 +17,67 @@ function Part1({ toggleNext }) {
                     <button className='sell'>매도</button>
                 </div>
             </div>
-            <ItemList/>
+            
+            <ItemList />
         </section>
     );
 }
 
-function ItemList(){
+function ItemList() {
     const [items, setItems] = useState([
-      { name: 'Item 1', percentageIncrease: 10, price: 100 },
-      { name: 'Item 2', percentageIncrease: 15, price: 200 },
-      { name: 'Item 3', percentageIncrease: 20, price: 150 },
+        { name: 'Item 1', percentageIncrease: 10000, price: 100 },
+        { name: 'Item 2', percentageIncrease: -1500, price: 200 },
+        { name: 'Item 3', percentageIncrease: 2000000, price: 150 },
+        { name: 'Item 1', percentageIncrease: -10000, price: 100 },
+        { name: 'Item 2', percentageIncrease: -1500, price: 200 },
+        { name: 'Item 3', percentageIncrease: -2000000, price: 150 }
     ]);
     const [showItems, setShowItems] = useState(false);
-  
+
     const calculateNewPrice = (price, percentageIncrease) => {
-      return price * (1 + percentageIncrease / 100);
+        return price * (1 + percentageIncrease / 100);
     };
-  
+
     const toggleItems = () => {
-      setShowItems(!showItems);
+        setShowItems(!showItems);
     };
-  
+
     return (
-      <div className='list-stock'>
-        <h2 onClick={toggleItems} style={{ cursor: 'pointer' }}>Item List
-          {showItems ? <FaAngleUp /> : <FaAngleDown />}     
-        </h2>
-        {showItems && (
-          <ul>
-            {items.map((item, index) => (
-              <li key={index}>
-                <p>Name: {item.name}</p>
-                <p>Percentage Increase: {item.percentageIncrease}%</p>
-                <p>Total Price: ${calculateNewPrice(item.price, item.percentageIncrease).toFixed(2)}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+        <div className='list-stock'>
+            <div>
+                <h2>종목명</h2>
+                <div className="customIcon" style={{ cursor: 'pointer' }} onClick={toggleItems}>
+                    {showItems ? <FaAngleUp /> : <FaAngleDown />}
+                </div>
+            </div>
+            {showItems && (
+                <ul>
+                    {items.map((item, index) => (
+                        <li key={index}>
+                            <p className="coin-name">{item.name}</p>
+                            <div className='change' style={{ display: 'flex', alignItems: 'center' }}>
+                                <p style={{ color: item.percentageIncrease < 0 ? 'blue' : item.percentageIncrease > 0 ? 'red' : 'gray' }}>
+                                    {item.percentageIncrease < 0 ? <FaSortDown /> : <FaSortUp />}
+                                    {item.percentageIncrease}
+                                </p>
+                            </div>
+                            <p className="pay-coin">{calculateNewPrice(item.price, item.percentageIncrease).toFixed(3)}원</p>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
     );
-  };
+
+
+};
 function Part2({ isTableShown, setIsTableShown }) {
     return (
         <section className="part" id="part2">
             <div className="graph"></div>
             <div className="button-line">
-            <button onClick={() => setIsTableShown(true)} style={{ borderBottom: isTableShown ? '5px solid #FFD601' : 'none' }}>표</button>
-                <button onClick={() => setIsTableShown(false)}style={{ borderBottom: isTableShown ? 'none' : '5px solid #FFD601' }}>뉴스</button>
+                <button onClick={() => setIsTableShown(true)} style={{ borderBottom: isTableShown ? '5px solid #FFD601' : 'none' }}>표</button>
+                <button onClick={() => setIsTableShown(false)} style={{ borderBottom: isTableShown ? 'none' : '5px solid #FFD601' }}>뉴스</button>
             </div>
             <div className="view" id={isTableShown ? 'table' : ''}>
                 <table>
@@ -148,6 +162,8 @@ function Part3() {
             <div className='quarter'>
                 <p>현재 분기</p>
                 <div className='quarter-list'>
+                    <li></li>
+                    <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
