@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+    background-color: #2C417E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* 드래그 방지용 */
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.header {
+    width: 100vw;
+    height: 50px;
+    background-color: #FFD601;
+}
+
+.rank {
+    background-color: #fff;
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.rank th {
+    background-color: #E7E7E7;
+}
+.rank tr {
+    height: 60px;
+}
+
+.rank td {  
+    margin: 0 auto;
+}
+
+.rankNum {
+    width: 24px;
+    height: 24px;
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+.rankNum1 {
+    background-color: #FFE923; 
+}
+
+.rankNum2 {
+    background-color: #E6E6E6;
+}
+
+
+.rankNum3 {
+    background-color: #E3CDAB;
+}
+
+.rankName {
+    width: 100%;
+    text-align: center;
+}
+
+

@@ -1,15 +1,17 @@
 import './App.css';
 
-// import StudyVirtual from './js/study-virtual.js'; // StudyVirtual 컴포넌트 import
+// import StudyVirtual from './components/study-virtual.js'; // StudyVirtual 컴포넌트 import
 // import StudyGame from './components/study-game.js'; 
-import StudyWord from './components/study-word.js'; 
+// import StudyWord from './components/study-game.js'; 
 // import StudyWord from './components/index.js'; 
-
+// import VirtualOverallResult from './components/virtual-overallResult.js';
+// import VirtualThisResult from './components/virtual-thisResult.js'
+import Ranking from './components/ranking.js'
 
 function App() {
   return (
     <div>
-      <StudyWord />
+      <Ranking />
     </div>
   );
 }
