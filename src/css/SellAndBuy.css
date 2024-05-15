@@ -1,0 +1,64 @@
+#SellAndBuy {
+    width: 700px;
+    height: 400px;
+    background-color: #2C417E;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sAndBtable {
+    width: 500px;
+    height: 220px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sAndBtable th {
+    background-color: #F0F0F0;
+}
+
+.sAndBtable td {
+    padding: 0 10px;
+    
+    
+}
+
+
+.sAndBtable, .sAndBtable th, .sAndBtable td {
+    border-bottom: 1px solid #000000;
+    border-collapse : collapse;
+}
+
+.amount {
+    width: 50px;
+    text-align: right;
+    padding: 0;
+}
+
+.tdAlign {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancel, .buy {
+    width: 200px;
+    height: 50px;
+    margin: 20px 20px;
+    border-radius: 20px;
+    color: #2C417E;
+}
+
+.cancel {
+    background-color: #DADADA;
+}
+
+.buy {
+    background-color: #FFF1A7;
+}
