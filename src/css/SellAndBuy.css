@@ -1,7 +1,7 @@
 #SellAndBuy {
     width: 700px;
     height: 400px;
-    background-color: #2C417E;
+    background-color: var(--second-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -12,13 +12,13 @@
 .sAndBtable {
     width: 500px;
     height: 220px;
-    background-color: #FFFFFF;
+    background-color: var(--body-color);
     border-radius: 10px;
     overflow: hidden;
 }
 
 .sAndBtable th {
-    background-color: #F0F0F0;
+    background-color: var(--gray2);
 }
 
 .sAndBtable td {
@@ -29,7 +29,7 @@
 
 
 .sAndBtable, .sAndBtable th, .sAndBtable td {
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid var(--black);
     border-collapse : collapse;
 }
 
@@ -52,11 +52,11 @@
     height: 50px;
     margin: 20px 20px;
     border-radius: 20px;
-    color: #2C417E;
+    color: var(--second-color);
 }
 
 .cancel {
-    background-color: #DADADA;
+   background-color: var(--gray2);
 }
 
 .buy {

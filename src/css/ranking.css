@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: #2C417E;
+    background-color: var(--second-color);
 
     display: flex;
     justify-content: center;
@@ -19,14 +19,8 @@ body{
     user-select:none;
 }
 
-.header {
-    width: 100vw;
-    height: 50px;
-    background-color: #FFD601;
-}
-
 .rank {
-    background-color: #fff;
+    background-color: var(--body-color);
     width: 900px;
     margin: 0 auto;
     margin-top: 100px;
@@ -36,7 +30,7 @@ body{
 }
 
 .rank th {
-    background-color: #E7E7E7;
+    background-color: var(--gray2);
 }
 .rank tr {
     height: 60px;
