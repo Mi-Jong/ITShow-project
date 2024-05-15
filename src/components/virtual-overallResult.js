@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/style.css';
 import '../css/virtual-overallResult.css';
 import { GoX } from "react-icons/go";
 
