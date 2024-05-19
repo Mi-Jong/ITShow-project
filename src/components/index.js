@@ -4,6 +4,7 @@ import Header from './header';
 import Footer from './footer';
 import videoData from '../Data/videos.json'; // Importing video data from JSON
 import '../css/index.css';
+import axios from 'axios';
 
 function Section() {
   return (
@@ -86,27 +87,35 @@ function SlideShow() {
 
 // 백엔드(라우터)기능을 만들고 다시 하기
 const StockApp = () => {
-  const [stocks, setStocks] = useState([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://m.stock.naver.com/api/stocks/searchTop/all?page=1&pageSize=20') // Node.js 서버의 라우트
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setStocks(data.stocks);
-      })
-      .catch(error => {
-        console.error('There was a problem with your fetch operation:', error);
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/data');
+        setData(response.data.stocks);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
-    <div id='popular'>
-      {/* <h1>주식 정보</h1>
+    <div>
+      <h1>Data from Server</h1>
       <table>
         <thead>
           <tr>
@@ -118,8 +127,8 @@ const StockApp = () => {
           </tr>
         </thead>
         <tbody>
-          {stocks.map((stock, index) => (
-            <tr key={index}>
+          {data.map((stock, index) => (
+            <tr key={stock.itemCode}>
               <td>{index + 1}</td>
               <td>{stock.stockName}</td>
               <td>{stock.itemCode}</td>
@@ -128,7 +137,7 @@ const StockApp = () => {
             </tr>
           ))}
         </tbody>
-      </table> */}
+      </table>
     </div>
   );
 }
