@@ -36,7 +36,7 @@ function Learning() {
     // Handle button click logic
   };
   return (
-    <div className='container learning-container'>
+    <div id='learn' className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
         <Learn
@@ -69,7 +69,7 @@ function SlideShow() {
   };
 
   return (
-    <div className="container slide-show-container ">
+    <div id="relate" className="container slide-show-container ">
       <p>관련 유튜브</p>
       <button onClick={goToPreviousSlide}><SlArrowLeft /></button>
       <div className="video-container">
@@ -105,7 +105,7 @@ const StockApp = () => {
   }, []);
 
   return (
-    <div>
+    <div id='popular'>
       {/* <h1>주식 정보</h1>
       <table>
         <thead>
