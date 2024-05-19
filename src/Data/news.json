@@ -1,0 +1,42 @@
+[
+    {
+        "image_url": "https://example.com/news_image.jpg",
+        "title": "첫 번째 뉴스 제목",
+        "content": "첫 번째 뉴스 내용..."
+    },
+    {
+        "image_url": "https://example.com/another_news_image.jpg",
+        "title": "두 번째 뉴스 제목",
+        "content": "두 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news3_image.jpg",
+      "title": "세 번째 뉴스 제목",
+      "content": "세 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news4_image.jpg",
+      "title": "네 번째 뉴스 제목",
+      "content": "네 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news5_image.jpg",
+      "title": "다섯 번째 뉴스 제목",
+      "content": "다섯 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news6_image.jpg",
+      "title": "여섯 번째 뉴스 제목",
+      "content": "여섯 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news7_image.jpg",
+      "title": "일곱 번째 뉴스 제목",
+      "content": "일곱 번째 뉴스 내용..."
+    },
+    {
+      "image_url": "https://example.com/news8_image.jpg",
+      "title": "여덟 번째 뉴스 제목",
+      "content": "여덟 번째 뉴스 내용..."
+    }
+]
