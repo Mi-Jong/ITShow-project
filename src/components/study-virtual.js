@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaSortDown, FaSortUp } from 'react-icons/fa';
-import Header from './header';
+import VirtualThisResult from './virtual-thisResult.js';
+import Header from './header.js'
 import '../css/style.css';
 import '../css/study-virtual.css';
-
+let seedMoney = 300000;
 function Part1({ toggleNext }) {
     return (
         <section className="part" id="part1">
             <div className='wer'>
                 <div className='balance'>
                     <p className='bal-title'>내 잔고</p>
-                    <h2 className='bal-pay'>00000</h2>
+                    <h2 className='bal-pay'>{seedMoney}￦</h2>
                 </div>
                 <div className='purchase'>
                     <button className='buy'>매수</button>
                     <button className='sell'>매도</button>
                 </div>
             </div>
-            
+
             <ItemList />
         </section>
     );
@@ -26,7 +27,7 @@ function Part1({ toggleNext }) {
 function ItemList() {
     const [items, setItems] = useState([
         { name: 'Item 1', percentageIncrease: 10000, price: 100 },
-        { name: 'Item 2', percentageIncrease: -1500, price: 200 },
+        { name: 'Item 2', percentageIncrease: -1500, price: 2000 },
         { name: 'Item 3', percentageIncrease: 2000000, price: 150 },
         { name: 'Item 1', percentageIncrease: -10000, price: 100 },
         { name: 'Item 2', percentageIncrease: -1500, price: 200 },
@@ -35,7 +36,7 @@ function ItemList() {
     const [showItems, setShowItems] = useState(false);
 
     const calculateNewPrice = (price, percentageIncrease) => {
-        return price * (1 + percentageIncrease / 100);
+        return (String)(price + percentageIncrease).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
     };
 
     const toggleItems = () => {
@@ -61,7 +62,7 @@ function ItemList() {
                                     {item.percentageIncrease}
                                 </p>
                             </div>
-                            <p className="pay-coin">{calculateNewPrice(item.price, item.percentageIncrease).toFixed(3)}원</p>
+                            <p className="pay-coin">{calculateNewPrice(item.price, item.percentageIncrease)}원</p>
                         </li>
                     ))}
                 </ul>
@@ -157,24 +158,32 @@ function News(props) {
 }
 
 function Part3() {
+    const [quarterCount, setQuarterCount] = useState(1);
+
+    const addQuarter = () => {
+        if (quarterCount < 4) {
+            setQuarterCount(prevCount => prevCount + 1);
+        } else {
+            // setIsModalOpen(true);
+        }
+    };
+
     return (
         <section className="part" id="part3">
+            {/* <VirtualThisResult /> */}
             <div className='quarter'>
                 <p>현재 분기</p>
-                <div className='quarter-list'>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <div className='quarter-list'>.
+                    {[...Array(4)].map((_, index) => (
+                        <li key={index} style={{ backgroundColor: index < quarterCount ? '#142B6F' : '#ccc' }}></li>
+                    ))}
                 </div>
             </div>
             <div className='list-grid'>
-                <List_money title="시드머니" money="0000" />
-                <List_money title="추정자산" money="0000" />
-                <List_money title="주문 가능 금액" money="0000" />
-                <List_money title="평가손익" money="0000" />
+                <List_money title="시드머니" money={seedMoney} />
+                <List_money title="추정자산" money={seedMoney} />
+                <List_money title="주문 가능 금액" money={seedMoney} />
+                <List_money title="평가손익" money={seedMoney} />
                 <div className='rate'>
                     <p>수익률</p>
                     <div className='percent'>
@@ -183,10 +192,11 @@ function Part3() {
                     </div>
                 </div>
             </div>
-            <button>다음 분기</button>
+            <button onClick={addQuarter}>다음 분기</button>
         </section>
     );
 }
+
 
 function List_money(props) {
     return (
