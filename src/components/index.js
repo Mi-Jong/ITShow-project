@@ -115,7 +115,7 @@ const StockApp = () => {
 
   return (
     <div>
-      <h1>Data from Server</h1>
+      <p>인기종목</p>
       <table>
         <thead>
           <tr>

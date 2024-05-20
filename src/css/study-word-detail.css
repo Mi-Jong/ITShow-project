@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+    background-color: var(--second-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* 드래그 방지용 */
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+#studyGameDetail {
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: #2C417E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.StudyGameDetail__inner {
+    width: 1200px;
+    height: 650px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.round {
+    padding: 60px 0 25px 0;
+}
+
+.card_inner {
+    display: flex;
+    line-height: 370px;
+}
+
+.card {
+    width: 700px;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 25px;
+}
+
+.card_word, .card_word_exp {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_word {
+    background-color: #E1DEE6;
+   
+}
+
+.card_word_exp {
+    background-color: #FFD601;
+}
+
+.knowButton, .nextButton {
+    border-radius: 10px;
+    width: 240px;
+    height: 65px;
+    border: none;
+    box-shadow: 0 3px 1px 1px  rgba(0, 0, 0, 0.3);
+    margin: 35px;
+}
+
+.knowButton {
+    background-color: #E1DEE6;
+    color: #142B6F;
+    
+}
+
+.nextButton {
+    background-color: #142B6F;
+    color: #FFFFFF;
+}
