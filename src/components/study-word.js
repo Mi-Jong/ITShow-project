@@ -27,7 +27,35 @@ function Game() {
     );
 }
 
-const TitleList = ({ titles, selectedCard }) => {
+const Search = ({ onSearch }) => {
+    const [query, setQuery] = useState('');
+
+    const handleChange = (event) => {
+        setQuery(event.target.value);
+    };
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            onSearch(query);
+        }, 1000);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [query, onSearch]);
+
+    return (
+        <div className='search'>
+            <input
+                placeholder='단어를 검색해주세요'
+                value={query}
+                onChange={handleChange}
+            />
+        </div>
+    );
+};
+
+const TitleList = ({ titles, selectedCard, query }) => {
     const [hiddenTitles, setHiddenTitles] = useState([]);
 
     const toggleTitleVisibility = (index) => {
@@ -38,6 +66,10 @@ const TitleList = ({ titles, selectedCard }) => {
         }
     };
 
+    if (titles.length === 0) {
+        return <p className='noWord'>찾으시는 단어가 없습니다</p>;
+    }
+
     return (
         <div className='cardTitleList'>
             {titles.map((titleObj, index) => (
@@ -47,19 +79,19 @@ const TitleList = ({ titles, selectedCard }) => {
                     cards={titleObj.cards}
                     hidden={hiddenTitles.includes(index)}
                     toggleVisibility={() => toggleTitleVisibility(index)}
-                    selectedCard={selectedCard} // <-- This is passed as a prop
+                    selectedCard={selectedCard}
+                    query={query}
                 />
             ))}
         </div>
     );
 };
 
-
-const Cards = ({ title, cards, hidden, toggleVisibility }) => {
+const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
     return (
         <div className='cardList' style={{ marginBottom: hidden ? '10px' : '120px' }}>
             <h2>
-                {title}
+                {highlightMatch(title, query)}
                 <div id='btn_list'>
                     <button className='wordText'>암기학습</button>
                     <button onClick={toggleVisibility}>
@@ -78,7 +110,7 @@ const Cards = ({ title, cards, hidden, toggleVisibility }) => {
             <div style={{ width: '80%' }}>
                 <div className={`card-container ${hidden ? 'hidden' : ''}`}>
                     {cards.map((card, index) => (
-                        <Card key={index} title={card.title} content={card.content} />
+                        <Card key={index} title={card.title} content={card.content} query={query} />
                     ))}
                 </div>
             </div>
@@ -86,10 +118,10 @@ const Cards = ({ title, cards, hidden, toggleVisibility }) => {
     );
 };
 
-const Card = ({ title, content }) => {
+const Card = ({ title, content, query }) => {
     return (
         <div className="card">
-            <p id='h3'>{title}</p>
+            <p id='h3'>{highlightMatch(title, query)}</p>
         </div>
     );
 };
@@ -114,20 +146,46 @@ const Detail = ({ selectedCard, onClose }) => {
 
 function App() {
     const [selectedCard, setSelectedCard] = useState(null);
-    
+    const [filteredTitles, setFilteredTitles] = useState(wordData);
+    const [query, setQuery] = useState('');
+
+    const handleSearch = (query) => {
+        setQuery(query.toLowerCase());
+        if (query === '') {
+            setFilteredTitles(wordData);
+        } else {
+            const filtered = wordData.filter((titleObj) =>
+                titleObj.title.toLowerCase().includes(query.toLowerCase()) ||
+                titleObj.cards.some((card) =>
+                    card.title.toLowerCase().includes(query.toLowerCase()) ||
+                    card.content.toLowerCase().includes(query.toLowerCase())
+                )
+            );
+            setFilteredTitles(filtered);
+        }
+    };
+
     useEffect(() => {
         document.title = "GEMMI - 단어모음집";
     }, []);
 
     return (
         <div className='body'>
-            <Header />
             <Section />
             <Game />
-            <TitleList titles={wordData} selectedCard={selectedCard}/>
-            <Footer />
+            <Search onSearch={handleSearch} />
+            <TitleList titles={filteredTitles} selectedCard={selectedCard} query={query} />
         </div>
     );
 }
+
+const highlightMatch = (text, query) => {
+    if (!query) return text;
+
+    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    return parts.map((part, index) => 
+        part.toLowerCase() === query.toLowerCase() ? <span key={index} style={{ backgroundColor: 'yellow' }}>{part}</span> : part
+    );
+};
 
 export default App;
