@@ -2,7 +2,7 @@
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import HomeView from "./HomeView";
 
-// import StudyVirtual from './components/study-virtual.js'; // StudyVirtual 컴포넌트 import
+import StudyVirtual from './components/study-virtual/index'; // StudyVirtual 컴포넌트 import
 // import StudyGame from './components/study-game.js'; 
 // import StudyWord from './components/study-word.js'; 
 // import Index from './components/index.js'; 
@@ -11,7 +11,7 @@
 //import Ranking from './components/ranking.js'
 // import SellAndBuy  from './components/SellAndBuy.js' 
 // import Index  from './components/index.js' 
-import StudyWordDetail from './components/study-word-detail.js'
+// import StudyWordDetail from './components/study-word-detail.js'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
     //           <Route path="/" element={<Index />} />
     //       </Routes>
     //   </BrowserRouter>
-    <StudyWordDetail/>
+    <StudyVirtual/>
   );
 }
 
