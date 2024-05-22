@@ -10,8 +10,8 @@
 // import VirtualThisResult from './components/virtual-thisResult.js'
 //import Ranking from './components/ranking.js'
 // import SellAndBuy  from './components/SellAndBuy.js' 
-import Index  from './components/index.js' 
-//import StudyWordDetail from './components/study-word-detail.js'
+// import Index  from './components/index.js' 
+import StudyWordDetail from './components/study-word-detail.js'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
     //           <Route path="/" element={<Index />} />
     //       </Routes>
     //   </BrowserRouter>
-    <Index/>
+    <StudyWordDetail/>
   );
 }
 

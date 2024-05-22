@@ -4,6 +4,7 @@ import Header from './header';
 import Footer from './footer';
 import '../css/study-word.css';
 import wordData from '../Data/word.json';
+import { Link } from 'react-router-dom';
 
 function Section() {
     return (
@@ -88,12 +89,21 @@ const TitleList = ({ titles, selectedCard, query }) => {
 };
 
 const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
+    const handleSaveToLocalStorage = () => {
+        if (typeof localStorage === 'undefined') {
+            console.error('localStorage is not supported in this browser.');
+            return;
+        }
+        console.log('Saving to localStorage:', title);
+        localStorage.setItem('memorizedTitle', title);
+    };
+
     return (
         <div className='cardList' style={{ marginBottom: hidden ? '10px' : '120px' }}>
             <h2>
                 {highlightMatch(title, query)}
                 <div id='btn_list'>
-                    <button className='wordText'>암기학습</button>
+                    <button className='wordText' onClick={handleSaveToLocalStorage}>암기학습</button>
                     <button onClick={toggleVisibility}>
                         {hidden ?
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
