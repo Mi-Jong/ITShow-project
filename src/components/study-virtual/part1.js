@@ -7,9 +7,17 @@ function Part1({ seedMoney, items }) {
     const handleBuy = () => {
         if (selectedItem) {
             console.log("매수 버튼 클릭 - 선택된 항목:", selectedItem);
-            // 여기에 매수 동작을 추가할 수도 있습니다.
+            setSelectedItem(null);
         } else {
             console.log("매수 버튼 클릭 - 아무 항목도 선택되지 않았습니다.");
+        }
+    };
+    const handleSell = () => {
+        if (selectedItem) {
+            console.log("매도 버튼 클릭 - 선택된 항목:", selectedItem);
+            setSelectedItem(null);
+        } else {
+            console.log("매도 버튼 클릭 - 아무 항목도 선택되지 않았습니다.");
         }
     };
 
@@ -26,7 +34,7 @@ function Part1({ seedMoney, items }) {
                 </div>
                 <div className='purchase'>
                     <button className='buy' onClick={handleBuy}>매수</button>
-                    <button className='sell'>매도</button>
+                    <button className='sell'onClick={handleSell}>매도</button>
                 </div>
             </div>
 
