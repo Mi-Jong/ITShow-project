@@ -1,15 +1,8 @@
-.body{
+.studyWord{
     width: 100vw;
-}
-* {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-}
-
-button {
-    cursor: pointer;
-    border: 0px;
 }
 
 .ban {

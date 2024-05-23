@@ -35,7 +35,7 @@ function App() {
     }, []);
 
     return (
-        <div className='body'>
+        <div className='studyWord'>
             <Header />
             <Section />
             <Search onSearch={handleSearch} />
