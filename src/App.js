@@ -1,26 +1,26 @@
-//import React from "react"
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import HomeView from "./HomeView";
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-// import StudyVirtual from './components/study-virtual/index'; // StudyVirtual 컴포넌트 import
+import StudyVirtual from './components/study-virtual/index';
 // import StudyGame from './components/study-game.js'; 
-// import StudyWord from './components/study-word.js'; 
-// import Index from './components/index.js'; 
+import StudyWord from './components/study-word/index.js'; 
+import StudyWordDetail from './components/study-word-detail'
+import Index from './components/index.js'; 
 // import VirtualOverallResult from './components/virtual-overallResult.js';
 // import VirtualThisResult from './components/virtual-thisResult.js'
-//import Ranking from './components/ranking.js'
-import SellAndBuy  from './components/SellAndBuy.js' 
-// import Index  from './components/index.js' 
-// import StudyWordDetail from './components/study-word-detail.js'
+// import Ranking from './components/ranking.js'
+// import SellAndBuy  from './components/SellAndBuy.js' 
 
 function App() {
   return (
-    //   <BrowserRouter>
-    //       <Routes>
-    //           <Route path="/" element={<Index />} />
-    //       </Routes>
-    //   </BrowserRouter>
-    <SellAndBuy/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/StudyWord"  element={<StudyWord />}  />
+        <Route path="/StudyVirtual"  element={<StudyVirtual />}  />
+        <Route path="/StudyWordDetail"  element={<StudyWordDetail />}  />
+      </Routes>
+  </BrowserRouter>
   );
 }
 
