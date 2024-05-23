@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
-import videoData from '../Data/videos.json';
-import '../css/index.css';
+import videoData from '../../Data/videos.json';
+import '../../css/index.css';
 
 function SlideShow() {
   const [currentIndex, setCurrentIndex] = useState(0);

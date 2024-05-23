@@ -34,7 +34,6 @@ function Learn({ title, imageUrl, buttonText, onClick }) {
 
 function Learning() {
   const handleButtonClick = () => {
-    // Handle button click logic
   };
   return (
     <div id='learn' className='container learning-container'>
