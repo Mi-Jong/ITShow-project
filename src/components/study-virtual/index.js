@@ -21,6 +21,11 @@ function App() {
     const [newsItems, setNewsItems] = useState([]);
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
+    const [items, setItems] = useState([
+        { name: 'Item 1', percentageIncrease: 100, price: 100 },
+        { name: 'Item 2', percentageIncrease: 2000, price: 2000 },
+        { name: 'Item 3', percentageIncrease: 150, price: 150 }
+    ]);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
@@ -32,6 +37,15 @@ function App() {
         setNewsItems(selectedNews);
     };
 
+    const updatePrices = () => {
+        const updatedItems = items.map(item => {
+            const change = 300;
+            const newPrice = item.price + change;
+            return { ...item, percentageIncrease: change, price: newPrice };
+        });
+        setItems(updatedItems);
+    };
+
     useEffect(() => {
         updateNewsItems();
     }, []);
@@ -40,9 +54,9 @@ function App() {
         <>
             <Header />
             <main>
-                <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} />
+                <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} items={items} />
                 <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
-                <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} />
+                <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
             </main>
         </>
     );

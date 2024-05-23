@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 
-function Part1({ seedMoney, toggleNext }) {
+function Part1({ seedMoney , items }) {
     return (
         <section className="part" id="part1">
             <div className='wer'>
@@ -15,7 +15,7 @@ function Part1({ seedMoney, toggleNext }) {
                 </div>
             </div>
 
-            <ItemList />
+            <ItemList items={items} />
         </section>
     );
 }
