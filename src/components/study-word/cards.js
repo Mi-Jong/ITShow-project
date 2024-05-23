@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card';
+import { Link } from 'react-router-dom';
 
 const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
     const handleSaveToLocalStorage = () => {
@@ -16,7 +17,10 @@ const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
             <h2>
                 {highlightMatch(title, query)}
                 <div id='btn_list'>
-                    <button className='wordText' onClick={handleSaveToLocalStorage}>암기학습</button>
+                    
+                    <button className='wordText' onClick={handleSaveToLocalStorage}>
+                        <Link to="/studyWordDetail" >암기학습</Link>
+                    </button>
                     <button onClick={toggleVisibility}>
                         {hidden ?
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">

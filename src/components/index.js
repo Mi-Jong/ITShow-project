@@ -5,8 +5,9 @@ import Footer from './footer';
 import videoData from '../Data/videos.json'; // Importing video data from JSON
 import '../css/index.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function Section() {
+function Banner() {
   return (
     <div className='section'>
       <div className='section-text'>
@@ -21,13 +22,15 @@ function Section() {
   );
 }
 
-function Learn({ title, imageUrl, buttonText, onClick }) {
+function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
   return (
     <div className='learn'>
       <div class="overlay"></div>
       <img src={imageUrl} alt="Image" />
       <h2>{title}</h2>
-      <button onClick={onClick}>{buttonText}</button>
+      <button onClick={onClick}>
+        <Link to={linkTo}>{buttonText}</Link>
+      </button>
     </div>
   );
 };
@@ -40,16 +43,16 @@ function Learning() {
       <p>주식배우기</p>
       <div className='learning'>
         <Learn
-          title="Example Title"
+          title="주식 시뮬레이션"
           imageUrl="https://example.com/image.jpg"
           buttonText="Click me"
-          onClick={handleButtonClick}
+          linkTo="/StudyVirtual"
         />
         <Learn
-          title="Example Title"
+          title="주식 단어"
           imageUrl="https://example.com/image.jpg"
           buttonText="Click me"
-          onClick={handleButtonClick}
+          linkTo="/StudyWord"
         />
       </div>
     </div>
@@ -144,7 +147,7 @@ function Index() {
   return (
     <div className='main'>
       <Header />
-      <Section />
+      <Banner />
       <Learning />
       <SlideShow />
       <StockApp />
