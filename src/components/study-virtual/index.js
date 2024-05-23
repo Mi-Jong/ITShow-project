@@ -31,7 +31,7 @@ function App() {
         { name: '삼쉉', percentageIncrease: 2000, price: 2000 },
         { name: '네이비', percentageIncrease: 150, price: 150 }
     ]);
-    const [selectedItem, setSelectedItem] = useState(null); // Lift state up for selected item
+    const [selectedItem, setSelectedItem] = useState(null);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
@@ -76,6 +76,10 @@ function App() {
         setSelectedItem(item);
     };
 
+    const handleClose = () => {
+        setNextVisibility(false);
+    };
+
     useEffect(() => {
         updateNewsItems();
     }, []);
@@ -87,7 +91,7 @@ function App() {
                 <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
                 <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
                 <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
-                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle}/>}
+                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose} />}
             </main>
         </>
     );
