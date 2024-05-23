@@ -3,7 +3,7 @@ import Header from '../header';
 import Part1 from './part1';
 import Part2 from './part2';
 import Part3 from './part3';
-import newsData from '../../Data/news.json'; // Ensure this path is correct
+import newsData from '../../Data/news.json';
 import '../../css/style.css';
 import '../../css/study-virtual.css';
 
@@ -28,7 +28,7 @@ function App() {
 
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
-        const selectedNews = shuffledNews.slice(0, 4); // Select the top 4 news items
+        const selectedNews = shuffledNews.slice(0, 4);
         setNewsItems(selectedNews);
     };
 
