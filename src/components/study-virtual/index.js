@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../header';
-import Part1 from '../part1';
-import Part2 from '../part2';
-import Part3 from '../part3';
-import newsData from './data/news.json';
-import '../styles/style.css';
-import '../styles/study-virtual.css';
+import Part1 from './part1';
+import Part2 from './part2';
+import Part3 from './part3';
+import newsData from '../../Data/news.json';
+import '../../css/style.css';
+import '../../css/study-virtual.css';
 
 let seedMoney = 300000;
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function App() {
     const [newsItems, setNewsItems] = useState([]);
@@ -20,7 +28,7 @@ function App() {
 
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
-        const selectedNews = shuffledNews.slice(0, 4); // 상위 4개의 뉴스만 선택
+        const selectedNews = shuffledNews.slice(0, 4);
         setNewsItems(selectedNews);
     };
 
@@ -32,9 +40,9 @@ function App() {
         <>
             <Header />
             <main>
-                <Part1 toggleNext={toggleNextVisibility} />
-                <Part2 isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
-                <Part3 updateNewsItems={updateNewsItems} />
+                <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} />
+                <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
+                <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} />
             </main>
         </>
     );

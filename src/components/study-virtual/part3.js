@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListMoney from './listMoney';
 
-function Part3({ updateNewsItems }) {
+function Part3({ seedMoney, updateNewsItems }) {
     const [quarterCount, setQuarterCount] = useState(1);
 
     useEffect(() => {

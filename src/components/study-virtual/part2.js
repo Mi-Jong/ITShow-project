@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import News from './news';
 
-function Part2({ isTableShown, setIsTableShown, newsItems, updateNewsItems }) {
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems }) {
     useEffect(() => {
         updateNewsItems();
     }, []);
@@ -21,6 +21,41 @@ function Part2({ isTableShown, setIsTableShown, newsItems, updateNewsItems }) {
                         <th>한 주당 가격</th>
                         <th>매입 단가</th>
                         <th>수익률</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     {/* 데이터 행 추가 */}
                 </table>
