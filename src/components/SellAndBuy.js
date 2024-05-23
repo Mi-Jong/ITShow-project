@@ -5,7 +5,8 @@ import '../css/SellAndBuy.css';
 
 function SellAndBuy(props) {
     const [count, setCount] = useState(0);
-
+    let money = 2000;
+    let countCoin = 2;
     const handleMaxClick = () => {
         if (props.handle === "매수") {
             setCount(100);
@@ -15,8 +16,14 @@ function SellAndBuy(props) {
     };
 
     const handleBuyClick = () => {
-        if(false){
-            // 만약에 돈이부족하거나 팬매를 할수 없는 양이라면 
+        if((money < props.price * count && props.handle == "매수") || (countCoin < count && props.handle == "매도") ){
+            return 0;
+        }else if(props.handle == "매수"){
+            money -= props.price * count;
+            countCoin += count;
+        }else if(props.handle == "매도"){
+            money += props.price * count;
+            countCoin -= count;
         }
         console.log(`${props.handle} button clicked`);
         props.handleClose();
