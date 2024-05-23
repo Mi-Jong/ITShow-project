@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import '../css/globals.css';
+import '../css/style.css';
 import Header from './header';
 import Footer from './footer';
 import '../css/study-game.css';

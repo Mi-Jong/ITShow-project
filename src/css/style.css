@@ -46,12 +46,24 @@ body{
 }
 
 header{
+    position: fixed;
     width: 100vw;
-    height: var(--header-height);
+    height: 50px;
+    z-index: 100000;
+    top: 0;
+    background-color: var(--yellow2);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.30);
+    overflow: hidden;
 }
 
 #hidden{
     display: none;
 }
 
+button {
+    cursor: pointer;
+    border: 0px;
+}
 
