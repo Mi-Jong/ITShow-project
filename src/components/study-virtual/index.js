@@ -22,9 +22,12 @@ function App() {
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
     const [items, setItems] = useState([
-        { name: 'Item 1', percentageIncrease: 100, price: 100 },
-        { name: 'Item 2', percentageIncrease: 2000, price: 2000 },
-        { name: 'Item 3', percentageIncrease: 150, price: 150 }
+        { name: 'SN', percentageIncrease: 100, price: 100 },
+        { name: 'JYB', percentageIncrease: 2000, price: 2000 },
+        { name: '소노공마라탕', percentageIncrease: 150, price: 150 },
+        { name: '왕카탕후루', percentageIncrease: 100, price: 100 },
+        { name: '삼쉉', percentageIncrease: 2000, price: 2000 },
+        { name: '네이비', percentageIncrease: 150, price: 150 }
     ]);
 
     const toggleNextVisibility = () => {

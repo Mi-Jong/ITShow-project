@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaSortDown, FaSortUp } from 'react-icons/fa';
 
-function ItemList({ items }) {
+function ItemList({ items, selectItem }) {
     const [showItems, setShowItems] = useState(false);
 
     const calculateNewPrice = (price) => {
@@ -11,6 +11,10 @@ function ItemList({ items }) {
 
     const toggleItems = () => {
         setShowItems(!showItems);
+    };
+
+    const handleClickItem = (item) => {
+        selectItem(item);
     };
 
     return (
@@ -24,7 +28,7 @@ function ItemList({ items }) {
             {showItems && (
                 <ul>
                     {items.map((item, index) => (
-                        <li key={item.id || index}>
+                        <li key={item.id || index} onClick={() => handleClickItem(item)}>
                             <p className="coin-name">{item.name}</p>
                             <div className='change' style={{ display: 'flex', alignItems: 'center' }}>
                                 <p style={{ color: item.percentageIncrease < 0 ? 'blue' : item.percentageIncrease > 0 ? 'red' : 'gray' }}>
