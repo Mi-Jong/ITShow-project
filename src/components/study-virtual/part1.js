@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 
-function Part1({ toggleNext }) {
+function Part1({ seedMoney, toggleNext }) {
     return (
         <section className="part" id="part1">
             <div className='wer'>
