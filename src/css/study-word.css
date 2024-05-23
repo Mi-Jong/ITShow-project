@@ -15,20 +15,30 @@ button {
 .ban {
     position: relative;
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
     background-color: #FFD601;
+    
 }
 
-.ban-text {
-    width: 50%;
-    gap: 10px;
+.ban .ban__inner {
+    display: flex;
+    width: 70vw;
+    
 }
 
-.ban-text>p {
-    margin-left: 18vw;
+.ban__inner .ban-text, .ban__inner .ban-img {
+   width: 50%;
+   
+}
+
+.ban__inner .ban-text {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ban-text>#h1 {
@@ -47,6 +57,34 @@ button {
     font-size: 20px;
     font-weight: bold;
 }
+
+.ban-img {
+    position : relative;
+    height: 290px;
+    overflow: hidden; /* 스크롤 방지 */
+}
+
+.ban-img img {
+    position: absolute;
+    bottom: 15px;
+    right : 20px;
+    width: 400px;
+    border-radius: 20px;
+}
+
+.ban-img button {
+    width: 180px;
+    height: 40px;
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 4px;
+    right : 35px; 
+    border-radius: 20px;
+    z-index: 10;
+    font-weight: bold;
+    box-shadow: 0 2px 2px 2px #1a285145;
+}
+
 
 .game {
     width: 100%;
