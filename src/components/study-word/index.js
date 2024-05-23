@@ -5,7 +5,6 @@ import Footer from '../footer';
 import '../../css/study-word.css';
 import wordData from '../../Data/word.json';
 import Section from './section';
-import Game from './game';
 import Search from './search';
 import TitleList from './titleList';
 import Detail from './detail';
@@ -39,7 +38,6 @@ function App() {
         <div className='body'>
             <Header />
             <Section />
-            <Game />
             <Search onSearch={handleSearch} />
             <TitleList titles={filteredTitles} selectedCard={selectedCard} query={query} />
             <Detail selectedCard={selectedCard} onClose={() => setSelectedCard(null)} />
