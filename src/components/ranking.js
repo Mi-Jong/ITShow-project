@@ -5,7 +5,7 @@ import '../css/ranking.css';
 
 function Ranking(props) {
     return (
-        <>
+        <section className='Ranking'>
             <table className='rank'>
                 <tr>
                     <th scope="col">순위</th>
@@ -33,7 +33,7 @@ function Ranking(props) {
                     <td>-10%</td>
                 </tr>
             </table>
-        </>
+        </section>
     );
 }
 

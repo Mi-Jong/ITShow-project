@@ -5,8 +5,8 @@ import { GoX } from "react-icons/go";
 
 function VirtualOverallResult(props) {
     return (
-        <div id='result'>
-            <div class='result-inner'>
+        <section id='VirtualOverallResult'>
+            <div class='VirtualOverallResult'>
                 <div className='inner-header'>
                     <p>전체 결과</p>
                     <GoX style={{paddingRight:"20px"}}/>
@@ -22,11 +22,10 @@ function VirtualOverallResult(props) {
                         <tr>
                             <td>-10%</td>
                             <td>-10%</td>
-                            <td>-10%</td>
+                                <td>-10%</td>
                             <td>-10%</td>
                         </tr>
                     </table>
-
                     <table className='result-table'>
                         <tr>
                             <th scope="col">총 수익</th>
@@ -37,13 +36,12 @@ function VirtualOverallResult(props) {
                             <td>오 주식 좀 하시는데요?</td>
                         </tr>
                     </table>
-                   
                     <button className='nextButton'>
                         다음으로
                     </button>
+                    </div>
                 </div>
-            </div>
-        </div>
+        </section>
     );
 }
 
