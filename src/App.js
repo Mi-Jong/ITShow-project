@@ -6,7 +6,7 @@ import StudyVirtual from './components/study-virtual/index';
 import StudyWord from './components/study-word/index.js'; 
 import StudyWordDetail from './components/study-word-detail'
 import Index from './components/index.js'; 
-// import VirtualOverallResult from './components/virtual-overallResult.js';
+import VirtualOverallResult from './components/virtual-overallResult.js';
 // import VirtualThisResult from './components/virtual-thisResult.js'
 // import Ranking from './components/ranking.js'
 // import SellAndBuy  from './components/SellAndBuy.js' 
