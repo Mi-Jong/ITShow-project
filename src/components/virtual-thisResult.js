@@ -5,8 +5,8 @@ import { GoX } from "react-icons/go";
 
 function VirtualThisResult(props) {
     return (
-        <div id='result'>
-            <div class='result-inner'>
+        <section id='VirtualThisResult'>
+            <div class='VirtualThisResult-inner'>
                 <div className='inner-header'>
                     <p>결과</p>
                     <GoX style={{paddingRight:"20px"}}/>
@@ -39,7 +39,7 @@ function VirtualThisResult(props) {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

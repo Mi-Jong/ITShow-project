@@ -1,46 +1,36 @@
-*{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-body{
+.Ranking {
+    width: 100vw;
+    height: 100vh;
     background-color: var(--second-color);
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    /* 드래그 방지용 */
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
 }
 
-.rank {
+.Ranking .rank {
     background-color: var(--body-color);
     width: 900px;
     margin: 0 auto;
-    margin-top: 100px;
     border-radius: 16px;
     overflow: hidden;
     text-align: center;
 }
 
-.rank th {
+.Ranking .rank th {
     background-color: var(--gray2);
 }
-.rank tr {
+
+.Ranking .rank tr {
     height: 60px;
 }
 
-.rank td {  
+.Ranking .rank td {  
     margin: 0 auto;
 }
 
-.rankNum {
+.Ranking tr td .rankNum {
     width: 24px;
     height: 24px;
     border-radius: 16px;

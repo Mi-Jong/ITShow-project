@@ -1,12 +1,3 @@
-/* 1920 x 1080 해상도 기준 */
-@font-face {
-    font-family: 'PretendardVariable';
-    /* src: url('../font/PretendardVariable.ttf') format('ttf'); */
-}
-
-:root {
-    --card-height: 100px;
-}
 .body{
     width: 100vw;
 }

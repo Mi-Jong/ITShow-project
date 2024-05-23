@@ -3,13 +3,15 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import Header from './header';
 import Footer from './footer';
 import videoData from '../Data/videos.json'; // Importing video data from JSON
+import '../css/style.css';
 import '../css/index.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function Section() {
+function Banner() {
   return (
-    <div className='section'>
-      <div className='section-text'>
+    <div className='banner'>
+      <div className='banner-text'>
         <p id='h1'>GEMMI</p>
         <p id='h2'>
           주식 투자의 첫걸음을 떼는 당신을 위한 웹사이트
@@ -21,36 +23,35 @@ function Section() {
   );
 }
 
-function Learn({ title, imageUrl, buttonText, onClick }) {
+function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
   return (
     <div className='learn'>
       <div class="overlay"></div>
       <img src={imageUrl} alt="Image" />
       <h2>{title}</h2>
-      <button onClick={onClick}>{buttonText}</button>
+      <button onClick={onClick}>
+        <Link to={linkTo}>{buttonText}</Link>
+      </button>
     </div>
   );
 };
 
 function Learning() {
-  const handleButtonClick = () => {
-    // Handle button click logic
-  };
   return (
     <div id='learn' className='container learning-container'>
-      <p>주식배우기</p>
+      <p>주식 시뮬레이션</p>
       <div className='learning'>
         <Learn
-          title="Example Title"
+          title="주식 시뮬레이션"
           imageUrl="https://example.com/image.jpg"
           buttonText="Click me"
-          onClick={handleButtonClick}
+          linkTo="/studyVirtual"
         />
         <Learn
-          title="Example Title"
+          title="주식 단어"
           imageUrl="https://example.com/image.jpg"
           buttonText="Click me"
-          onClick={handleButtonClick}
+          linkTo="/studyWord"
         />
       </div>
     </div>
@@ -143,14 +144,14 @@ const StockApp = () => {
 }
 function Index() {
   return (
-    <div className='main'>
+    <section className='index'>
       <Header />
-      <Section />
+      <Banner />
       <Learning />
       <SlideShow />
       <StockApp />
       <Footer />
-    </div>
+    </section>
   );
 }
 

@@ -46,19 +46,21 @@ function StudyWordDetail() {
 
     return (
         <section id='studyGameDetail'>
-            <div className='StudyGameDetail__inner'>
-                <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>
-                <div className='card_inner'>
-                    <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
-                    <div className='card'>
-                        <div className='card_word'>{currentCard.title}</div>
-                        <div className='card_word_exp'>{currentCard.content}</div>
+            <div class='studyGameDetail'>
+                <div className='StudyGameDetail__inner'>
+                    <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>
+                    <div className='card_inner'>
+                        <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
+                        <div className='card'>
+                            <div className='card_word'>{currentCard.title}</div>
+                            <div className='card_word_exp'>{currentCard.content}</div>
+                        </div>
+                        <p onClick={handleNext}><BsChevronRight size="40" /></p>
                     </div>
-                    <p onClick={handleNext}><BsChevronRight size="40" /></p>
-                </div>
-                <div className='card_inner'>
-                    <button className='knowButton' onClick={handleKnow}>이제 알아요</button>
-                    {/* <button className='nextButton' onClick={handleNextLater}>다음에 할게요</button> */}
+                    <div className='card_inner'>
+                        <button className='knowButton' onClick={handleKnow}>이제 알아요</button>
+                        <button className='nextButton' onClick={handleNextLater}>다음에 할게요</button>
+                    </div>
                 </div>
             </div>
         </section>
