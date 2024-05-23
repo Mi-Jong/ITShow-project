@@ -1,4 +1,15 @@
 #SellAndBuy {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(96, 96, 96, 0.1);
+}
+
+.SellAndBuy {
     width: 700px;
     height: 400px;
     background-color: var(--second-color);
@@ -9,7 +20,7 @@
     align-items: center;
 }
 
-.sAndBtable {
+.SellAndBuy .sAndBtable {
     width: 500px;
     height: 220px;
     background-color: var(--body-color);
@@ -17,14 +28,12 @@
     overflow: hidden;
 }
 
-.sAndBtable th {
+.SellAndBuy .sAndBtable th {
     background-color: var(--gray2);
 }
 
-.sAndBtable td {
-    padding: 0 10px;
-    
-    
+.SellAndBuy .sAndBtable td {
+    padding: 0 10px;   
 }
 
 
@@ -39,7 +48,7 @@
     padding: 0;
 }
 
-.tdAlign {
+tr .tdAlign {
     width: 95%;
     height: 100%;
     display: flex;
@@ -47,7 +56,7 @@
     align-items: center;
 }
 
-.cancel, .buy {
+.buttons .cancel, .buttons .buy {
     width: 200px;
     height: 50px;
     margin: 20px 20px;
@@ -55,10 +64,10 @@
     color: var(--second-color);
 }
 
-.cancel {
+.buttons .cancel {
    background-color: var(--gray2);
 }
 
-.buy {
+.buttons .buy {
     background-color: #FFF1A7;
 }

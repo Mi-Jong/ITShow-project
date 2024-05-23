@@ -1,10 +1,12 @@
-#result {
+#VirtualThisResult {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;   
 }
 
-.result-inner {
+#VirtualThisResult .result-inner {
     width: 1200px;
     height: 600px;
     background-color: var(--second-color);
@@ -14,7 +16,7 @@
     overflow: hidden;
 }
 
-.inner-header {
+.result-inner .inner-header {
     width: 100%;
     height: 60px;
     background-color: var(--first-color);
@@ -24,19 +26,19 @@
     
 }
 
-.inner-header p {
+.result-inner .inner-header p {
    text-align: center;
    margin: 0 auto;
 }
 
-.inner-cont {
+.result-inner .inner-cont {
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.cont {
+.result-inner .inner-cont .cont {
     width: 864px;
     height: 288px;
     background-color: var(---body-color);
@@ -47,7 +49,8 @@
     overflow: hidden;
 }
 
-.sub, .assess {
+.result-inner .inner-cont .cont .sub, 
+.result-inner .inner-cont .cont .assess {
     width: 50%;
 }
 
@@ -80,7 +83,7 @@
     justify-content: center;
 }
 
-.nextButton {
+.result-inner .inner-cont .nextButton {
     width: 210px;
     height: 55px;
     margin-top: 45px;

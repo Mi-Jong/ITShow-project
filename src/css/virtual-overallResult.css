@@ -1,11 +1,12 @@
-#result {
+#VirtualOverallResult {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;   
-    
 }
 
-.result-inner {
+.VirtualOverallResult {
     width: 1200px;
     height: 600px;
     background-color: var(--second-color);
@@ -16,7 +17,7 @@
 }
 
 
-.inner-header {
+.VirtualOverallResult .inner-header {
     width: 100%;
     height: 60px;
     background-color: var(--first-color);
@@ -26,67 +27,52 @@
     
 }
 
-.inner-header p {
+.VirtualOverallResult .inner-header p {
    text-align: center;
    margin: 0 auto;
 }
 
 
 
-.inner-cont {
+.VirtualOverallResult .inner-cont {
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.cont {
-    width: 864px;
-    height: 288px;
-    background-color: var(--body-color);
-    border-radius: 10px;
-    display: flex;
-    margin-top: 100px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.day-table, .result-table {
+.inner-cont .day-table,.inner-cont .result-table {
     width: 750px;
     height: 110px;
     border-radius: 10px;
     text-align: center;
     overflow: hidden;
+    background-color: var(--gray3);
 } 
 
-.day-table, .result-table {
-    background-color: var(--gray3);
 
-}
-
-.result-table td {
+.inner-cont .result-table td {
     background-color: var(--gray2);
 }
 
 
-.day-table {
+.inner-cont .day-table {
     margin: 50px;
 }
 
-.result-table {
+.inner-cont .result-table {
     height: 195px;
-   
 }
 
-.result-table th {
+.inner-cont .result-table th {
     height: 50px;
 }
 
-.result-table tr td {
+.inner-cont .result-table tr td {
     width: 50%;
 }
 
-.nextButton {
+.inner-cont .nextButton {
     width: 210px;
     height: 55px;
     margin-top: 45px;
