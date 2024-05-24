@@ -45,7 +45,7 @@ function StudyWordDetail() {
     const currentCard = cards[currentIndex];
 
     return (
-        <section id='studyGameDetail'>
+        <section id='studyGameDetail'>  
             <div class='studyGameDetail'>
                 <div className='StudyGameDetail__inner'>
                     <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>

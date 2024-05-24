@@ -6,22 +6,25 @@ import videoData from '../Data/videos.json'; // Importing video data from JSON
 import '../css/index.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import bannerImg from "../img/bannerImg.png";
 
 function Banner() {
   return (
-    <div className='section'>
-      <div className='section-text'>
-        <p id='h1'>GEMMI</p>
-        <p id='h2'>
-          주식 투자의 첫걸음을 떼는 당신을 위한 웹사이트
-          “GEMMI”에서 주식 투자의 기초를 배우고,
-          시뮬레이션을 통해 실전 감각을 키울 수 있습니다.
-        </p>
+    <div className="section">
+      <div className="lb-image">
+        <img src={bannerImg} alt="Banner" />
+        <div className="section-text">
+          <p className="heading1">GEMMI</p>
+          <p className="heading2">
+            주식 투자의 첫걸음을 떼는 당신을 위한 웹사이트
+            “GEMMI”에서 주식 투자의 기초를 배우고,
+            시뮬레이션을 통해 실전 감각을 키울 수 있습니다.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
-
 function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
   return (
     <div className='learn'>
@@ -42,18 +45,30 @@ function Learning() {
     <div id='learn' className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
-        <Learn
-          title="주식 시뮬레이션"
-          imageUrl="https://example.com/image.jpg"
-          buttonText="Click me"
-          linkTo="/StudyVirtual"
-        />
-        <Learn
-          title="주식 단어"
-          imageUrl="https://example.com/image.jpg"
-          buttonText="Click me"
-          linkTo="/StudyWord"
-        />
+        <div className='learning__inner'>
+          <Learn
+            title="주식 시뮬레이션"
+            imageUrl="https://example.com/image.jpg"
+            buttonText="Click me"
+            linkTo="/StudyVirtual"
+          />
+          <div className='learning_text'>
+            실전 감각을 키우기 위한 주식 시뮬레이션. 뉴스를 확인하여
+            수익률을 높여보세요. 전체 결과와 랭킹을 확인할 수 있습니다. 
+          </div>   
+        </div>
+        <div className='learning__inner'>
+          <Learn
+            title="주식 단어"
+            imageUrl="https://example.com/image.jpg"
+            buttonText="Click me"
+            linkTo="/StudyWord"
+          />
+          <div className='learning_text'>
+          쉽게 익히는 주식 단어 게임. 암기 학습과 퀴즈로 주식 용어를
+          더욱 자세히 배울 수 있습니다.
+          </div>   
+        </div>
       </div>
     </div>
   );

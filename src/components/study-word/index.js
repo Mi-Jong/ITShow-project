@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/style.css';
-import Header from '../header';
+import Header from './header';
 import Footer from '../footer';
 import '../../css/study-word.css';
 import wordData from '../../Data/word.json';
@@ -36,7 +36,7 @@ function App() {
 
     return (
         <div className='studyWord'>
-            <Header />
+            <Header/>
             <Section />
             <Search onSearch={handleSearch} />
             <TitleList titles={filteredTitles} selectedCard={selectedCard} query={query} />
