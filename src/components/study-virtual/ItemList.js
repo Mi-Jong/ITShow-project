@@ -1,45 +1,34 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaSortDown, FaSortUp } from 'react-icons/fa';
 
-function ItemList() {
-    const [items, setItems] = useState([
-        { name: 'Item 1', percentageIncrease: 100, price: 100 },
-        { name: 'Item 2', percentageIncrease: 2000, price: 2000 },
-        { name: 'Item 3', percentageIncrease: 150, price: 150 }
-    ]);
+function ItemList({ items, selectItem }) {
     const [showItems, setShowItems] = useState(false);
 
     const calculateNewPrice = (price) => {
-        const newPrice = price;
+        const newPrice = Number(price);
         return newPrice.toLocaleString();
     };
-    
 
     const toggleItems = () => {
         setShowItems(!showItems);
     };
 
-    const updatePrices = () => {
-        const updatedItems = items.map(item => {
-            const change = 300;
-            const newPrice = item.price + change;
-            return { ...item, percentageIncrease: change, price: newPrice };
-        });
-        setItems(updatedItems);
+    const handleClickItem = (item) => {
+        selectItem(item);
     };
 
     return (
         <div className='list-stock'>
             <div>
                 <h2>종목명</h2>
-                <div className="customIcon" style={{ cursor: 'pointer' }} onClick={toggleItems}>
+                <div className="customIcon" style={{ cursor: 'pointer' }} onClick={toggleItems} aria-label={showItems ? "Collapse items" : "Expand items"}>
                     {showItems ? <FaAngleUp /> : <FaAngleDown />}
                 </div>
             </div>
             {showItems && (
                 <ul>
                     {items.map((item, index) => (
-                        <li key={index}>
+                        <li key={item.id || index} onClick={() => handleClickItem(item)}>
                             <p className="coin-name">{item.name}</p>
                             <div className='change' style={{ display: 'flex', alignItems: 'center' }}>
                                 <p style={{ color: item.percentageIncrease < 0 ? 'blue' : item.percentageIncrease > 0 ? 'red' : 'gray' }}>
@@ -52,7 +41,6 @@ function ItemList() {
                     ))}
                 </ul>
             )}
-            <button onClick={updatePrices}>분기 업데이트</button>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListMoney from './listMoney';
 
-function Part3({ seedMoney, updateNewsItems }) {
+function Part3({ seedMoney, updateNewsItems, updatePrices }) {
     const [quarterCount, setQuarterCount] = useState(1);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ function Part3({ seedMoney, updateNewsItems }) {
     const addQuarter = () => {
         if (quarterCount < 4) {
             setQuarterCount(prevCount => prevCount + 1);
-            // 결과창 
+            updatePrices();
         } else {
             //마지막 결과창
         }
