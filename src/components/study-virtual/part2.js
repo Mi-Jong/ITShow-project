@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import News from './news';
+import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems }) {
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items }) {
     useEffect(() => {
         updateNewsItems();
     }, []);
 
+    const firstItemPrice = items.length > 0 ? items[0].price : 0;
+
     return (
         <section className="part" id="part2">
-            <div className="graph"></div>
+            <div className="graph"><Graph firstItemPrice={firstItemPrice} /></div>
             <div className="button-line">
                 <button onClick={() => setIsTableShown(true)} style={{ borderBottom: isTableShown ? '5px solid #FFD601' : 'none' }}>표</button>
                 <button onClick={() => setIsTableShown(false)} style={{ borderBottom: isTableShown ? 'none' : '5px solid #FFD601' }}>뉴스</button>

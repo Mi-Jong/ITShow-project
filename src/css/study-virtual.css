@@ -23,6 +23,7 @@ main {
     flex-direction: row;
     width: 100vw;
     height: var(--part-height);
+    margin-top: var(--header-height);
 }
 
 .part {
@@ -183,6 +184,8 @@ main {
 .graph {
     height: var(--part2-graph-height);
     background-color: #c1c1c1;
+    
+  overflow: hidden;
 }
 
 .button-line {
