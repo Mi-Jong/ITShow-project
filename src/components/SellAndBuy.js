@@ -64,7 +64,7 @@ function SellAndBuy(props) {
                         </tr>
                         <tr>
                             <th scope="col">가격</th>
-                            <td>{props.price}</td>
+                            <td>{props.price * count}</td>
                         </tr>
                     </tbody>
                 </table>
