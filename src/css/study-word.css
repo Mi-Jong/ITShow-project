@@ -5,6 +5,11 @@
     overflow-x: hidden;
 }
 
+.header__inner .header__nav li a {
+    font-size: 14px;
+    padding: 24px;
+}
+
 .ban {
     position: relative;
     width: 100%;
