@@ -91,7 +91,7 @@ function App() {
                 <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
                 <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
                 <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
-                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose} />}
+                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose}  selectItem={selectItem}/>}
             </main>
         </>
     );

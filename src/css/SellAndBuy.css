@@ -58,7 +58,9 @@ tr .tdAlign {
     justify-content: space-between;
     align-items: center;
 }
-
+.buttons{
+    position: relative;
+}
 .buttons .cancel, .buttons .buy {
     width: 200px;
     height: 50px;
@@ -73,4 +75,12 @@ tr .tdAlign {
 
 .buttons .buy {
     background-color: #FFF1A7;
+}
+
+.error{
+    position: absolute;
+    bottom: -10%;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
 }
