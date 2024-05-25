@@ -5,27 +5,37 @@ import '../css/SellAndBuy.css';
 
 function SellAndBuy(props) {
     const [count, setCount] = useState(0);
-    let money = 2000;
-    let countCoin = 2;
+    const [money, setMoney] = useState(2000);
+    const [countCoin, setCountCoin] = useState(2);
+    const [error, setError] = useState('');
+
     const handleMaxClick = () => {
         if (props.handle === "매수") {
-            setCount(100);
-        }else if (props.handle === "매도") {
-            setCount(10);
+            setCount(Math.floor(money / props.price));
+        } else if (props.handle === "매도") {
+            setCount(countCoin);
         }
     };
 
     const handleBuyClick = () => {
-        if((money < props.price * count && props.handle == "매수") || (countCoin < count && props.handle == "매도") ){
-            return 0;
-        }else if(props.handle == "매수"){
-            money -= props.price * count;
-            countCoin += count;
-        }else if(props.handle == "매도"){
-            money += props.price * count;
-            countCoin -= count;
+        if ((money < props.price * count && props.handle === "매수") || (countCoin < count && props.handle === "매도")) {
+            setError('수량이 올바르지 않습니다');
+        } else {
+            if (props.handle === "매수") {
+                setMoney(money - props.price * count);
+                setCountCoin(countCoin + count);
+            } else if (props.handle === "매도") {
+                setMoney(money + props.price * count);
+                setCountCoin(countCoin - count);
+            }
+            setError('');
+            props.handleClose();
+            props.selectItem(null);
         }
-        console.log(`${props.handle} button clicked`);
+    };
+
+    const handleEnd = () => {
+        props.selectItem(null);
         props.handleClose();
     };
 
@@ -42,26 +52,27 @@ function SellAndBuy(props) {
                             <th scope="col">수량</th>
                             <td className='tdAlign'>
                                 <span>
-                                    <input className='amount' 
-                                    type="number" value={count} onChange={e => setCount(Number(e.target.value))} />
+                                    <input className='amount'
+                                        type="number" value={count} onChange={e => setCount(Math.max(0, Number(e.target.value)))} />
                                     <span onClick={handleMaxClick} style={{ cursor: 'pointer' }}> 최대</span>
                                 </span>
                                 <span>
-                                    <button onClick={() => setCount(count + 1)}><FaSortUp /></button>  
-                                    <button onClick={() => setCount(count - 1)}><FaSortDown /></button>
+                                    <button onClick={() => setCount(count + 1)}><FaSortUp /></button>
+                                    <button onClick={() => setCount(Math.max(0, count - 1))}><FaSortDown /></button>
                                 </span>
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">가격</th>
-                            <td>{props.price}</td>
+                            <td>{props.price * count}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div className='buttons'>
-                    <button className='cancel' onClick={props.handleClose}>취소</button>  
+                    <button className='cancel' onClick={handleEnd}>취소</button>
                     <button className='buy' onClick={handleBuyClick}>{props.handle}</button>
+                    {error && <p className='error'>*{error}*</p>}
                 </div>
             </div>
         </section>
@@ -69,3 +80,4 @@ function SellAndBuy(props) {
 }
 
 export default SellAndBuy;
+    

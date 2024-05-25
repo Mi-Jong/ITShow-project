@@ -7,6 +7,7 @@ import SellAndBuy from '../SellAndBuy'; // Import SellAndBuy component
 import newsData from '../../Data/news.json';
 import '../../css/style.css';
 import '../../css/study-virtual.css';
+import { Column } from 'react-virtualized';
 
 let seedMoney = 300000;
 let handle = "";
@@ -45,7 +46,7 @@ function App() {
 
     const updatePrices = () => {
         const updatedItems = items.map(item => {
-            const change = 300;
+            const change = -300;
             const newPrice = item.price + change;
             return { ...item, percentageIncrease: change, price: newPrice };
         });
@@ -85,15 +86,15 @@ function App() {
     }, []);
 
     return (
-        <>
+        <div>
             <Header />
             <main>
                 <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
-                <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} />
+                <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} />
                 <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
-                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose} />}
+                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose}  selectItem={selectItem}/>}
             </main>
-        </>
+        </div>
     );
 }
 
