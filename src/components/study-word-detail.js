@@ -3,6 +3,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import '../css/style.css';
 import '../css/study-word-detail.css';
 import wordData from '../Data/word.json';
+import Header from '../components/study-word/header';
 
 function StudyWordDetail() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,25 +46,28 @@ function StudyWordDetail() {
     const currentCard = cards[currentIndex];
 
     return (
-        <section id='studyGameDetail'>  
-            <div class='studyGameDetail'>
-                <div className='StudyGameDetail__inner'>
-                    <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>
-                    <div className='card_inner'>
-                        <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
-                        <div className='card'>
-                            <div className='card_word'>{currentCard.title}</div>
-                            <div className='card_word_exp'>{currentCard.content}</div>
+        <>
+            <Header/>
+            <section id='studyGameDetail'>  
+                <div class='studyGameDetail'>
+                    <div className='StudyGameDetail__inner'>
+                        <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>
+                        <div className='card_inner'>
+                            <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
+                            <div className='card'>
+                                <div className='card_word'>{currentCard.title}</div>
+                                <div className='card_word_exp'>{currentCard.content}</div>
+                            </div>
+                            <p onClick={handleNext}><BsChevronRight size="40" /></p>
                         </div>
-                        <p onClick={handleNext}><BsChevronRight size="40" /></p>
-                    </div>
-                    <div className='card_inner'>
-                        <button className='knowButton' onClick={handleKnow}>이제 알아요</button>
-                        <button className='nextButton' onClick={handleNextLater}>다음에 할게요</button>
+                        <div className='card_inner'>
+                            <button className='knowButton' onClick={handleKnow}>이제 알아요</button>
+                            <button className='nextButton' onClick={handleNextLater}>다음에 할게요</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 

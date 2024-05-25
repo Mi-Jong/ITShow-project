@@ -62,7 +62,7 @@ function Learning() {
             title="주식 단어"
             imageUrl= {studyWordImg}
             buttonText="Click me"
-            linkTo="/studyWord"
+            linkTo="/StudyWord"
           />
           <div className='learning_text'>
           쉽게 익히는 주식 단어 게임. 암기 학습과 퀴즈로 주식 용어를

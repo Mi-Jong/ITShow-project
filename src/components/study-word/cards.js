@@ -19,7 +19,7 @@ const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
                 <div id='btn_list'>
                     
                     <button className='wordText' onClick={handleSaveToLocalStorage}>
-                        <Link to="/studyWordDetail" >암기학습</Link>
+                        <Link to="/StudyWordDetail" >암기학습</Link>
                     </button>
                     <button onClick={toggleVisibility}>
                         {hidden ?
