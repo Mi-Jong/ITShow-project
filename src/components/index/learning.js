@@ -1,5 +1,6 @@
 import React from 'react';
 import Learn from './learn';
+import studyWordImg from '../../img/studyWord.png'
 
 function Learning() {
   const handleButtonClick = () => {
@@ -18,7 +19,7 @@ function Learning() {
         />
         <Learn
           title="Example Title"
-          imageUrl="https://example.com/image.jpg"
+          imageUrl= {studyWordImg}
           buttonText="Click me"
           onClick={handleButtonClick}
         />

@@ -7,14 +7,18 @@ import StudyWord from './components/study-word/index.js';
 import StudyWordDetail from './components/study-word-detail'
 import VirtualOverallResult from './components/virtual-overallResult.js';
 import Index from './components/index.js'; 
+import ScrollToTop from './components/ScrollToTop'; 
 
 // import VirtualThisResult from './components/virtual-thisResult.js'
 // import Ranking from './components/ranking.js'
 // import SellAndBuy  from './components/SellAndBuy.js' 
 
+
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/StudyWord"  element={<StudyWord />}  />

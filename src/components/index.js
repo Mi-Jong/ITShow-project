@@ -7,6 +7,7 @@ import '../css/index.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import bannerImg from "../img/bannerImg.png";
+import studyWordImg from '../img/studyWord.png';
 
 function Banner() {
   return (
@@ -27,7 +28,7 @@ function Banner() {
 }
 function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
   return (
-    <div className='learn'>
+    <div id='learn' className='learn'>
       <div class="overlay"></div>
       <img src={imageUrl} alt="Image" />
       <h2>{title}</h2>
@@ -39,10 +40,9 @@ function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
 };
 
 function Learning() {
-  const handleButtonClick = () => {
-  };
+  
   return (
-    <div id='learn' className='container learning-container'>
+    <div  className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
         <div className='learning__inner'>
@@ -60,9 +60,9 @@ function Learning() {
         <div className='learning__inner'>
           <Learn
             title="주식 단어"
-            imageUrl="https://example.com/image.jpg"
+            imageUrl= {studyWordImg}
             buttonText="Click me"
-            linkTo="/StudyWord"
+            linkTo="/studyWord"
           />
           <div className='learning_text'>
           쉽게 익히는 주식 단어 게임. 암기 학습과 퀴즈로 주식 용어를
@@ -102,7 +102,6 @@ function SlideShow() {
   );
 };
 
-// 백엔드(라우터)기능을 만들고 다시 하기
 const StockApp = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -130,9 +129,10 @@ const StockApp = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  return (
-    <div>
+  return ( 
+    <div id='popular' className='container stockTable-container'>
       <p>인기종목</p>
+      <div className='stockPopularTable'>
       <table>
         <thead>
           <tr>
@@ -155,9 +155,11 @@ const StockApp = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }
+
 function Index() {
   return (
     <div className='main'>

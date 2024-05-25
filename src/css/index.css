@@ -144,6 +144,7 @@
   overflow: hidden;
   background-color: #404040;
   border-radius: 10px;
+  border: 1px solid rgba(20, 43, 111, 0.9);
 }
 
 
@@ -151,6 +152,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+ 
 }
 .learn > button{
   width: 25%;
@@ -172,6 +175,7 @@
   background: linear-gradient(to top, rgba(20, 43, 111, 81%) 0%, rgba(0, 0, 0, 0) 50%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .learn:hover .overlay {
@@ -187,3 +191,60 @@
   z-index: 1; 
   display: none;
 }
+
+
+
+
+.stockTable-container {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  padding-top: 80px;
+  margin-bottom: 10vw;
+
+}
+
+.stockPopularTable{
+  width: 70vw;
+  height: auto;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 5%;
+}
+
+
+.stockTable-container > p {
+  color: #000000;
+  position: absolute;
+}
+
+.stockPopularTable {
+  margin-top: 100px;
+  border-radius: 10px;
+  border: 1px solid #979797;
+}
+
+.stockPopularTable>table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  border-style: hidden;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+
+.stockPopularTable>table>thead {
+  background-color: #E1DEE6;
+
+}
+
+
+.stockPopularTable>table>thead>tr>th,
+.stockPopularTable>table>tbody>tr>td {
+  border: 1px solid #979797;
+  padding: 10px;
+  text-align: center;
+  height: 30px;
+} 
