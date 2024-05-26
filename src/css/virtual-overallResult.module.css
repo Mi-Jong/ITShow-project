@@ -1,4 +1,4 @@
-#VirtualOverallResult {
+.VirtualOverallResult {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;   
 }
 
-.VirtualOverallResult {
+.VirtualOverallResult-inner {
     width: 1200px;
     height: 600px;
     background-color: var(--second-color);
@@ -16,7 +16,6 @@
     overflow: hidden;
 }
 
-
 .VirtualOverallResult .inner-header {
     width: 100%;
     height: 60px;
@@ -24,15 +23,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .VirtualOverallResult .inner-header p {
    text-align: center;
    margin: 0 auto;
 }
-
-
 
 .VirtualOverallResult .inner-cont {
     height: 100%;
@@ -41,7 +37,7 @@
     flex-direction: column;
 }
 
-.inner-cont .day-table,.inner-cont .result-table {
+.inner-cont .day-table, .inner-cont .result-table {
     width: 750px;
     height: 110px;
     border-radius: 10px;
@@ -50,11 +46,9 @@
     background-color: var(--gray3);
 } 
 
-
 .inner-cont .result-table td {
     background-color: var(--gray2);
 }
-
 
 .inner-cont .day-table {
     margin: 50px;
@@ -78,4 +72,5 @@
     margin-top: 45px;
     border-radius: 30px;
     background-color: var(--yellow2);
+    color: var(--second-color);
 }
