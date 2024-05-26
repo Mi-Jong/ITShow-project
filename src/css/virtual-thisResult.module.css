@@ -1,4 +1,4 @@
-#VirtualThisResult {
+.VirtualThisResult {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;   
 }
 
-#VirtualThisResult .result-inner {
+.VirtualThisResult .result-inner {
     width: 1200px;
     height: 600px;
     background-color: var(--second-color);
