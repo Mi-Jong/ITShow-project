@@ -1,12 +1,12 @@
 import '../css/style.css';
 import Header from './header';
 import Footer from './footer';
-import '../css/ranking.css';
+import styles from '../css/ranking.module.css';
 
 function Ranking(props) {
     return (
-        <section className='Ranking'>
-            <table className='rank'>
+        <section className={styles.ranking}>
+            <table className={styles.rank}>
                 <tr>
                     <th scope="col">순위</th>
                     <th scope="col">닉네임</th>
@@ -32,6 +32,16 @@ function Ranking(props) {
                     <td>-10%</td>
                     <td>-10%</td>
                 </tr>
+
+                {/* {rankings.map((rank, index) => (
+                        <tr key={index}>
+                            <td>
+                                <div className={`${styles.rankNum} ${styles[`rankNum${index + 1}`]}`}>{index + 1}</div>
+                            </td>
+                            <td className={styles.rankName}>{rank.nickname}</td>
+                            <td>{rank.score}</td>
+                        </tr>
+                ))} */}
             </table>
         </section>
     );

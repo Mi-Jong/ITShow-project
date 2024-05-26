@@ -15,7 +15,6 @@
     align-items: center;
 }
 
-
 .StudyGameDetail__inner {
     width: 70vw;
     height: 80vh;
@@ -27,31 +26,29 @@
     overflow: hidden;
 }
 
-.StudyGameDetail__inner .round {
+.round {
     padding: 60px 0 25px 0;
 }
 
-.StudyGameDetail__inner .card_inner {
+.card_inner {
     display: flex; 
 }
 
-.StudyGameDetail__inner .card_inner p {
-   margin-top: 150px;
+.card_inner p {
+    margin-top: 150px;
 }
 
-.StudyGameDetail__inner .card_inner .card {
+.card {
     width: 700px;
     height: 350px;
     border-radius: 10px;
     overflow: hidden;
     margin: 0 25px;
-
     display: flex;
     flex-direction: column;
-
 }
 
-.card .card_word, .card .card_word_exp {
+.card_word, .card_word_exp {
     width: 100%;
     height: 50%;
     display: flex;
@@ -59,32 +56,29 @@
     justify-content: center;
 }
 
-.card .card_word {
+.card_word {
     background-color: var(--gray1);
-   
 }
 
-.card .card_word_exp {
+.card_word_exp {
     background-color: var(--first-color);
 }
 
-
-.card_inner .knowButton, .card_inner .nextButton {
+.knowButton, .nextButton {
     border-radius: 10px;
     width: 240px;
     height: 65px;
     border: none;
-    box-shadow: 0 3px 1px 1px  rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 1px 1px rgba(0, 0, 0, 0.3);
     margin: 35px;
 }
 
-.card_inner .knowButton {
+.knowButton {
     background-color: var(--gray1);
     color: var(--second-color);
-    
 }
 
-.card_inner .nextButton {
-    background-color: #142B6F;
-    color: #FFFFFF;
+.nextButton {
+    background-color: var(--second-color);
+    color: var(--body-color);
 }

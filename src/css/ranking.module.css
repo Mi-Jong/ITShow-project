@@ -1,4 +1,4 @@
-.Ranking {
+.ranking {
     width: 100vw;
     height: 100vh;
     background-color: var(--second-color);
@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-.Ranking .rank {
+.rank {
     background-color: var(--body-color);
     width: 900px;
     margin: 0 auto;
@@ -18,19 +18,19 @@
     text-align: center;
 }
 
-.Ranking .rank th {
+.rank th {
     background-color: var(--gray2);
 }
 
-.Ranking .rank tr {
+.rank tr {
     height: 60px;
 }
 
-.Ranking .rank td {  
+.rank td {  
     margin: 0 auto;
 }
 
-.Ranking .rankNum {
+.rankNum {
     width: 24px;
     height: 24px;
     border-radius: 16px;
@@ -45,7 +45,6 @@
     background-color: #E6E6E6;
 }
 
-
 .rankNum3 {
     background-color: #E3CDAB;
 }
@@ -54,5 +53,3 @@
     width: 100%;
     text-align: center;
 }
-
-
