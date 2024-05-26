@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({ title, content, query }) => {
     return (
-        <div className="card">
+        <div className="card-n">
             <p id='h3'>{highlightMatch(title, query)}</p>
         </div>
     );
