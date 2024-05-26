@@ -3,13 +3,12 @@ import Header from '../header';
 import Part1 from './part1';
 import Part2 from './part2';
 import Part3 from './part3';
-import SellAndBuy from '../SellAndBuy'; // Import SellAndBuy component
+import SellAndBuy from '../SellAndBuy';
 import newsData from '../../Data/news.json';
 import '../../css/style.css';
 import '../../css/study-virtual.css';
 import { Column } from 'react-virtualized';
 
-let seedMoney = 300000;
 let handle = "";
 
 function shuffleArray(array) {
@@ -21,16 +20,17 @@ function shuffleArray(array) {
 }
 
 function App() {
+    const [seedMoney, setseedMoney] = useState(300000);
     const [newsItems, setNewsItems] = useState([]);
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
     const [items, setItems] = useState([
-        { name: 'SN', percentageIncrease: 100, price: 100 },
-        { name: 'JYB', percentageIncrease: 2000, price: 2000 },
-        { name: '소노공마라탕', percentageIncrease: 150, price: 150 },
-        { name: '왕카탕후루', percentageIncrease: 100, price: 100 },
-        { name: '삼쉉', percentageIncrease: 2000, price: 2000 },
-        { name: '네이비', percentageIncrease: 150, price: 150 }
+        { name: 'SN', quantity: 0, price: 100, purchasePrice: 0, currentPrice: 0 },
+        { name: 'JYB', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0 },
+        { name: '소노공마라탕', quantity: 0, price: 150, purchasePrice: 0, currentPrice: 0 },
+        { name: '왕카탕후루', quantity: 0, price: 100, purchasePrice: 0, currentPrice: 0 },
+        { name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0 },
+        { name: '네이비', quantity: 0, price: 150, purchasePrice: 0, currentPrice: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
 
@@ -48,7 +48,7 @@ function App() {
         const updatedItems = items.map(item => {
             const change = -300;
             const newPrice = item.price + change;
-            return { ...item, percentageIncrease: change, price: newPrice };
+            return { ...item, percentageIncrease: change, price: newPrice, currentPrice: item.currentPrice };
         });
         setItems(updatedItems);
     };
@@ -57,6 +57,15 @@ function App() {
         if (selectedItem) {
             handle = "매수";
             console.log("매수 버튼 클릭 - 선택된 항목:", selectedItem);
+            const updatedItems = items.map(item => {
+                if (item.name === selectedItem.name) {
+                    const updatedQuantity = item.quantity + 1;
+                    const updatedPurchasePrice = updatedQuantity * item.price;
+                    return { ...item, quantity: updatedQuantity, purchasePrice: updatedPurchasePrice };
+                }
+                return item;
+            });
+            setItems(updatedItems);
             setNextVisibility(true);
         } else {
             console.log("매수 버튼 클릭 - 아무 항목도 선택되지 않았습니다.");
@@ -64,12 +73,21 @@ function App() {
     };
 
     const handleSell = () => {
-        if (selectedItem) {
+        if (selectedItem && selectedItem.quantity > 0) {
             handle = "매도";
             console.log("매도 버튼 클릭 - 선택된 항목:", selectedItem);
+            const updatedItems = items.map(item => {
+                if (item.name === selectedItem.name) {
+                    const updatedQuantity = item.quantity - 1;
+                    const updatedPurchasePrice = updatedQuantity * item.price;
+                    return { ...item, quantity: updatedQuantity, purchasePrice: updatedPurchasePrice };
+                }
+                return item;
+            });
+            setItems(updatedItems);
             setNextVisibility(true);
         } else {
-            console.log("매도 버튼 클릭 - 아무 항목도 선택되지 않았습니다.");
+            console.log("매도 버튼 클릭 - 아무 항목도 선택되지 않았거나 보유량이 없습니다.");
         }
     };
 
@@ -89,10 +107,10 @@ function App() {
         <div>
             <Header />
             <main>
-                <Part1 seedMoney={seedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
-                <Part2 seedMoney={seedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} />
-                <Part3 seedMoney={seedMoney} updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
-                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} handle={handle} handleClose={handleClose}  selectItem={selectItem}/>}
+                <Part1 seedMoney={seedMoney} setSeedMoney={setseedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
+                <Part2 seedMoney={seedMoney} setSeedMoney={setseedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} />
+                <Part3 updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
+                {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} quantity={selectedItem.quantity} currentPrice={selectedItem.currentPrice} purchasePrice={selectedItem.purchasePrice} handle={handle} handleClose={handleClose} selectItem={selectItem} />}
             </main>
         </div>
     );

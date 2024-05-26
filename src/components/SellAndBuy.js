@@ -4,9 +4,10 @@ import '../css/style.css';
 import '../css/SellAndBuy.css';
 
 function SellAndBuy(props) {
+    let value = 0;
     const [count, setCount] = useState(0);
     const [money, setMoney] = useState(2000);
-    const [countCoin, setCountCoin] = useState(2);
+    const [countCoin, setCountCoin] = useState(0);
     const [error, setError] = useState('');
 
     const handleMaxClick = () => {
@@ -27,6 +28,7 @@ function SellAndBuy(props) {
             } else if (props.handle === "매도") {
                 setMoney(money + props.price * count);
                 setCountCoin(countCoin - count);
+
             }
             setError('');
             props.handleClose();
@@ -53,7 +55,7 @@ function SellAndBuy(props) {
                             <td className='tdAlign'>
                                 <span>
                                     <input className='amount'
-                                        type="number" value={count} onChange={e => setCount(Math.max(0, Number(e.target.value)))} />
+                                        type="number" value={count} onChange={e => value = setCount(Math.max(0, Number(e.target.value)))} />
                                     <span onClick={handleMaxClick} style={{ cursor: 'pointer' }}> 최대</span>
                                 </span>
                                 <span>
