@@ -4,28 +4,26 @@
 
     function StockGraph({ firstItemPrice, updatePrices }) {
         let deforePrice = 0;
+        let countNum = 0;
         const [priceData, setPriceData] = useState([
             ['Day', 'Low', 'Opening price', 'Closing price', 'High', { role: 'style' }],
         ]);
 
         useEffect(() => {
-            // Update price data when first item's price changes
-            setPriceData(priceData => [
-                ...priceData,
-                // Use current day as 'Day', firstItemPrice for all price values, and determine color based on opening and closing prices
-                [getDayOfWeek(priceData.length + 1), firstItemPrice - 10, deforePrice, firstItemPrice, firstItemPrice + 10, getColor(firstItemPrice, deforePrice)]
-            ]);
+            countNum++;
+            if(countNum <= 1){
+                setPriceData(priceData => [
+                    ...priceData,
+                    [getDayOfWeek(priceData.length), firstItemPrice - 10, deforePrice, firstItemPrice, firstItemPrice + 10, getColor(firstItemPrice, deforePrice)]
+                ]);
+            }
         }, [firstItemPrice]);
 
-        // Function to get day of the week
         const getDayOfWeek = (index) => {
-            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const today = new Date();
-            const dayIndex = (today.getDay() + index) % 7; // Adjusting for future days
-            return daysOfWeek[dayIndex];
+            const dayIndex = index;
+            return dayIndex+'분기';
         };
 
-        // Function to determine color based on opening and closing prices
         const getColor = (closingPrice, openingPrice) => {
             return closingPrice > openingPrice ? 'red' : 'blue';
         };
