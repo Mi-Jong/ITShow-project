@@ -3,7 +3,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import '../css/style.css';
 import '../css/study-word-detail.css';
 import wordData from '../Data/word.json';
-import Header from '../components/study-word/header';
+import Header from './commonHeader';
 
 function StudyWordDetail() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +67,7 @@ function StudyWordDetail() {
                                     <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
                                     <div className='card'>
                                         <div className='card_word'>{currentCard.title}</div>
-                                        {isMeaningVisible ? <div className='card_word_exp'>{currentCard.content}</div> : <div className='card_word_exp'></div>}
+                                        {isMeaningVisible ? <div className='card_word_exp'><span className='cardContent'>{currentCard.content}</span></div> : <div className='card_word_exp'></div>}
                                     </div>
                                     <p onClick={handleNext}><BsChevronRight size="40" /></p>
                                 </div>
