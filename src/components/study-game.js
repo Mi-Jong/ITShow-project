@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from '../components/study-word/header';
+import Header from './commonHeader';
 import '../css/style.css';
 import '../css/study-game.css';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/style.css';
-import Header from './header';
+import Header from '../commonHeader';
 import Footer from '../footer';
 import '../../css/study-word.css';
 import wordData from '../../Data/word.json';
