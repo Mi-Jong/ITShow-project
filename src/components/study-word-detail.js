@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import '../css/style.css';
-import '../css/study-word-detail.css';
+import styles from '../css/study-word-detail.module.css';
 import wordData from '../Data/word.json';
 import Header from './commonHeader';
 
@@ -34,19 +34,13 @@ function StudyWordDetail() {
     };
 
     const handleKnow = () => {
-        setKnownWords((prevKnownWords) => {
-            const newKnownWords = [...prevKnownWords, currentIndex];
-            return newKnownWords;
-        });
+        setKnownWords((prevKnownWords) => [...prevKnownWords, currentIndex]);
         setCards((prevCards) => {
             const remainingCards = prevCards.filter((_, index) => index !== currentIndex);
-            setCurrentIndex(currentIndex < remainingCards.length ? currentIndex : 0);
+            const newCurrentIndex = currentIndex < remainingCards.length ? currentIndex : 0;
+            setCurrentIndex(newCurrentIndex);
             return remainingCards;
         });
-    };
-
-    const handleNextLater = () => {
-        handleNext();
         setIsMeaningVisible(false);
     };
 
@@ -55,26 +49,25 @@ function StudyWordDetail() {
     return (
         <>
             <Header/>
-            <section id='studyGameDetail'>  
-                <div class='studyGameDetail'>
-                    <div className='StudyGameDetail__inner'>
+            <section id='studyGameDetail' className={styles['studyGameDetail']}>  
+                <div className={styles['studyGameDetail_inn']}>
+                    <div className={styles['StudyGameDetail__inner']}>
                         {cards.length === 0 ? (
-                            <p className='study_completed'>학습을 다 하셨습니다.</p>
+                            <p className={styles['study_completed']}>학습을 다 하셨습니다.</p>
                         ) : (
                             <>
-                                <p className='round'><span className='roundWord'>{currentIndex + 1}</span> / {cards.length}</p>
-                                <div className='card_inner'>
+                                <p className={styles['round']}><span className={styles['roundWord']}>{currentIndex + 1}</span> / {cards.length}</p>
+                                <div className={styles['card_inner']}>
                                     <p onClick={handlePrev}><BsChevronLeft size="40" /></p>
-                                    <div className='card'>
-                                        <div className='card_word'>{currentCard.title}</div>
-                                        {isMeaningVisible ? <div className='card_word_exp'><span className='cardContent'>{currentCard.content}</span></div> : <div className='card_word_exp'></div>}
+                                    <div className={styles['card']}>
+                                    <div className={styles['card_word']}>{currentCard?.title}</div>
+                                        {isMeaningVisible ? <div className={styles['card_word_exp']} ><span className={styles['cardContent']} >{currentCard?.content}</span></div> : <div className={styles['card_word_exp']}></div>}
                                     </div>
                                     <p onClick={handleNext}><BsChevronRight size="40" /></p>
                                 </div>
-                                <div className='card_inner'>
-                                    {!isMeaningVisible && <button className='knowButton' onClick={() => setIsMeaningVisible(true)}>의미보기</button>}
-                                    {isMeaningVisible && <button className='knowButton' onClick={handleKnow}>이제 알아요</button>}
-                                    {isMeaningVisible && <button className='nextButton' onClick={handleNextLater}>다음에 할게요</button>}
+                                <div className={styles['card_inner']}>
+                                    {!isMeaningVisible && <button className={styles['knowButton']} onClick={() => setIsMeaningVisible(true)}>의미보기</button>}
+                                    {isMeaningVisible && <button className={styles['nextButton']}  onClick={handleKnow}>이제 알아요</button>}
                                 </div>
                             </>
                         )}

@@ -28,6 +28,7 @@
 .VirtualOverallResult .inner-header p {
    text-align: center;
    margin: 0 auto;
+   padding-left: 30px;
 }
 
 .VirtualOverallResult .inner-cont {
@@ -47,7 +48,7 @@
 } 
 
 .inner-cont .result-table td {
-    background-color: var(--gray2);
+    background-color: var(--body-color);
 }
 
 .inner-cont .day-table {

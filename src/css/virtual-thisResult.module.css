@@ -29,6 +29,8 @@
 .result-inner .inner-header p {
    text-align: center;
    margin: 0 auto;
+   padding-left: 30px;
+
 }
 
 .result-inner .inner-cont {

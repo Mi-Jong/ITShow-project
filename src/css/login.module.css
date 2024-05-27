@@ -1,0 +1,64 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgba(96, 96, 96, 0.7);
+}
+
+.loginInner {
+    width: 1200px;
+    height: 600px;
+    background-color: var(--second-color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.395);
+}
+
+.loginInner .innerHeader {
+    width: 100%;
+    height: 60px;
+    background-color: var(--first-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+
+.innerHeader span {
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+
+.innerCont {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--body-color);
+}
+
+.nameInput {
+    width: 620px;
+    height: 60px;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin: 30px 0;
+    font-size: 1.1rem;
+}
+
+.nextButton {
+    width: 210px;
+    height: 55px;
+    margin-top: 100px;
+    margin-bottom: 57px;
+    border-radius: 30px;
+    background-color: var(--yellow2);
+    color: var(--second-color);
+}
