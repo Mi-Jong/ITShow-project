@@ -9,7 +9,7 @@ function Part3({ seedMoney, updateNewsItems, updatePrices }) {
     }, [quarterCount]);
 
     const addQuarter = () => {
-        if (quarterCount < 4) {
+        if (quarterCount < 6) {
             setQuarterCount(prevCount => prevCount + 1);
             updatePrices();
         } else {
@@ -22,7 +22,7 @@ function Part3({ seedMoney, updateNewsItems, updatePrices }) {
             <div className='quarter'>
                 <p>현재 분기</p>
                 <div className='quarter-list'>
-                    {[...Array(4)].map((_, index) => (
+                    {[...Array(6)].map((_, index) => (
                         <li key={index} style={{ backgroundColor: index < quarterCount ? '#142B6F' : '#ccc' }}></li>
                     ))}
                 </div>
