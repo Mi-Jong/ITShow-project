@@ -1,4 +1,4 @@
-#studyGameDetail {
+.studyGameDetail {
     width: 100vw;
     height: calc(100vh - 50px);
     margin-top: 50px;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.studyGameDetail {
+.studyGameDetail_inn {
     width: 100%;
     height: calc(100vh - 50px);   
     display: flex;
@@ -67,6 +67,7 @@
 
 .cardContent {
     width: 600px;
+    text-align: center;
 }
 
 .knowButton, .nextButton {
