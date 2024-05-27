@@ -15,7 +15,7 @@ const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
     return (
         <div className='cardList' style={{ marginBottom: hidden ? '10px' : '120px' }}>
             <h2>
-                {highlightMatch(title, query)}
+                {title}
                 <div id='btn_list'>
                     
                     <button className='wordText' onClick={handleSaveToLocalStorage}>
