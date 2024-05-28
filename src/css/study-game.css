@@ -7,6 +7,16 @@
     align-items: center;
 }
 
+.studyGame {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    margin-top: 50px;
+    background-color: var(--second-color);
+    display: flex;
+    align-items: center;
+}
+
+
 .rect {
     position: relative;
     background-color: #fff;
