@@ -1,13 +1,13 @@
 import React from 'react';
 
-function News(props) {
+function News({ url, title, content }) {
     return (
         <div className='news'>
-            <img src={props.img} title='ee' alt='news'></img>
+            <img src={url} title='news' alt='news'></img>
             <div className='text'>
-                <h4>{props.title}</h4>
+                <h4>{title}</h4>
                 <h6>2024.06.10</h6>
-                <h5>{props.content}</h5>
+                <h5>{content}</h5>
             </div>
         </div>
     );

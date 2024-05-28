@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from "react-google-charts";
 
-function StockGraph({ firstItemPrice, updatePrices }) {
+function StockGraph({ firstItemPrice, updatePrices, item}) {
     let countNum = 0;
     const [priceData, setPriceData] = useState([
         ['Day', 'Low', 'Opening price', 'Closing price', 'High', { role: 'style' }],
@@ -16,7 +16,7 @@ function StockGraph({ firstItemPrice, updatePrices }) {
                 ...priceData,
                 [
                     getDayOfWeek(priceData.length),
-                    Math.min(beforePrice, firstItemPrice) - 10, // 최소값 - 10
+                    Math.min(beforePrice, firstItemPrice), // 최소값 - 10
                     Math.min(beforePrice, firstItemPrice),      // 최소값
                     Math.max(beforePrice, firstItemPrice),      // 최대값
                     Math.max(beforePrice, firstItemPrice) + 10, // 최대값 + 10
@@ -47,9 +47,9 @@ function StockGraph({ firstItemPrice, updatePrices }) {
                 data={priceData}
                 options={{
                     legend: 'none',
+                    title: `${item.name}`, // 그래프 제목 추가
                 }}
             />
-            <button onClick={updatePrices}>Update Prices</button>
         </div>
     );
 }

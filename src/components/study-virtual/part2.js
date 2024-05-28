@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import News from './news';
 import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectItem }) {
-    const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem }) {
+    const [selectedItemIndex, setSelectedItemIndex] = useState(selectedItem != null ? selectedItem.id : 0);
+
+    useEffect(() => {
+        if (selectedItem != null) {
+            setSelectedItemIndex(selectedItem.id);
+        }
+    }, [selectedItem]);
 
     // Calculate profit percentage
     const calculateProfitPercentage = (item) => {
-        const currentTotalPrice = item.price * item.quantity; // Current total price
-        const purchaseTotalPrice = item.purchasePrice; // Purchase price
-        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; // ((current price - purchase price) / purchase price) * 100
+        const currentTotalPrice = item.price * item.quantity; 
+        const purchaseTotalPrice = item.purchasePrice;
+        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; 
     };
 
     // Handle click on item to show/hide graph
@@ -24,7 +30,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
 
                 return (
                     <div key={index} className={`graph ${isHidden}`}>
-                        <Graph firstItemPrice={item.price} />
+                        <Graph firstItemPrice={item.price} item={item}/>
                     </div>
                 );
             })}
@@ -48,15 +54,15 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
                                 <th>{item.quantity}</th>
                                 <th>{item.price}</th>
                                 <th>{item.purchasePrice}</th>
-                                <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item)}%`}</th>
+                                <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item).toFixed(2)}%`}</th>
                             </tr>
                         ))}
                 </table>
             </div>
             <div className="view" id={isTableShown ? '' : 'news'}>
                 <div className="news-container">
-                    {newsItems.map((news, index) => (
-                        <News key={index} img={news.image_url} title={news.title} content={news.content} />
+                {newsItems.map((news, index) => (
+                        <News key={index} url={news.image_url} title={news.title} content={news.content} />
                     ))}
                 </div>
             </div>
