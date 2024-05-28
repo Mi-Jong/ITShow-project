@@ -61,8 +61,8 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
             </div>
             <div className="view" id={isTableShown ? '' : 'news'}>
                 <div className="news-container">
-                    {newsItems.map((news, index) => (
-                        <News key={index} img={news.image_url} title={news.title} content={news.content} />
+                {newsItems.map((news, index) => (
+                        <News key={index} url={news.image_url} title={news.title} content={news.content} />
                     ))}
                 </div>
             </div>
