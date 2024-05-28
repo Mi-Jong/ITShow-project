@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react';
 import News from './news';
 import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectItem }) {
-    const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem }) {
+    const [selectedItemIndex, setSelectedItemIndex] = useState(selectedItem != null ? selectedItem.id : 0);
+
+    useEffect(() => {
+        if (selectedItem != null) {
+            setSelectedItemIndex(selectedItem.id);
+        }
+    }, [selectedItem]);
 
     // Calculate profit percentage
     const calculateProfitPercentage = (item) => {
@@ -48,7 +54,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
                                 <th>{item.quantity}</th>
                                 <th>{item.price}</th>
                                 <th>{item.purchasePrice}</th>
-                                <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item)}%`}</th>
+                                <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item).toFixed(2)}%`}</th>
                             </tr>
                         ))}
                 </table>

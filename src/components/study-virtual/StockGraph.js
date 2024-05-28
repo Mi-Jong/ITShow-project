@@ -50,7 +50,6 @@ function StockGraph({ firstItemPrice, updatePrices, item}) {
                     title: `${item.name}`, // 그래프 제목 추가
                 }}
             />
-            <button onClick={updatePrices}>Update Prices</button>
         </div>
     );
 }
