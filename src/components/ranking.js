@@ -1,28 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import '../css/style.css';
 import Header from './commonHeader';
-import Footer from './footer';
 import styles from '../css/ranking.module.css';
 import initialRankings from '../Data/ranking.json';
 
 function Ranking(props) {
     const [rankings, setRankings] = useState(initialRankings);
+    const userName = localStorage.getItem('userName');
 
     useEffect(() => {
-        // 로컬 스토리지에서 사용자 이름 가져오기
-        const userName = localStorage.getItem('userName');
-        
-        if (userName) {
-            // 사용자 이름을 첫 번째 랭킹 데이터에 적용
-            const updatedRankings = rankings.map((rank, index) => {
-                if (index === 0) {
-                    return { ...rank, name: userName };
-                }
-                return rank;
-            });
-            setRankings(updatedRankings);
+        const userScore = localStorage.getItem('userScore');
+
+        if (userName && userScore) {
+            const newUserScore = parseInt(userScore, 10);
+            const existingUserIndex = rankings.findIndex(rank => rank.name === userName);
+
+            let updatedRankings;
+
+            if (existingUserIndex !== -1) {
+                updatedRankings = rankings.map((rank, index) => 
+                    index === existingUserIndex ? { ...rank, score: newUserScore } : rank
+                );
+            } else {
+                updatedRankings = [...rankings, { name: userName, score: newUserScore }];
+            }
+
+            const sortedRankings = updatedRankings.sort((a, b) => b.score - a.score);
+            setRankings(sortedRankings);
         }
-    }, []);
+    }, [userName]);
+
+    const calculateRanks = (rankings) => {
+        let rank = 1;
+        let result = [];
+        for (let i = 0; i < rankings.length; i++) {
+            if (i > 0 && rankings[i].score < rankings[i - 1].score) {
+                rank = i + 1;
+            }
+            result.push({ ...rankings[i], rank: rank });
+        }
+        return result;
+    };
+
+    const rankedRankings = calculateRanks(rankings);
 
     return (
         <div className='body'>
@@ -37,10 +57,10 @@ function Ranking(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {rankings.map((rank, index) => (
-                            <tr key={index}>
+                        {rankedRankings.map((rank, index) => (
+                            <tr key={index} className={rank.name === userName ? styles.highlightedRow : null}>
                                 <td>
-                                    <div className={`${styles.rankNum} ${styles[`rankNum${index + 1}`]}`}>{index + 1}</div>
+                                    <div className={`${styles.rankNum} ${styles[`rankNum${rank.rank}`]}`}>{rank.rank}</div>
                                 </td>
                                 <td>{rank.name}</td>
                                 <td>{rank.score}</td>

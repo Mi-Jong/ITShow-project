@@ -1,7 +1,6 @@
 .body {
     width: 100%;
     height: 100%;
-    background-color: red;
 }
 
 .ranking {
@@ -38,6 +37,9 @@
     height: 24px;
     border-radius: 16px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rankNum1 {
@@ -55,4 +57,8 @@
 .rankName {
     width: 100%;
     text-align: center;
+}
+
+.highlightedRow {
+    background-color: rgba(255, 214, 1, 0.5);
 }
