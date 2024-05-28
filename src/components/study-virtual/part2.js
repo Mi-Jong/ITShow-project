@@ -1,22 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import News from './news';
 import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items }) {
-    useEffect(() => {
-        updateNewsItems();
-    }, []);
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectItem }) {
+    const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
-    // 수익률 계산
+    // Calculate profit percentage
     const calculateProfitPercentage = (item) => {
-        const currentTotalPrice = item.price * item.quantity; // 현재 총 가격
-        const purchaseTotalPrice = item.purchasePrice; // 매입 단가
-        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; // ((현재 가격 - 매입 가격) / 매입 가격) * 100
+        const currentTotalPrice = item.price * item.quantity; // Current total price
+        const purchaseTotalPrice = item.purchasePrice; // Purchase price
+        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; // ((current price - purchase price) / purchase price) * 100
+    };
+
+    // Handle click on item to show/hide graph
+    const handleClick = (index) => {
+        setSelectedItemIndex(index);
     };
 
     return (
         <section className="part" id="part2">
-            <div className="graph"><Graph firstItemPrice={items.length > 0 ? items[0].price : 0} /></div>
+            {items.map((item, index) => {
+                const isHidden = selectedItemIndex !== index ? 'hidden' : '';
+
+                return (
+                    <div key={index} className={`graph ${isHidden}`}>
+                        <Graph firstItemPrice={item.price} />
+                    </div>
+                );
+            })}
+
             <div className="button-line">
                 <button onClick={() => setIsTableShown(true)} style={{ borderBottom: isTableShown ? '5px solid #FFD601' : 'none' }}>표</button>
                 <button onClick={() => setIsTableShown(false)} style={{ borderBottom: isTableShown ? 'none' : '5px solid #FFD601' }}>뉴스</button>
@@ -31,13 +43,12 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
                             <th>수익률</th>
                         </tr>
                         {items.map((item, index) => (
-                            <tr key={index}>
+                            <tr key={index} onClick={() => handleClick(index)}>
                                 <th>{item.name}</th>
                                 <th>{item.quantity}</th>
                                 <th>{item.price}</th>
                                 <th>{item.purchasePrice}</th>
                                 <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item)}%`}</th>
-
                             </tr>
                         ))}
                 </table>
