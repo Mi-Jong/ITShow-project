@@ -40,7 +40,8 @@ function StudyGame() {
                     clearInterval(timer.current);
                     setActive(false);
                     setGameOver(true);
-                    setShowLogin(true); 
+                    setShowLogin(true);
+                    localStorage.setItem('userScore', score); 
                     return 0;
                 } else {
                     return prevCount - 1;
@@ -57,7 +58,7 @@ function StudyGame() {
         if (!active) return;
 
         if (answer === currentProblem.correctAnswer) {
-            setScore(score + 1);
+            setScore(score + 10);
         }
         setCurrentProblem(problems[Math.floor(Math.random() * problems.length)]);
         setnumber(number + 1);

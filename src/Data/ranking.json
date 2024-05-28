@@ -1,12 +1,12 @@
 [
-    {"rank": 1, "name": "Alice", "score": 95},
-    {"rank": 2, "name": "Bob", "score": 92},
+    {"rank": 1, "name": "Alice", "score": 10},
+    {"rank": 2, "name": "Bob", "score": 30},
     {"rank": 3, "name": "Charlie", "score": 90},
-    {"rank": 4, "name": "David", "score": 88},
-    {"rank": 5, "name": "Eve", "score": 85},
-    {"rank": 6, "name": "Frank", "score": 83},
-    {"rank": 7, "name": "Grace", "score": 80},
-    {"rank": 8, "name": "Hank", "score": 78},
-    {"rank": 9, "name": "Ivy", "score": 75},
-    {"rank": 10, "name": "Jack", "score": 72}
+    {"rank": 4, "name": "David", "score": 70},
+    {"rank": 5, "name": "Eve", "score": 220},
+    {"rank": 6, "name": "Frank", "score": 190},
+    {"rank": 7, "name": "Grace", "score": 120},
+    {"rank": 8, "name": "Hank", "score": 300},
+    {"rank": 9, "name": "Ivy", "score": 310},
+    {"rank": 10, "name": "Jack", "score": 250}
 ]

@@ -2,11 +2,11 @@ import '../css/style.css';
 import styles from '../css/login.module.css';
 import { GoX } from "react-icons/go";
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function Login(props) {
     const [userName, setUserName] = useState("");
-
+    const navigate = useNavigate();
     const location = useLocation();
   
     const getLinkPath = () => {
@@ -22,11 +22,20 @@ function Login(props) {
         setUserName(e.target.value);
     };
 
+    const validateUserName = (name) => {
+        const regex = /^[가-힣a-zA-Z]{2,10}$/;
+        return regex.test(name);
+    }
+
     const handleConfirmClick = () => {
-        localStorage.setItem('userName', userName);
+        if (validateUserName(userName)) {
+            localStorage.setItem('userName', userName);
+            navigate(getLinkPath());
+        } else {
+            alert("이름을 다시 입력해주세요.");
+        }
     };
   
-
     return (
         <section id='login' className={styles.login}>
             <div className={styles.loginInner}>
@@ -49,15 +58,13 @@ function Login(props) {
                     <p>
                         특수문자나 공백은 사용이 불가합니다.
                     </p>
-                    <Link to={getLinkPath()} >
-                        <button 
-                            className={styles.nextButton}
-                            onClick={handleConfirmClick}
-                        >
-                            확인
-                        </button>
-                    </Link>
-                    
+                    <button 
+                        className={styles.nextButton}
+                        onClick={handleConfirmClick}
+                    >
+                        확인
+                    </button>
+
                 </div>
             </div>
         </section>
