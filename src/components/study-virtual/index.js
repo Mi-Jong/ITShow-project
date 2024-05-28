@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../header';
+import Header from '../commonHeader';
 import Part1 from './part1';
 import Part2 from './part2';
 import Part3 from './part3';
@@ -25,12 +25,12 @@ function App() {
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
     const [items, setItems] = useState([
-        { name: 'SN', quantity: 0, price: 100, purchasePrice: 0, currentPrice: 0 },
-        { name: 'JYB', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0 },
-        { name: '소노공마라탕', quantity: 0, price: 150, purchasePrice: 0, currentPrice: 0 },
-        { name: '왕카탕후루', quantity: 0, price: 100, purchasePrice: 0, currentPrice: 0 },
-        { name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0 },
-        { name: '네이비', quantity: 0, price: 150, purchasePrice: 0, currentPrice: 0 }
+        { id: 0, name: 'SN', quantity: 0, price: 10100, purchasePrice: 0, currentPrice: 0 },
+        { id: 1, name: 'JYB', quantity: 0, price: 200000, purchasePrice: 0, currentPrice: 0 },
+        { id: 2, name: '소노공마라탕', quantity: 0, price: 1500000, purchasePrice: 0, currentPrice: 0 },
+        { id: 3, name: '왕카탕후루', quantity: 0, price: 10000, purchasePrice: 0, currentPrice: 0 },
+        { id: 4, name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0 },
+        { id: 5, name: '네이비', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
 
@@ -108,7 +108,7 @@ function App() {
             <Header />
             <main>
                 <Part1 seedMoney={seedMoney} setSeedMoney={setseedMoney} toggleNext={toggleNextVisibility} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
-                <Part2 seedMoney={seedMoney} setSeedMoney={setseedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} />
+                <Part2 seedMoney={seedMoney} setSeedMoney={setseedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} selectItem={selectItem} />
                 <Part3 updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
                 {selectedItem && isNextVisible && <SellAndBuy name={selectedItem.name} price={selectedItem.price} quantity={selectedItem.quantity} currentPrice={selectedItem.currentPrice} purchasePrice={selectedItem.purchasePrice} handle={handle} handleClose={handleClose} selectItem={selectItem} />}
             </main>
