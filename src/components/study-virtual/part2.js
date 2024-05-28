@@ -7,9 +7,9 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
 
     // Calculate profit percentage
     const calculateProfitPercentage = (item) => {
-        const currentTotalPrice = item.price * item.quantity; // Current total price
-        const purchaseTotalPrice = item.purchasePrice; // Purchase price
-        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; // ((current price - purchase price) / purchase price) * 100
+        const currentTotalPrice = item.price * item.quantity; 
+        const purchaseTotalPrice = item.purchasePrice;
+        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; 
     };
 
     // Handle click on item to show/hide graph
@@ -24,7 +24,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
 
                 return (
                     <div key={index} className={`graph ${isHidden}`}>
-                        <Graph firstItemPrice={item.price} />
+                        <Graph firstItemPrice={item.price} item={item}/>
                     </div>
                 );
             })}
