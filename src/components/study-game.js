@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from './commonHeader';
+import Login from './login';
 import '../css/style.css';
 import '../css/study-game.css';
 import problems from '../Data/question.json';
@@ -29,14 +30,17 @@ function StudyGame() {
     const [currentProblem, setCurrentProblem] = useState(null);
     const [score, setScore] = useState(0);
     const [number, setnumber] = useState(1);
+    const [gameOver, setGameOver] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
 
     const timer = useInterval(() => {
         if (active) {
             setCount(prevCount => {
                 if (prevCount === 0) {
                     clearInterval(timer.current);
-                    alert("게임이 종료되었습니다. 점수: " + score);
                     setActive(false);
+                    setGameOver(true);
+                    setShowLogin(true); 
                     return 0;
                 } else {
                     return prevCount - 1;
@@ -67,7 +71,7 @@ function StudyGame() {
     return (
         <>
             <Header />
-            <div id="studyGame">
+            <div id="studyGame" className="studyGame">
                 <div className="rect">
                     <div className="question_number">Q{number}</div>
                     <div className="question">{currentProblem ? currentProblem.problem : '문제가 없습니다.'}</div>
@@ -81,6 +85,7 @@ function StudyGame() {
                     </div>
                 </div>
             </div>
+            {showLogin && <Login/>}
         </>
     );
 }
