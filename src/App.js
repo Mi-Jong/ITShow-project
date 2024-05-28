@@ -26,6 +26,7 @@ function App() {
         <Route path="/StudyWordDetail"  element={<StudyWordDetail />}  />
         <Route path="/StudyGame"  element={<StudyGame />}  />
         <Route path="/Login"  element={<Login />}  />
+        <Route path="/Ranking"  element={<Ranking />}  />
       </Routes>
   </BrowserRouter>
   );
