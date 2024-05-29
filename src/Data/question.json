@@ -60,7 +60,7 @@
         "correctAnswer": "BPS"
     } , {
         "problem": "주가순자산비율로, 주가를 주당순자산으로 나눈 값으로 주식의 가치를 나타내는 것은?",
-        "answers": ["PBR", "ROE", "ROE", "HTS"],
+        "answers": ["PBR", "BPS", "ROE", "HTS"],
         "correctAnswer": "PBR"
     }, {
         "problem": "성장주에 대해 옳지 않은 말은?",
