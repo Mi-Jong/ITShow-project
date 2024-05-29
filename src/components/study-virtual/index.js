@@ -4,7 +4,7 @@ import Part1 from './part1';
 import Part2 from './part2';
 import Part3 from './part3';
 import SellAndBuy from '../SellAndBuy';
-import newsData from '../../Data/news.json';
+import {newsData} from '../../Data/news.js';
 import '../../css/style.css';
 import '../../css/study-virtual.css';
 import { Column } from 'react-virtualized';
