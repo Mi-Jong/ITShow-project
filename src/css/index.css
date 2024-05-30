@@ -34,9 +34,17 @@
   font-weight: 500;
 }
 
+.heading1 img {
+  width: 10rem;
+}
+
 .section-text > .heading2 {
   color: #404040;
   font-size: 30px;
+}
+
+.section-text > .heading2 .text-bold {
+  font-weight: 700;
 }
 
 .container p {

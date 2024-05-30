@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import bannerImg from "../img/bannerImg.png";
 import studyWordImg from '../img/studyWord.png';
+import gemmiLogoImg from '../img/gemmiLogo.png';
 
 function Banner() {
   return (
@@ -15,11 +16,13 @@ function Banner() {
       <div className="lb-image">
         <img src={bannerImg} alt="Banner" />
         <div className="section-text">
-          <p className="heading1">GEMMI</p>
+          <p className="heading1">
+            <img src={gemmiLogoImg}></img>
+          </p>
           <p className="heading2">
-            주식 투자의 첫걸음을 떼는 당신을 위한 웹사이트
-            “GEMMI”에서 주식 투자의 기초를 배우고,
-            시뮬레이션을 통해 실전 감각을 키울 수 있습니다.
+            <span className='text-bold'>주식 투자의 첫걸음</span>을 떼는 당신을 위한 웹사이트
+            “GEMMI”에서 <span className='text-bold'>주식 투자의 기초</span>를 배우고,
+            시뮬레이션을 통해 <span className='text-bold'>실전 감각</span>을 키울 수 있습니다.
           </p>
         </div>
       </div>
