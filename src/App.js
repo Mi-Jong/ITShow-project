@@ -13,7 +13,7 @@ import VirtualThisResult from './components/virtual-thisResult.js'
 import Ranking from './components/ranking.js'
 import SellAndBuy  from './components/SellAndBuy.js' 
 import Login from './components/login'; 
-import ClickCard from './components/study-word/clickCard'; 
+import StudyVirtualExp from './components/studyVirtualExp.js'; 
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <Route path="/StudyVirtual"  element={<StudyVirtual />}  />
         <Route path="/StudyWordDetail"  element={<StudyWordDetail />}  />
         <Route path="/StudyGame"  element={<StudyGame />}  />
-        <Route path="/ClickCard"  element={<ClickCard />}  />
+        <Route path="/StudyVirtualExp"  element={<StudyVirtualExp />}  />
         <Route path="/Ranking"  element={<Ranking />}  />
       </Routes>
   </BrowserRouter>

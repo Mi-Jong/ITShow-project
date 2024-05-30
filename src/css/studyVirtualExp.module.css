@@ -1,0 +1,84 @@
+
+.studyVirtualExp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+}
+
+.studyVirtualExp__inner {
+    width: 100%;
+    height: 100%;
+    background-color: var(--second-color);
+}
+
+.studyVirtualExp__header {
+    width: 100%;
+    height: 50px;
+    background-color: var(--first-color);
+    display: flex;
+    justify-content: center;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    width: 78vw;
+}
+
+.header__inner p {
+    cursor: pointer;
+}
+
+
+.studyVirtualExp__cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_inner {
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_inner p {
+   color: var(--body-color);
+}
+
+.card {
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--body-color);
+}
+
+
+
+
+/* .studyVirtualExp__header p {
+    height: 50px;
+    line-height: 60px;
+    padding: 0 1rem;
+}
+
+.studyVirtualExp__cont {
+    width: 100%;
+    height: 100%;
+} */
