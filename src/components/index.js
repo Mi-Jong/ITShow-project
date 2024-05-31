@@ -6,9 +6,9 @@ import videoData from '../Data/videos.json'; // Importing video data from JSON
 import '../css/index.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import bannerImg from "../img/bannerImg.png";
-import studyWordImg from '../img/studyWord.png';
-import gemmiLogoImg from '../img/gemmiLogo.png';
+import bannerImg from "../img/index/bannerImg.png";
+import studyWordImg from '../img/index/studyWord.png';
+import gemmiLogoImg from '../img/index/gemmiLogo.png';
 
 function Banner() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import studyGameImg from '../../img/studyGame.png'
+import studyGameImg from '../../img/index/studyGame.png'
 import { Link } from 'react-router-dom';
 
 function Section() {
