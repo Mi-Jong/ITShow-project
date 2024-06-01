@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Card from './card';
+import { SelectedCardContext } from './SelectedCardContext';
 import { Link } from 'react-router-dom';
 
 const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
+    const { setSelectedCard } = useContext(SelectedCardContext);
+    
+    const handleCardClick = (card) => {
+        setSelectedCard(card);
+    };
+
     const handleSaveToLocalStorage = () => {
         if (typeof localStorage === 'undefined') {
             console.error('localStorage is not supported in this browser.');
@@ -37,7 +44,7 @@ const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
             <div style={{ width: '80%' }}>
                 <div className={`card-container ${hidden ? 'hidden' : ''}`}>
                     {cards.map((card, index) => (
-                        <Card key={index} title={card.title} content={card.content} query={query} />
+                        <Card key={index} title={card.title} content={card.content} query={query}  onClick={() => handleCardClick(card)} />
                     ))}
                 </div>
             </div>
