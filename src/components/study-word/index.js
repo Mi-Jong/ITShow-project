@@ -8,9 +8,9 @@ import Section from './section';
 import Search from './search';
 import TitleList from './titleList';
 import Detail from './detail';
+import { SelectedCardProvider } from './SelectedCardContext';
 
 function App() {
-    const [selectedCard, setSelectedCard] = useState(null);
     const [filteredTitles, setFilteredTitles] = useState(wordData);
     const [query, setQuery] = useState('');
 
@@ -35,14 +35,16 @@ function App() {
     }, []);
 
     return (
-        <div className='studyWord'>
-            <Header/>
-            <Section />
-            <Search onSearch={handleSearch} />
-            <TitleList titles={filteredTitles} selectedCard={selectedCard} query={query} />
-            <Detail selectedCard={selectedCard} onClose={() => setSelectedCard(null)} />
-            <Footer />
-        </div>
+        <SelectedCardProvider>
+            <div className='studyWord'>
+                <Header />
+                <Section />
+                <Search onSearch={handleSearch} />
+                <TitleList titles={filteredTitles} query={query} />
+                <Detail />
+                <Footer />
+            </div>
+        </SelectedCardProvider>
     );
 }
 
