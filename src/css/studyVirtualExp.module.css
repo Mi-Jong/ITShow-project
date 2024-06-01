@@ -1,4 +1,3 @@
-
 .studyVirtualExp {
     position: fixed;
     top: 0;
@@ -36,7 +35,6 @@
     cursor: pointer;
 }
 
-
 .studyVirtualExp__cont {
     width: 100%;
     height: 100%;
@@ -54,43 +52,45 @@
     align-items: center;
 }
 
-.card_inner p {
+.card_inner > p {
    color: var(--body-color);
+   padding: 16px;
 }
 
 .card {
+    border-radius: 8px;
+    padding: 16px;
     width: 800px;
     height: 450px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 0 25px;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--body-color);
-}
-
-.card1 {
-    display: flex;
-    width: 100%;
-    height: 50%;
-}
-
-.card1 .cardImg, .card1 .expText {
-    height: 100%;
+    background-color: var(--body-color); 
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
+    align-items: center;
 }
 
-.card1 .cardImg {
-    width: 45%;
+.card table {
+    width: 90%;
+    height: 60%;
 }
 
-.card1 .cardImg img {
-    width: 200px;
+.card table td {
+    vertical-align: middle;
 }
 
-.card1 .expText {
-    width: 55%;
+.card table td img {
+    max-width: 200px; 
+    height: auto;
+    margin-right: 16px; 
+}
+
+.card h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.card p {
+    font-size: 1em;
+    color: var(--black);
+    margin: 4px 0; 
 }
