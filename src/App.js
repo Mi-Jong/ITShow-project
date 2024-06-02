@@ -14,7 +14,7 @@ import Ranking from './components/ranking.js'
 import SellAndBuy  from './components/SellAndBuy.js' 
 import Login from './components/login'; 
 import StudyVirtualExp from './components/studyVirtualExp.js'; 
-
+import TooltipHeader from './components/TooltipHeader';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path="/StudyGame"  element={<StudyGame />}  />
         <Route path="/StudyVirtualExp"  element={<StudyVirtualExp />}  />
         <Route path="/Ranking"  element={<Ranking />}  />
+        <Route path="/TooltipHeader"  element={<TooltipHeader />}  />
       </Routes>
   </BrowserRouter>
   );

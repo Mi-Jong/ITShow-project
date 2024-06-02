@@ -64,6 +64,14 @@ function StudyGame() {
         setnumber(number + 1);
     };
 
+    const handleMouseLeave = () => {
+        setActive(false);
+    };
+
+    const handleMouseEnter = () => {
+        setActive(true);
+    };
+
     const timeBarStyle = {
         height: `${100 - (count / 30) * 100}%`,
         transition: "height 1s linear"
@@ -72,9 +80,9 @@ function StudyGame() {
     return (
         <>
             <Header />
-            <div id="studyGame" className="studyGame">
+            <div id="studyGame" className="studyGame" onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseEnter}>
                 <div className="rect">
-                    <div className="question_number">Q{number}</div>
+                    <div className="question_number">Q{number}.</div>
                     <div className="question">{currentProblem ? currentProblem.problem : '문제가 없습니다.'}</div>
                     <div className="answers">
                         {currentProblem && currentProblem.answers.map((answer, index) => (
