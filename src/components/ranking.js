@@ -4,6 +4,7 @@ import Header from './commonHeader';
 import styles from '../css/ranking.module.css';
 import initialRankings from '../Data/ranking.json';
 
+
 function Ranking(props) {
     const [rankings, setRankings] = useState(initialRankings);
     const userName = localStorage.getItem('userName');
