@@ -41,7 +41,7 @@ const Cards = ({ title, cards, hidden, toggleVisibility, query }) => {
                     </button>
                 </div>
             </h2>
-            <div style={{ width: '80%' }}>
+            <div >
                 <div className={`card-container ${hidden ? 'hidden' : ''}`}>
                     {cards.map((card, index) => (
                         <Card key={index} title={card.title} content={card.content} query={query}  onClick={() => handleCardClick(card)} />

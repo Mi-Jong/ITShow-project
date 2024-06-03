@@ -34,22 +34,4 @@ const highlightMatch = (text, query) => {
     );
 };
 
-function ClickCard({ title, content, onClickX }) {
-    return (
-        <section id="clickCard" className='clickCard'>
-            <div className='clickCard__inner'>
-                <div className='x-cont'>
-                    <p>
-                        <GoX size="60" onClick={onClickX} />
-                    </p>
-                </div>
-                <div className='innerText'>
-                    <h1>{title}</h1>
-                    <p>{content}</p>
-                </div>
-            </div>
-        </section>
-    );
-}
-
 export default Card;
