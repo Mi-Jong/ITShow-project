@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSortUp, FaSortDown } from "react-icons/fa";
 import '../css/style.css';
 import '../css/SellAndBuy.css';
 
 function SellAndBuy(props) {
-    let value = 0;
     const [count, setCount] = useState(0);
-    const [money, setMoney] = useState(2000);
-    const [countCoin, setCountCoin] = useState(0);
+    const [money, setMoney] = useState(props.seedMoney);
+    const [countCoin, setCountCoin] = useState(props.selectedItem.quantity);
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        setCount(0);  // Reset count when SellAndBuy opens
+        setMoney(props.seedMoney);
+        setCountCoin(props.selectedItem.quantity);
+    }, [props.seedMoney, props.selectedItem.quantity]);
 
     const handleMaxClick = () => {
         if (props.handle === "매수") {
@@ -22,22 +27,23 @@ function SellAndBuy(props) {
         if ((money < props.price * count && props.handle === "매수") || (countCoin < count && props.handle === "매도")) {
             setError('수량이 올바르지 않습니다');
         } else {
+            let newMoney = money;
+            let newCountCoin = countCoin;
             if (props.handle === "매수") {
-                setMoney(money - props.price * count);
-                setCountCoin(countCoin + count);
+                newMoney -= props.price * count;
+                newCountCoin += count;
             } else if (props.handle === "매도") {
-                setMoney(money + props.price * count);
-                setCountCoin(countCoin - count);
-
+                newMoney += props.price * count;
+                newCountCoin -= count;
             }
+
             setError('');
+            props.onTransaction(count, newMoney, newCountCoin);
             props.handleClose();
-            props.selectItem(null);
         }
     };
 
     const handleEnd = () => {
-        props.selectItem(null);
         props.handleClose();
     };
 
@@ -55,7 +61,7 @@ function SellAndBuy(props) {
                             <td className='tdAlign'>
                                 <span>
                                     <input className='amount'
-                                        type="number" value={count} onChange={e => value = setCount(Math.max(0, Number(e.target.value)))} />
+                                        type="number" value={count} onChange={e => setCount(Math.max(0, Number(e.target.value)))} />
                                     <span onClick={handleMaxClick} style={{ cursor: 'pointer' }}> 최대</span>
                                 </span>
                                 <span>
@@ -82,4 +88,3 @@ function SellAndBuy(props) {
 }
 
 export default SellAndBuy;
-    
