@@ -16,7 +16,7 @@
 }
 
 .StudyGameDetail__inner {
-    width: 70vw;
+    width: 78vw;
     height: 80vh;
     background-color: var(--body-color);
     display: flex;
@@ -59,6 +59,7 @@
 
 .card_word {
     background-color: var(--gray1);
+    font-size: 20px;
 }
 
 .card_word_exp {
@@ -77,6 +78,8 @@
     border: none;
     box-shadow: 0 3px 1px 1px rgba(0, 0, 0, 0.3);
     margin: 35px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .knowButton {
@@ -87,4 +90,8 @@
 .nextButton {
     background-color: var(--second-color);
     color: var(--body-color);
+}
+
+.study_completed {
+    font-size: 24px;
 }

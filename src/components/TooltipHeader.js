@@ -4,10 +4,10 @@ import { GoX } from "react-icons/go";
 
 const TooltipHeader = ({ onClose }) => {
   return (
-    <div className={styles.TooltipHeader}> {/* Use CSS module class */}
-      <div className={styles['tooltip__inner']}> {/* Use CSS module class */}
-        <p className={styles.tooltiptext}> {/* Use CSS module class */}
-          <div className={styles.x}> {/* Use CSS module class */}
+    <div className={styles.TooltipHeader}> 
+      <div className={styles['tooltip__inner']}> 
+        <p className={styles.tooltiptext}> 
+          <div className={styles.x}> 
             <GoX onClick={onClose} />
           </div>
           <p>설명에 맞는 답을 선택하여 높은 점수를 획득하세요.</p>

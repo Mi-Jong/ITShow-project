@@ -38,7 +38,7 @@
 
 .header__inner .header__nav li {
     display: inline;
-    padding: 0.8rem;
+    padding-left: 0.8rem;
 }
 
 .header__inner .header__nav li a {

@@ -40,7 +40,7 @@ function ClickCard({ title, content, onClickX }) {
             <div className='clickCard__inner'>
                 <div className='x-cont'>
                     <p>
-                        <GoX size="40" onClick={onClickX} />
+                        <GoX size="60" onClick={onClickX} />
                     </p>
                 </div>
                 <div className='innerText'>
