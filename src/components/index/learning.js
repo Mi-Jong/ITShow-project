@@ -1,6 +1,7 @@
 import React from 'react';
 import Learn from './learn';
-import studyWordImg from '../../img/studyWord.png'
+import studyWordImg from '../../img/index/studyWord.png';
+import studyVirtualImg from '../../img/index/virtual.png';
 
 function Learning() {
   const handleButtonClick = () => {
@@ -12,14 +13,14 @@ function Learning() {
       <p>주식배우기</p>
       <div className='learning'>
         <Learn
-          title="Example Title"
-          imageUrl="https://example.com/image.jpg"
+          title="Study Virtual"
+          imageUrl={studyVirtualImg}
           buttonText="Click me"
           onClick={handleButtonClick}
         />
         <Learn
-          title="Example Title"
-          imageUrl= {studyWordImg}
+          title="Study Word"
+          imageUrl={studyWordImg}
           buttonText="Click me"
           onClick={handleButtonClick}
         />
