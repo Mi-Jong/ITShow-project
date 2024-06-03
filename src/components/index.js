@@ -45,7 +45,7 @@ function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
 function Learning() {
   
   return (
-    <div  className='container learning-container'>
+    <div id='learn' className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
         <div className='learning__inner'>
@@ -92,15 +92,17 @@ function SlideShow() {
   return (
     <div id="relate" className="container slide-show-container ">
       <p>관련 유튜브</p>
-      <button onClick={goToPreviousSlide}><SlArrowLeft /></button>
-      <div className="video-container">
-        {[currentIndex === 0 ? videos.length - 1 : currentIndex - 1, currentIndex, (currentIndex + 1) % videos.length, (currentIndex + 2) % videos.length, (currentIndex + 3) % videos.length].map((index, idx) => (
-          <div key={index} className="video-wrapper" style={{ opacity: idx === 0 || idx === 4 ? 0.5 : 1 }}>
-            <iframe width="400" height="200" src={videos[index]} title={`동영상 ${index + 1}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-          </div>
-        ))}
+      <div className='video-cont'>
+        <button onClick={goToPreviousSlide}><SlArrowLeft /></button>
+        <div className="video-container">
+          {[currentIndex === 0 ? videos.length - 1 : currentIndex - 1, currentIndex, (currentIndex + 1) % videos.length, (currentIndex + 2) % videos.length, (currentIndex + 3) % videos.length].map((index, idx) => (
+            <div key={index} className="video-wrapper" style={{ opacity: idx === 0 || idx === 4 ? 0.5 : 1 }}>
+              <iframe width="400" height="200" src={videos[index]} title={`동영상 ${index + 1}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            </div>
+          ))}
+        </div>
+        <button onClick={goToNextSlide}><SlArrowRight /></button>
       </div>
-      <button onClick={goToNextSlide}><SlArrowRight /></button>
     </div>
   );
 };

@@ -42,7 +42,6 @@ function App() {
                 <Search onSearch={handleSearch} />
                 <TitleList titles={filteredTitles} query={query} />
                 <Detail />
-                <Footer />
             </div>
         </SelectedCardProvider>
     );
