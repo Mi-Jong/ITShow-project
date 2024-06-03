@@ -65,14 +65,14 @@ function StudyVirtualExp({ onClose }) {
                         <div className={styles.card}>
                            <table>
                                <tr>
-                                    <td><img src={img1} alt={title1} /></td>
+                                    <th><img src={img1} alt={title1} /></th>
                                     <td>
                                         <h2>{title1}</h2>
-                                        <p>{text1}</p>
+                                        <p style={{ whiteSpace: 'pre-line' }}>{text1}</p>
                                     </td>
                                </tr>
                                <tr>
-                                    <td><img src={img2} alt={title2} /></td>
+                                    <th><img src={img2} alt={title2} /></th>
                                     <td>
                                         {title2 && <h2>{title2}</h2>}
                                         {text2 && <p>{text2}</p>}
