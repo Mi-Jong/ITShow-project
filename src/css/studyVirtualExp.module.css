@@ -78,8 +78,12 @@
     vertical-align: middle;
 }
 
-.card table td img {
-    max-width: 200px; 
+.card table th {
+    width: 300px;
+}
+
+.card table th img {
+    width: 200px;
     height: auto;
     margin-right: 16px; 
 }
@@ -87,6 +91,8 @@
 .card h2 {
     font-size: 1.2em;
     margin: 0;
+    width: 200px;
+    
 }
 
 .card p {
