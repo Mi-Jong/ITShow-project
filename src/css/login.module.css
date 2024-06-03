@@ -49,8 +49,12 @@
     color: var(--body-color);
 }
 
+.innerCont h1 {
+    font-size: 26px;
+}
+
 .nameInput {
-    width: 620px;
+    width: 550px;
     height: 60px;
     border-radius: 10px;
     padding-left: 20px;
@@ -66,4 +70,6 @@
     border-radius: 30px;
     background-color: var(--yellow2);
     color: var(--second-color);
+    font-size: 16px;
+    font-weight: 600;
 }

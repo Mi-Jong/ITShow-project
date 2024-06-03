@@ -41,7 +41,7 @@ function Login(props) {
             <div className={styles.loginInner}>
                 <div className={styles.innerHeader}>
                     <span>닉네임 설정</span>
-                    <Link to={getLinkPath()} ><GoX style={{ paddingRight: "20px" }} /></Link>
+                    <Link to={getLinkPath()} ><GoX style={{ paddingRight: "20px" }} size="25" /></Link>
                 </div>
                 <div className={styles.innerCont}>
                     <h1>랭킹에 기록될 닉네임을 입력해주세요.</h1>

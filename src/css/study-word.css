@@ -43,6 +43,7 @@
 .ban-text>#h1 {
     font-size: 40px;
     font-weight: bold;
+    padding: 10px 0;
 }
 
 .ban-text>#h2 {
@@ -121,7 +122,7 @@
     padding: 20px;
     width: 65%;
     border-radius: 40px;
-    
+    border: 2px solid #696969;   
 }
 
 .noWord {
@@ -167,6 +168,7 @@
 
 .cardList>h2 {
     background-color: #F2F2F2;
+    font-size: 22px;
     padding: 20px;
     border-radius: 10px;
     width: 80%;
@@ -270,6 +272,7 @@
     position: fixed;
     top: 10%;
     right: 10%;
+    font-size: 30px;
     background-color: var(--body-color);
 }
 
