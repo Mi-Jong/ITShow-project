@@ -2,15 +2,28 @@ import React, { useEffect, useState } from 'react';
 import '../css/style.css';
 import Header from './commonHeader';
 import styles from '../css/ranking.module.css';
-import initialRankings from '../Data/ranking.json';
-
+import axios from 'axios';
 
 function Ranking(props) {
-    const [rankings, setRankings] = useState(initialRankings);
+    const [rankings, setRankings] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const userName = localStorage.getItem('userName');
 
     useEffect(() => {
         const userScore = localStorage.getItem('userScore');
+
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/wordRanking');
+                setRankings(response.data);
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+                setLoading(false);
+            }
+        };
+        fetchData();
 
         if (userName && userScore) {
             const newUserScore = parseInt(userScore, 10);
@@ -30,6 +43,8 @@ function Ranking(props) {
             setRankings(sortedRankings);
         }
     }, [userName]);
+
+       
 
     const calculateRanks = (rankings) => {
         let rank = 1;
@@ -63,8 +78,8 @@ function Ranking(props) {
                                 <td>
                                     <div className={`${styles.rankNum} ${styles[`rankNum${rank.rank}`]}`}>{rank.rank}</div>
                                 </td>
-                                <td>{rank.name}</td>
-                                <td>{rank.score}</td>
+                                <td>{rank.username}</td>
+                                <td>{rank.wordGame}</td>
                             </tr>
                         ))}
                     </tbody>

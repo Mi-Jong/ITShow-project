@@ -10,6 +10,7 @@
     padding-bottom: 100px;
     background-color: var(--second-color); 
     font-size: 20px;
+    min-height: 100vh;
 }
 
 .rank {

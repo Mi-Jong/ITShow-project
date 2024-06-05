@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import Header from './header';
 import Footer from './footer';
-import videoData from '../Data/videos.json'; // Importing video data from JSON
+import videoData from '../Data/videos.json';
 import '../css/index.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import bannerImg from "../img/index/bannerImg.png";
 import studyWordImg from '../img/index/studyWord.png';
+import virtualImg from '../img/index/virtual.png';
 import gemmiLogoImg from '../img/index/gemmiLogo.png';
 
 function Banner() {
@@ -20,9 +21,9 @@ function Banner() {
             <img src={gemmiLogoImg}></img>
           </p>
           <p className="heading2">
-            <span className='text-bold'>주식 투자의 첫걸음</span>을 떼는 당신을 위한 웹사이트
-            “GEMMI”에서 <span className='text-bold'>주식 투자의 기초</span>를 배우고,
-            시뮬레이션을 통해 <span className='text-bold'>실전 감각</span>을 키울 수 있습니다.
+            <span>주식 투자의 첫걸음 떼는 당신을 위한 웹사이트</span>
+            <br/><span>“GEMMI”에서 주식 투자의 기초를 배우고,</span>
+            <br/><span>시뮬레이션을 통해 실전 감각을 키울 수 있습니다.</span>
           </p>
         </div>
       </div>
@@ -51,7 +52,7 @@ function Learning() {
         <div className='learning__inner'>
           <Learn
             title="주식 시뮬레이션"
-            imageUrl="https://example.com/image.jpg"
+            imageUrl= {virtualImg}
             buttonText="Click me"
             linkTo="/StudyVirtual"
           />
