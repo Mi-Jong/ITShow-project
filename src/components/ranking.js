@@ -49,8 +49,9 @@ function Ranking(props) {
     const calculateRanks = (rankings) => {
         let rank = 1;
         let result = [];
+    
         for (let i = 0; i < rankings.length; i++) {
-            if (i > 0 && rankings[i].score < rankings[i - 1].score) {
+            if (i > 0 && rankings[i].wordGame !== rankings[i - 1].wordGame) {
                 rank = i + 1;
             }
             result.push({ ...rankings[i], rank: rank });
