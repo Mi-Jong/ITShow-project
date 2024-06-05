@@ -3,19 +3,20 @@ import styles from '../css/login.module.css';
 import { GoX } from "react-icons/go";
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login(props) {
     const [userName, setUserName] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-  
+
     const getLinkPath = () => {
-      switch (location.pathname) {
-        case '/StudyGame':
-          return '/Ranking';
-        default:
-          return '/';
-      }
+        switch (location.pathname) {
+            case '/StudyGame':
+                return '/Ranking';
+            default:
+                return '/';
+        }
     };
 
     const handleInputChange = (e) => {
@@ -27,15 +28,22 @@ function Login(props) {
         return regex.test(name);
     }
 
-    const handleConfirmClick = () => {
+    const handleConfirmClick = async () => {
         if (validateUserName(userName)) {
-            localStorage.setItem('userName', userName);
-            navigate(getLinkPath());
+            const userScore = localStorage.getItem('userScore');
+            try {
+                await axios.post('http://localhost:5000/api/saveUser', { userName, userScore });
+                localStorage.setItem('userName', userName);
+                navigate(getLinkPath());
+            } catch (error) {
+                console.error('Error saving user name and score to the database:', error);
+                alert("사용자 이름과 점수를 저장하는 중에 오류가 발생했습니다.");
+            }
         } else {
             alert("이름을 다시 입력해주세요.");
         }
     };
-  
+
     return (
         <section id='login' className={styles.login}>
             <div className={styles.loginInner}>
@@ -64,7 +72,6 @@ function Login(props) {
                     >
                         확인
                     </button>
-
                 </div>
             </div>
         </section>
