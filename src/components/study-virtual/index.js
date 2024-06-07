@@ -21,7 +21,7 @@ function shuffleArray(array) {
 
 function App() {
     const seedMoney = 300000;
-    const [money, setMoney] = useState(seedMoney); 
+    const [money, setMoney] = useState(seedMoney);
     const [newsItems, setNewsItems] = useState([]);
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
@@ -34,14 +34,14 @@ function App() {
         { id: 5, name: '네이비', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 15000, count: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false); 
+    const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false);
     const [quarterCount, setQuarterCount] = useState(1);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
     };
 
-    const toggleVirtualThisResultVisibility = () => { 
+    const toggleVirtualThisResultVisibility = () => {
         setVirtualThisResultVisibility(prevVisibility => !prevVisibility);
     };
 
@@ -57,10 +57,13 @@ function App() {
     };
 
     const updateRate = () => {
-        const total = updateTotal();
-        return (total ? Math.ceil(((total - seedMoney) / seedMoney) * 100) : 0);
-    };
-    
+        let total = 0;  // <-- Change const to let
+        items.forEach(item => {
+            total += calculateProfitPercentage(item);  // <-- No longer errors occur here
+        });
+        return total;
+    }; 
+
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
         const selectedNews = shuffledNews.slice(0, 4);
@@ -95,7 +98,7 @@ function App() {
             console.log("매도 버튼 클릭 - 아무 항목도 선택되지 않았거나 보유량이 없습니다.");
         }
     };
-    
+
     const selectItem = (item) => {
         setSelectedItem(item);
     };
@@ -121,9 +124,9 @@ function App() {
 
     const calculateProfitPercentage = (item) => {
         if (item.purchasePrice === 0) return 0;
-        const currentTotalPrice = item.currentPrice * item.quantity; 
+        const currentTotalPrice = item.currentPrice * item.quantity;
         const purchaseTotalPrice = item.purchasePrice * item.quantity;
-        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; 
+        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100;
     };
 
     useEffect(() => {
@@ -135,27 +138,27 @@ function App() {
             <Header />
             <main>
                 <Part1 key="part1" money={money} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
-                <Part2 
-                    key="part2" 
-                    money={money} 
-                    setMoney={setMoney} 
-                    isTableShown={isTableShown} 
-                    setIsTableShown={setIsTableShown} 
-                    newsItems={newsItems} 
-                    updateNewsItems={updateNewsItems} 
-                    items={items} 
-                    selectedItem={selectedItem}  
+                <Part2
+                    key="part2"
+                    money={money}
+                    setMoney={setMoney}
+                    isTableShown={isTableShown}
+                    setIsTableShown={setIsTableShown}
+                    newsItems={newsItems}
+                    updateNewsItems={updateNewsItems}
+                    items={items}
+                    selectedItem={selectedItem}
                     calculateProfitPercentage={calculateProfitPercentage}
                 />
-                <Part3 
-                    key="part3" 
-                    updateNewsItems={updateNewsItems} 
-                    updatePrices={updatePrices} 
-                    quarterCount={quarterCount} 
-                    setQuarterCount={setQuarterCount} 
-                    seedMoney={seedMoney} 
-                    updateEstimated={updateEstimated} 
-                    money={money} 
+                <Part3
+                    key="part3"
+                    updateNewsItems={updateNewsItems}
+                    updatePrices={updatePrices}
+                    quarterCount={quarterCount}
+                    setQuarterCount={setQuarterCount}
+                    seedMoney={seedMoney}
+                    updateEstimated={updateEstimated}
+                    money={money}
                     updateTotal={updateTotal}
                     updateRate={updateRate}
                 />

@@ -3,6 +3,9 @@ import ListMoney from './listMoney';
 
 function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, seedMoney, updateEstimated, money, updateTotal, updateRate }) {
     const [previousProfitRate, setPreviousProfitRate] = useState(0);
+    const [totalProfit, setTotalProfit] = useState(0);
+    const [totalInvestment, setTotalInvestment] = useState(seedMoney);
+
     useEffect(() => {
         updateNewsItems();
     }, [quarterCount]);
@@ -12,6 +15,14 @@ function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, s
             setQuarterCount(prevCount => prevCount + 1);
             updatePrices();
             setPreviousProfitRate(updateRate());
+            
+            // Calculate and update total profit
+            const currentProfit = updateTotal();
+            setTotalProfit(prevTotalProfit => prevTotalProfit + currentProfit);
+            
+            // Update total investment
+            const currentInvestment = updateEstimated();
+            setTotalInvestment(prevTotalInvestment => prevTotalInvestment + currentInvestment);
         } else {
             // 마지막 결과창
         }
@@ -35,8 +46,8 @@ function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, s
                 <div className='rate'>
                     <p>수익률</p>
                     <div className='percent'>
-                        <h3>{previousProfitRate}%</h3>
-                        <h2>{updateRate()}%</h2>
+                        <h3>{previousProfitRate.toFixed(2)}%</h3>
+                        <h2>{updateRate().toFixed(2)}%</h2>
                     </div>
                 </div>
             </div>
