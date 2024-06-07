@@ -58,7 +58,7 @@ function App() {
 
     const updateRate = () => {
         const total = updateTotal();
-        return (total ? Math.ceil(((total - seedMoney) / seedMoney) * 100) : 0)+'%';
+        return (total ? Math.ceil(((total - seedMoney) / seedMoney) * 100) : 0);
     };
     
     const updateNewsItems = () => {

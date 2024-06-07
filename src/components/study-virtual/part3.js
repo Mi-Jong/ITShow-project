@@ -35,8 +35,8 @@ function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, s
                 <div className='rate'>
                     <p>수익률</p>
                     <div className='percent'>
-                        <h3>{previousProfitRate}</h3>
-                        <h2>{updateRate()}</h2>
+                        <h3>{previousProfitRate}%</h3>
+                        <h2>{updateRate()}%</h2>
                     </div>
                 </div>
             </div>
