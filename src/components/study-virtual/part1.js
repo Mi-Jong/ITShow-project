@@ -1,13 +1,13 @@
 import React from 'react';
 import ItemList from './ItemList';
 
-function Part1({ seedMoney, items, handleBuy, handleSell, selectItem }) {
+function Part1({ money, items, handleBuy, handleSell, selectItem }) {
     return (
         <section className="part" id="part1">
             <div className='wer'>
                 <div className='balance'>
                     <p className='bal-title'>내 잔고</p>
-                    <h2 className='bal-pay'>{seedMoney}￦</h2>
+                    <h2 className='bal-pay'>{money}￦</h2>
                 </div>
                 <div className='purchase'>
                     <button className='buy' onClick={handleBuy}>매수</button>

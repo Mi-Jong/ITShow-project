@@ -4,6 +4,7 @@ import Part1 from './part1';
 import Part2 from './part2';
 import Part3 from './part3';
 import SellAndBuy from '../SellAndBuy';
+import VirtualThisResult from '../virtual-thisResult';
 import { newsData } from '../../Data/news.js';
 import '../../css/style.css';
 import '../../css/study-virtual.css';
@@ -19,24 +20,47 @@ function shuffleArray(array) {
 }
 
 function App() {
-    const [seedMoney, setSeedMoney] = useState(300000);
+    const seedMoney = 300000;
+    const [money, setMoney] = useState(seedMoney); 
     const [newsItems, setNewsItems] = useState([]);
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
     const [items, setItems] = useState([
-        { id: 0, name: 'SN', quantity: 0, price: 10100, purchasePrice: 0, currentPrice: 0, count: 0 },
-        { id: 1, name: 'JYB', quantity: 0, price: 200000, purchasePrice: 0, currentPrice: 0, count: 0 },
-        { id: 2, name: '소노공마라탕', quantity: 0, price: 1500000, purchasePrice: 0, currentPrice: 0, count: 0 },
-        { id: 3, name: '왕카탕후루', quantity: 0, price: 10000, purchasePrice: 0, currentPrice: 0, count: 0 },
-        { id: 4, name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 0, count: 0 },
-        { id: 5, name: '네이비', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 0, count: 0 }
+        { id: 0, name: 'SN', quantity: 0, price: 10100, purchasePrice: 0, currentPrice: 10100, count: 0 },
+        { id: 1, name: 'JYB', quantity: 0, price: 200000, purchasePrice: 0, currentPrice: 200000, count: 0 },
+        { id: 2, name: '소노공마라탕', quantity: 0, price: 1500000, purchasePrice: 0, currentPrice: 1500000, count: 0 },
+        { id: 3, name: '왕카탕후루', quantity: 0, price: 10000, purchasePrice: 0, currentPrice: 10000, count: 0 },
+        { id: 4, name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 2000, count: 0 },
+        { id: 5, name: '네이비', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 15000, count: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false); 
+    const [quarterCount, setQuarterCount] = useState(1);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
     };
 
+    const toggleVirtualThisResultVisibility = () => { 
+        setVirtualThisResultVisibility(prevVisibility => !prevVisibility);
+    };
+
+    function updateTotal() {
+        const total = items.reduce((sum, item) => {
+            return sum + (item.currentPrice * item.quantity);
+        }, 0);
+        return total;
+    }
+
+    const updateEstimated = () => {
+        return money + updateTotal();
+    };
+
+    const updateRate = () => {
+        const total = updateTotal();
+        return (total ? Math.ceil(((total - seedMoney) / seedMoney) * 100) : 0)+'%';
+    };
+    
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
         const selectedNews = shuffledNews.slice(0, 4);
@@ -46,8 +70,8 @@ function App() {
     const updatePrices = () => {
         const updatedItems = items.map(item => {
             const change = -300;
-            const newPrice = item.price + change;
-            return { ...item, percentageIncrease: change, price: newPrice, currentPrice: item.currentPrice };
+            const newPrice = item.currentPrice + change;
+            return { ...item, percentageIncrease: change, currentPrice: newPrice };
         });
         setItems(updatedItems);
     };
@@ -71,7 +95,7 @@ function App() {
             console.log("매도 버튼 클릭 - 아무 항목도 선택되지 않았거나 보유량이 없습니다.");
         }
     };
-
+    
     const selectItem = (item) => {
         setSelectedItem(item);
     };
@@ -83,12 +107,23 @@ function App() {
     const handleTransaction = (count, newMoney, newCountCoin) => {
         const updatedItems = items.map(item => {
             if (item.name === selectedItem.name) {
-                return { ...item, quantity: newCountCoin };
+                if (handle === "매수") {
+                    return { ...item, quantity: newCountCoin, purchasePrice: item.purchasePrice === 0 ? item.currentPrice : item.purchasePrice };
+                } else {
+                    return { ...item, quantity: newCountCoin };
+                }
             }
             return item;
         });
         setItems(updatedItems);
-        setSeedMoney(newMoney);
+        setMoney(newMoney);
+    };
+
+    const calculateProfitPercentage = (item) => {
+        if (item.purchasePrice === 0) return 0;
+        const currentTotalPrice = item.currentPrice * item.quantity; 
+        const purchaseTotalPrice = item.purchasePrice * item.quantity;
+        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; 
     };
 
     useEffect(() => {
@@ -99,11 +134,37 @@ function App() {
         <div>
             <Header />
             <main>
-                <Part1 seedMoney={seedMoney} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
-                <Part2 seedMoney={seedMoney} setSeedMoney={setSeedMoney} isTableShown={isTableShown} setIsTableShown={setIsTableShown} newsItems={newsItems} updateNewsItems={updateNewsItems} items={items} selectedItem={selectedItem} />
-                <Part3 updateNewsItems={updateNewsItems} updatePrices={updatePrices} />
+                <Part1 key="part1" money={money} items={items} handleBuy={handleBuy} handleSell={handleSell} selectItem={selectItem} />
+                <Part2 
+                    key="part2" 
+                    money={money} 
+                    setMoney={setMoney} 
+                    isTableShown={isTableShown} 
+                    setIsTableShown={setIsTableShown} 
+                    newsItems={newsItems} 
+                    updateNewsItems={updateNewsItems} 
+                    items={items} 
+                    selectedItem={selectedItem}  
+                    calculateProfitPercentage={calculateProfitPercentage}
+                />
+                <Part3 
+                    key="part3" 
+                    updateNewsItems={updateNewsItems} 
+                    updatePrices={updatePrices} 
+                    quarterCount={quarterCount} 
+                    setQuarterCount={setQuarterCount} 
+                    seedMoney={seedMoney} 
+                    updateEstimated={updateEstimated} 
+                    money={money} 
+                    updateTotal={updateTotal}
+                    updateRate={updateRate}
+                />
+                {isVirtualThisResultVisible && (
+                    <VirtualThisResult key="virtualThisResult" />
+                )}
                 {selectedItem && isNextVisible && (
                     <SellAndBuy
+                        key="sellAndBuy"
                         name={selectedItem.name}
                         price={selectedItem.price}
                         quantity={selectedItem.quantity}
@@ -114,7 +175,7 @@ function App() {
                         handleClose={handleClose}
                         selectItem={selectItem}
                         onTransaction={handleTransaction}
-                        seedMoney={seedMoney}
+                        money={money}
                         selectedItem={selectedItem}
                     />
                 )}

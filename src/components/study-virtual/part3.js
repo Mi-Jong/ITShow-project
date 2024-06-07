@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ListMoney from './listMoney';
 
-function Part3({ seedMoney, updateNewsItems, updatePrices }) {
-    const [quarterCount, setQuarterCount] = useState(1);
-
+function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, seedMoney, updateEstimated, money, updateTotal, updateRate }) {
+    const [previousProfitRate, setPreviousProfitRate] = useState(0);
     useEffect(() => {
         updateNewsItems();
     }, [quarterCount]);
@@ -12,8 +11,9 @@ function Part3({ seedMoney, updateNewsItems, updatePrices }) {
         if (quarterCount < 6) {
             setQuarterCount(prevCount => prevCount + 1);
             updatePrices();
+            setPreviousProfitRate(updateRate());
         } else {
-            //마지막 결과창
+            // 마지막 결과창
         }
     };
 
@@ -29,14 +29,14 @@ function Part3({ seedMoney, updateNewsItems, updatePrices }) {
             </div>
             <div className='list-grid'>
                 <ListMoney title="시드머니" money={seedMoney} />
-                <ListMoney title="추정자산" money={seedMoney} />
-                <ListMoney title="주문 가능 금액" money={seedMoney} />
-                <ListMoney title="평가손익" money={seedMoney} />
+                <ListMoney title="추정자산" money={updateEstimated()} /> {/* call the function here */}
+                <ListMoney title="주문 가능 금액" money={money} />
+                <ListMoney title="평가손익" money={updateTotal()} />
                 <div className='rate'>
                     <p>수익률</p>
                     <div className='percent'>
-                        <h3>100%</h3>
-                        <h2>100%</h2>
+                        <h3>{previousProfitRate}</h3>
+                        <h2>{updateRate()}</h2>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import News from './news';
 import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem }) {
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem, calculateProfitPercentage }) {
     const [selectedItemIndex, setSelectedItemIndex] = useState(selectedItem != null ? selectedItem.id : 0);
 
     useEffect(() => {
@@ -11,14 +11,6 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
         }
     }, [selectedItem]);
 
-    // Calculate profit percentage
-    const calculateProfitPercentage = (item) => {
-        const currentTotalPrice = item.price * item.quantity; 
-        const purchaseTotalPrice = item.purchasePrice;
-        return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100; 
-    };
-
-    // Handle click on item to show/hide graph
     const handleClick = (index) => {
         setSelectedItemIndex(index);
     };
@@ -52,7 +44,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
                             <tr key={index} onClick={() => handleClick(index)}>
                                 <th>{item.name}</th>
                                 <th>{item.quantity}</th>
-                                <th>{item.price}</th>
+                                <th>{item.currentPrice}</th>
                                 <th>{item.purchasePrice}</th>
                                 <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item).toFixed(2)}%`}</th>
                             </tr>
@@ -61,7 +53,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
             </div>
             <div className="view" id={isTableShown ? '' : 'news'}>
                 <div className="news-container">
-                {newsItems.map((news, index) => (
+                    {newsItems.map((news, index) => (
                         <News key={index} url={news.image_url} title={news.title} content={news.content} />
                     ))}
                 </div>
