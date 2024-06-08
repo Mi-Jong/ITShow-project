@@ -36,6 +36,9 @@ function App() {
     const [selectedItem, setSelectedItem] = useState(null);
     const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false);
     const [quarterCount, setQuarterCount] = useState(1);
+    const [previousProfitRate, setPreviousProfitRate] = useState(0);
+    const [totalProfit, setTotalProfit] = useState(0);
+    const [totalInvestment, setTotalInvestment] = useState(0);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
@@ -57,9 +60,9 @@ function App() {
     };
 
     const updateRate = () => {
-        let total = 0;  // <-- Change const to let
+        let total = 0;
         items.forEach(item => {
-            total += calculateProfitPercentage(item);  // <-- No longer errors occur here
+            total += calculateProfitPercentage(item);
         });
         return total;
     }; 
@@ -107,6 +110,10 @@ function App() {
         setNextVisibility(false);
     };
 
+    const handleResult = () => {
+        setVirtualThisResultVisibility(isVirtualThisResultVisible ? false : true);
+    }
+
     const handleTransaction = (count, newMoney, newCountCoin) => {
         const updatedItems = items.map(item => {
             if (item.name === selectedItem.name) {
@@ -153,9 +160,8 @@ function App() {
                 <Part3
                     key="part3"
                     updateNewsItems={updateNewsItems}
-                    updatePrices={updatePrices}
+                    handleResult={handleResult}
                     quarterCount={quarterCount}
-                    setQuarterCount={setQuarterCount}
                     seedMoney={seedMoney}
                     updateEstimated={updateEstimated}
                     money={money}
@@ -163,7 +169,19 @@ function App() {
                     updateRate={updateRate}
                 />
                 {isVirtualThisResultVisible && (
-                    <VirtualThisResult key="virtualThisResult" />
+                    <VirtualThisResult
+                        handleResult={handleResult}
+                        money={money}
+                        updatePrices={updatePrices}
+                        quarterCount={quarterCount}
+                        updateRate={updateRate}
+                        setQuarterCount={setQuarterCount}
+                        setPreviousProfitRate={setPreviousProfitRate}
+                        updateTotal={updateTotal}
+                        setTotalProfit={setTotalProfit}
+                        updateEstimated={updateEstimated}
+                        setTotalInvestment={setTotalInvestment}
+                    />
                 )}
                 {selectedItem && isNextVisible && (
                     <SellAndBuy

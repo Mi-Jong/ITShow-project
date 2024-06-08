@@ -1,7 +1,9 @@
+
+
 import React, { useState, useEffect } from 'react';
 import ListMoney from './listMoney';
 
-function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, seedMoney, updateEstimated, money, updateTotal, updateRate }) {
+function Part3({ updateNewsItems, handleResult, quarterCount, seedMoney, updateEstimated, money, updateTotal, updateRate }) {
     const [previousProfitRate, setPreviousProfitRate] = useState(0);
     const [totalProfit, setTotalProfit] = useState(0);
     const [totalInvestment, setTotalInvestment] = useState(seedMoney);
@@ -9,24 +11,6 @@ function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, s
     useEffect(() => {
         updateNewsItems();
     }, [quarterCount]);
-
-    const addQuarter = () => {
-        if (quarterCount < 6) {
-            setQuarterCount(prevCount => prevCount + 1);
-            updatePrices();
-            setPreviousProfitRate(updateRate());
-            
-            // Calculate and update total profit
-            const currentProfit = updateTotal();
-            setTotalProfit(prevTotalProfit => prevTotalProfit + currentProfit);
-            
-            // Update total investment
-            const currentInvestment = updateEstimated();
-            setTotalInvestment(prevTotalInvestment => prevTotalInvestment + currentInvestment);
-        } else {
-            // 마지막 결과창
-        }
-    };
 
     return (
         <section className="part" id="part3">
@@ -51,7 +35,7 @@ function Part3({ updateNewsItems, updatePrices, quarterCount, setQuarterCount, s
                     </div>
                 </div>
             </div>
-            <button onClick={addQuarter}>다음 분기</button>
+            <button onClick={() => { handleResult(); }}>다음 분기</button>
         </section>
     );
 }
