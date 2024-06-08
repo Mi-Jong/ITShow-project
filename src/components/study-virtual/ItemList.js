@@ -36,7 +36,7 @@ function ItemList({ items, selectItem }) {
                                     {item.percentageIncrease}
                                 </p>
                             </div>
-                            <p className="pay-coin">{calculateNewPrice(item.price)}원</p>
+                            <p className="pay-coin">{calculateNewPrice(item.currentPrice)}원</p>
                         </li>
                     ))}
                 </ul>
