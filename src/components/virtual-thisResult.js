@@ -6,22 +6,22 @@ import FinalResult from './virtual-overallResult'; // Import the new component
 function VirtualThisResult(props) {
     const addQuarter = () => {
         if (props.quarterCount < 6) {
+            const currentRate = props.updateRate();
+            props.setQuarterlyProfitRates(prevRates => [...prevRates, currentRate]);
             props.setQuarterCount(prevCount => prevCount + 1);
             props.updatePrices();
-            props.setPreviousProfitRate(props.updateRate());
+            props.setPreviousProfitRate(currentRate);
             
             const currentProfit = props.updateTotal();
             props.setTotalProfit(prevTotalProfit => prevTotalProfit + currentProfit);
             
             const currentInvestment = props.updateEstimated();
             props.setTotalInvestment(prevTotalInvestment => prevTotalInvestment + currentInvestment);
-        } else {
-            // Do nothing or handle final result if needed
         }
     };
 
     if (props.quarterCount >= 6) {
-        return <FinalResult />;
+        return <FinalResult quarterlyProfitRates={props.quarterlyProfitRates} />;
     }
 
     return (
