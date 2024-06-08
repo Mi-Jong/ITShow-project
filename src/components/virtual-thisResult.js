@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../css/virtual-thisResult.module.css';
 import { GoX } from "react-icons/go";
+import FinalResult from './virtual-overallResult'; // Import the new component
 
 function VirtualThisResult(props) {
     const addQuarter = () => {
@@ -15,9 +16,13 @@ function VirtualThisResult(props) {
             const currentInvestment = props.updateEstimated();
             props.setTotalInvestment(prevTotalInvestment => prevTotalInvestment + currentInvestment);
         } else {
-            // 마지막 결과창
+            // Do nothing or handle final result if needed
         }
     };
+
+    if (props.quarterCount >= 6) {
+        return <FinalResult />;
+    }
 
     return (
         <section id='VirtualThisResult' className={styles.VirtualThisResult}>

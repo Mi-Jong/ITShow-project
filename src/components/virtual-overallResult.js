@@ -4,6 +4,9 @@ import styles from '../css/virtual-overallResult.module.css';
 import { GoX } from "react-icons/go";
 
 function VirtualOverallResult(props) {
+    const handleNext = () => {
+        window.location.href = '/Login';
+    };
     return (
         <section id='VirtualOverallResult' className={styles.VirtualOverallResult}>
             <div className={styles['VirtualOverallResult-inner']}>
@@ -18,8 +21,12 @@ function VirtualOverallResult(props) {
                             <th scope="col">2일차 내용</th>
                             <th scope="col">3일차 내용</th>
                             <th scope="col">4일차 내용</th>
+                            <th scope="col">5일차 내용</th>
+                            <th scope="col">6일차 내용</th>
                         </tr>
                         <tr>
+                            <td>-10%</td>
+                            <td>-10%</td>
                             <td>-10%</td>
                             <td>-10%</td>
                             <td>-10%</td>
@@ -36,7 +43,7 @@ function VirtualOverallResult(props) {
                             <td>오 주식 좀 하시는데요?</td>
                         </tr>
                     </table>
-                    <button className={styles.nextButton}>
+                    <button className={styles.nextButton} onClick={handleNext}>
                         다음으로
                     </button>
                 </div>
