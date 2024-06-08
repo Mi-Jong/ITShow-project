@@ -57,7 +57,7 @@ function Learning() {
             linkTo="/StudyVirtual"
           />
           <div className='learning_text'>
-            실전 감각을 키우기 위한 주식 시뮬레이션. 뉴스를 확인하여
+            실전 감각을 키우기 위한 주식 시뮬레이션.뉴스를 확인하여
             수익률을 높여보세요. 전체 결과와 랭킹을 확인할 수 있습니다. 
           </div>   
         </div>

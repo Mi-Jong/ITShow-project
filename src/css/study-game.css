@@ -47,10 +47,11 @@
     padding: 15px;
     text-align: center;
 }
-
+.answers{
+}
 .answer {
-    width: 37vw;
-    height: 40px;
+    width: calc(40vw + 30px);
+    height: 50px;
     border-radius: 8px;
     margin: 16px;
     box-shadow: 0 2px 2px 2px #1a285145;

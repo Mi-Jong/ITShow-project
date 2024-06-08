@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 100px;
 }
 
 
@@ -63,7 +64,7 @@
 /* learning 부분  */
 .learning-container {
   width: 78vw;
-  height: 90vh;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
@@ -80,14 +81,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 
 
 .learning__inner .learning_text {
-  width: 550px;
+  width: 590px;
   height: 80px;
-  padding-top: 10px;
+  padding-top: 30px;
+  text-align: left;
+  font-size: 19px;
 }
 
 
@@ -96,8 +100,8 @@
   display: flex;
   align-items:flex-end;
   justify-content: space-between;
-  width: 510px;
-  height: 250px;
+  width: 550px;
+  height: 280px;
   padding: 20px;
   overflow: hidden;
   background-color: #404040;
@@ -157,7 +161,7 @@
   justify-content: center;
   background-color: rgba(20, 43, 111, 0.9);
   height: 400px;
-  width: 100vw;
+  width: 100%;
   padding-bottom: 40px;
   overflow: hidden;
 }
@@ -176,12 +180,16 @@
 }
 
 .video-wrapper {
-  margin: 0 20px;
+  margin: 0 30px 0 0 ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .video-wrapper > iframe {
   background-color: aliceblue;
   border-radius: 10px;
+  width: 350px;
+  height: 200px;
 }
 
 .video-wrapper:first-child img,

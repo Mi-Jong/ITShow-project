@@ -16,7 +16,7 @@ function FinalResult({ quarterlyProfitRates }) {
     }
 
     const handleNext = () => {
-        window.location.href = '/Login';
+        window.location.href = '/Login?Virtual';
     };
 
     const getColorForTotalProfitRate = () => {
