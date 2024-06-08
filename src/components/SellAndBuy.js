@@ -5,15 +5,15 @@ import '../css/SellAndBuy.css';
 
 function SellAndBuy(props) {
     const [count, setCount] = useState(0);
-    const [money, setMoney] = useState(props.seedMoney);
+    const [money, setMoney] = useState(props.money);
     const [countCoin, setCountCoin] = useState(props.selectedItem.quantity);
     const [error, setError] = useState('');
 
     useEffect(() => {
         setCount(0);  // Reset count when SellAndBuy opens
-        setMoney(props.seedMoney);
+        setMoney(props.money);
         setCountCoin(props.selectedItem.quantity);
-    }, [props.seedMoney, props.selectedItem.quantity]);
+    }, [props.money, props.selectedItem.quantity]);
 
     const handleMaxClick = () => {
         if (props.handle === "매수") {

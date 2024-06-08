@@ -1,11 +1,12 @@
 import React from 'react';
+import { IoIosHelpCircleOutline } from "react-icons/io";
 
 function ListMoney(props) {
     return (
         <div className='grid'>
             <div className='name'>
                 <p className='title'>{props.title}</p>
-                <icon>d</icon>
+                <IoIosHelpCircleOutline />
             </div>
             <div className='money'>{props.money}</div>
         </div>

@@ -337,6 +337,7 @@ button:hover {
     justify-content: center;
     align-self: center;
     flex-direction: row;
+    gap: 10px;
 }
 
 .grid {
