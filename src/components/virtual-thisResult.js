@@ -9,7 +9,6 @@ function VirtualThisResult(props) {
             const currentRate = props.updateRate();
             props.setQuarterlyProfitRates(prevRates => [...prevRates, currentRate]);
             props.setQuarterCount(prevCount => prevCount + 1);
-            props.updatePrices();
             props.setPreviousProfitRate(currentRate);
             
             const currentProfit = props.updateTotal();

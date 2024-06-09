@@ -71,19 +71,35 @@ function App() {
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
         const selectedNews = shuffledNews.slice(0, 4);
+        if (quarterCount != 1) {
+            let totalImpact = {}; // 뉴스별 영향을 누적할 객체
+
+            selectedNews.forEach(news => {
+                const stockImpact = news.stock_impact;
+                Object.keys(stockImpact).forEach(stockIndex => {
+                    if (totalImpact[stockIndex] === undefined) {
+                        totalImpact[stockIndex] = 0;
+                    }
+                    totalImpact[stockIndex] += stockImpact[stockIndex]; // 동일 인덱스의 값 누적
+                });
+            });
+
+            updatePrices(totalImpact); // 영향 적용하여 가격 업데이트
+            console.log("뉴스별 주식 영향:", totalImpact);
+        }
         setNewsItems(selectedNews);
     };
 
-    const updatePrices = () => {
-        // 각 종목에 대한 변경값을 배열로 정의합니다.
-        const changes = [[-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100]];
+    const updatePrices = (totalImpact) => {
+        // 각 종목에 대한 변경값을 totalImpact 값으로 초기화합니다.
+        const changes = Object.values(totalImpact);
 
         // 변경된 항목들을 담을 배열을 초기화합니다.
         const updatedItems = [];
 
         // 기존 항목 배열을 순회하면서 변경값을 적용합니다.
         items.forEach((item, index) => {
-            const change = changes[index][item.id]; // 해당 종목에 대한 변경값을 가져옵니다.
+            const change = changes[index] || 0; // 해당 종목에 대한 변경값을 가져옵니다. 없으면 0으로 처리
             const newPrice = item.currentPrice + change;
 
             // 변경된 항목을 새로운 객체로 생성하고 배열에 추가합니다.
@@ -97,6 +113,7 @@ function App() {
         // 변경된 항목 배열을 상태에 업데이트합니다.
         setItems(updatedItems);
     };
+
 
 
     const handleBuy = () => {
@@ -154,7 +171,7 @@ function App() {
         if (purchaseTotalPrice === 0) return 0; // Check if purchaseTotalPrice is zero
         return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100;
     };
-    
+
 
     useEffect(() => {
         updateNewsItems();
@@ -192,7 +209,6 @@ function App() {
                     <VirtualThisResult
                         handleResult={handleResult}
                         money={money}
-                        updatePrices={updatePrices}
                         quarterCount={quarterCount}
                         updateRate={updateRate}
                         setQuarterCount={setQuarterCount}
