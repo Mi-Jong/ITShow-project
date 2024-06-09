@@ -148,11 +148,13 @@ function App() {
 
     // 수익률
     const calculateProfitPercentage = (item) => {
-        if (item.purchasePrice === 0) return 0;
+        if (item.purchasePrice === 0 || item.quantity === 0) return 0; // Check if quantity is zero
         const currentTotalPrice = item.currentPrice * item.quantity;
         const purchaseTotalPrice = item.purchasePrice * item.quantity;
+        if (purchaseTotalPrice === 0) return 0; // Check if purchaseTotalPrice is zero
         return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100;
     };
+    
 
     useEffect(() => {
         updateNewsItems();
