@@ -39,6 +39,7 @@ function App() {
     const [previousProfitRate, setPreviousProfitRate] = useState(0);
     const [totalProfit, setTotalProfit] = useState(0);
     const [totalInvestment, setTotalInvestment] = useState(0);
+    const [quarterlyProfitRates, setQuarterlyProfitRates] = useState([]);
 
     const toggleNextVisibility = () => {
         setNextVisibility(prevVisibility => !prevVisibility);
@@ -65,7 +66,7 @@ function App() {
             total += calculateProfitPercentage(item);
         });
         return total;
-    }; 
+    };
 
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
@@ -74,13 +75,29 @@ function App() {
     };
 
     const updatePrices = () => {
-        const updatedItems = items.map(item => {
-            const change = -300;
+        // 각 종목에 대한 변경값을 배열로 정의합니다.
+        const changes = [[-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100], [-300, -200, -500, 100, 50, -100]];
+
+        // 변경된 항목들을 담을 배열을 초기화합니다.
+        const updatedItems = [];
+
+        // 기존 항목 배열을 순회하면서 변경값을 적용합니다.
+        items.forEach((item, index) => {
+            const change = changes[index][item.id]; // 해당 종목에 대한 변경값을 가져옵니다.
             const newPrice = item.currentPrice + change;
-            return { ...item, percentageIncrease: change, currentPrice: newPrice };
+
+            // 변경된 항목을 새로운 객체로 생성하고 배열에 추가합니다.
+            updatedItems.push({
+                ...item,
+                percentageIncrease: change,
+                currentPrice: newPrice
+            });
         });
+
+        // 변경된 항목 배열을 상태에 업데이트합니다.
         setItems(updatedItems);
     };
+
 
     const handleBuy = () => {
         if (selectedItem) {
@@ -129,6 +146,7 @@ function App() {
         setMoney(newMoney);
     };
 
+    // 수익률
     const calculateProfitPercentage = (item) => {
         if (item.purchasePrice === 0) return 0;
         const currentTotalPrice = item.currentPrice * item.quantity;
@@ -181,6 +199,8 @@ function App() {
                         setTotalProfit={setTotalProfit}
                         updateEstimated={updateEstimated}
                         setTotalInvestment={setTotalInvestment}
+                        quarterlyProfitRates={quarterlyProfitRates}
+                        setQuarterlyProfitRates={setQuarterlyProfitRates}
                     />
                 )}
                 {selectedItem && isNextVisible && (

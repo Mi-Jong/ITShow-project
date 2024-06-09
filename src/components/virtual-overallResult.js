@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/style.css';
 import styles from '../css/virtual-overallResult.module.css';
 import { GoX } from "react-icons/go";
 
-function VirtualOverallResult(props) {
+function FinalResult({ quarterlyProfitRates }) {
+    const totalProfitRate = quarterlyProfitRates.reduce((acc, rate) => acc + rate, 0);
+    let totalReview = '';
+
+    if (totalProfitRate > 0) {
+        totalReview = '오 주식 좀 하시는데요?';
+    } else if (totalProfitRate < 0) {
+        totalReview = '우~ 루저';
+    } else {
+        totalReview = 'ㅋ 원금은 안잃었네요 ㅋ';
+    }
+
     const handleNext = () => {
         window.location.href = '/Login';
     };
+
+    const getColorForTotalProfitRate = () => {
+        if (totalProfitRate > 0) {
+            return 'red';
+        } else if (totalProfitRate < 0) {
+            return 'skyblue';
+        } else {
+            return 'black';
+        }
+    };
+
     return (
         <section id='VirtualOverallResult' className={styles.VirtualOverallResult}>
             <div className={styles['VirtualOverallResult-inner']}>
@@ -16,32 +38,41 @@ function VirtualOverallResult(props) {
                 </div>
                 <div className={styles['inner-cont']}>
                     <table className={styles['day-table']}>
-                        <tr>
-                            <th scope="col">1일차 내용</th>
-                            <th scope="col">2일차 내용</th>
-                            <th scope="col">3일차 내용</th>
-                            <th scope="col">4일차 내용</th>
-                            <th scope="col">5일차 내용</th>
-                            <th scope="col">6일차 내용</th>
-                        </tr>
-                        <tr>
-                            <td>-10%</td>
-                            <td>-10%</td>
-                            <td>-10%</td>
-                            <td>-10%</td>
-                            <td>-10%</td>
-                            <td>-10%</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                {quarterlyProfitRates.map((_, index) => (
+                                    <th key={index} scope="col">{index + 1}일차 내용</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {quarterlyProfitRates.map((rate, index) => (
+                                    <td key={index}>{rate.toFixed(2)}%</td>
+                                ))}
+                            </tr>
+                        </tbody>
                     </table>
                     <table className={styles['result-table']}>
-                        <tr>
-                            <th scope="col">총 수익</th>
-                            <th scope="col">총평</th>
-                        </tr>
-                        <tr>
-                            <td>20%</td>
-                            <td>오 주식 좀 하시는데요?</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th scope="col">총 수익</th>
+                                <th scope="col">총평</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td 
+                                    style={{
+                                        color: getColorForTotalProfitRate(),
+                                        fontSize: '40px'
+                                    }}
+                                >
+                                    {totalProfitRate.toFixed(2)}%
+                                </td>
+                                <td>{totalReview}</td>
+                            </tr>
+                        </tbody>
                     </table>
                     <button className={styles.nextButton} onClick={handleNext}>
                         다음으로
@@ -52,4 +83,4 @@ function VirtualOverallResult(props) {
     );
 }
 
-export default VirtualOverallResult;
+export default FinalResult;
