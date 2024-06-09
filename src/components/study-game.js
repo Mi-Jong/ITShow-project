@@ -77,6 +77,7 @@ function StudyGame() {
         transition: "height 1s linear"
     };
 
+
     return (
         <>
             <Header />
@@ -93,8 +94,8 @@ function StudyGame() {
                         <div id="timer" style={timeBarStyle}></div>
                     </div>
                 </div>
-            </div>
-            {showLogin && <Login/>}
+            </div>{showLogin && (window.location.href = '/Login?Game')}
+                            
         </>
     );
 }

@@ -63,6 +63,12 @@
 .result-inner .inner-cont .cont .assess {
     width: 50%;
 }
+.sub-cont{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+}
 
 .sub-title, .assess-title {
     width: 100%;
@@ -70,11 +76,13 @@
     background-color: var(--gray2);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;font-weight: 0600;
+
 }
 
 .assess-title, .assess-cont {
     border-left: 0.4px var(--black) solid;
+    text-align: center;line-height: 29px;
 }
 
 .sub-cont, .assess-cont {
@@ -86,7 +94,7 @@
 }
 
 .sub-cont ul li {
-    padding: 20px;
+    padding: 15px;
 }
 
 .assess-cont {

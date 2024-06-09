@@ -1,3 +1,4 @@
+
 .login {
     position: fixed;
     top: 0;
@@ -7,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(96, 96, 96, 0.7);
+    background-color: #3a4873c4;
     z-index: 1000;
 }
 

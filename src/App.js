@@ -28,7 +28,9 @@ function App() {
         <Route path="/StudyGame"  element={<StudyGame />}  />
         <Route path="/StudyVirtualExp"  element={<StudyVirtualExp />}  />
         <Route path="/Ranking"  element={<Ranking />}  />
+        <Route path="/VirtualOverallResult"  element={<VirtualOverallResult />}  />
         <Route path="/TooltipHeader"  element={<TooltipHeader />}  />
+        <Route path="/Login"  element={<Login />}  />
       </Routes>
   </BrowserRouter>
   );

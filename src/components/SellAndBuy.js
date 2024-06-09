@@ -17,23 +17,23 @@ function SellAndBuy(props) {
 
     const handleMaxClick = () => {
         if (props.handle === "매수") {
-            setCount(Math.floor(money / props.price));
+            setCount(Math.floor(money / props.currentPrice));
         } else if (props.handle === "매도") {
             setCount(countCoin);
         }
     };
 
     const handleBuyClick = () => {
-        if ((money < props.price * count && props.handle === "매수") || (countCoin < count && props.handle === "매도")) {
+        if ((money < props.currentPrice * count && props.handle === "매수") || (countCoin < count && props.handle === "매도")) {
             setError('수량이 올바르지 않습니다');
         } else {
             let newMoney = money;
             let newCountCoin = countCoin;
             if (props.handle === "매수") {
-                newMoney -= props.price * count;
+                newMoney -= props.currentPrice * count;
                 newCountCoin += count;
             } else if (props.handle === "매도") {
-                newMoney += props.price * count;
+                newMoney += props.currentPrice * count;
                 newCountCoin -= count;
             }
 
@@ -72,7 +72,7 @@ function SellAndBuy(props) {
                         </tr>
                         <tr>
                             <th scope="col">가격</th>
-                            <td>{props.price * count}</td>
+                            <td>{props.currentPrice * count}</td>
                         </tr>
                     </tbody>
                 </table>
