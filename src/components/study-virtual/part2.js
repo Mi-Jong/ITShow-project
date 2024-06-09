@@ -22,7 +22,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
 
                 return (
                     <div key={index} className={`graph ${isHidden}`}>
-                        <Graph firstItemPrice={item.price} item={item}/>
+                        <Graph firstItemPrice={item.currentPrice} item={item}/>
                     </div>
                 );
             })}
