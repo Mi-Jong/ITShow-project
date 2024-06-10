@@ -17,7 +17,6 @@
   position: relative;
   width: 100%;
   top: 50px;
-  margin-bottom: 100px;
 }
 
 .lb-image {
@@ -63,25 +62,29 @@
 
 /* learning 부분  */
 .learning-container {
-  width: 78vw;
-  height: 100%;
+  width: 100vw;
+  height: 800px;
   display: flex;
   justify-content: center;
 }
 
 .learning-container > p {
+  width: 78vw;
   font-size: 20px;
   color: var(--black);
   font-weight: bold;
   padding: 20px 0;
+  margin: 0 auto;
 }
 
 
 .learning{
+  width: 78vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
+  margin: 0 auto;
 }
 
 
