@@ -32,7 +32,7 @@ function Banner() {
 }
 function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
   return (
-    <div id='learn' className='learn'>
+    <div className='learn'>
       <div class="overlay"></div>
       <img src={imageUrl} alt="Image" />
       <h2>{title}</h2>
@@ -46,7 +46,7 @@ function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
 function Learning() {
   
   return (
-    <div id='learn' className='container learning-container'>
+    <div id='learn'  className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
         <div className='learning__inner'>
