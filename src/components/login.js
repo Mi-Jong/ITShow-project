@@ -2,24 +2,22 @@ import '../css/style.css';
 import styles from '../css/login.module.css';
 import { GoX } from "react-icons/go";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function Login(props) {
     const [userName, setUserName] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
 
+    // 게임 유형 확인
+    const searchParams = new URLSearchParams(location.search);
+    const isVirtual = searchParams.has('Virtual'); // 'Virtual' 파라미터 확인
+    const gameType = isVirtual ? 'Virtual' : 'Word'; // 기본값을 'Word'로 설정
+
+    // Function to determine the appropriate redirection path
     const getLinkPath = () => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const gameParamExists = searchParams.has('Game'); // 'has'를 사용하여 존재 여부만 확인
-        console.log('Full query string:', window.location.search); // 전체 쿼리 스트링 출력
-        console.log('Game parameter exists:', gameParamExists); // 'Game' 파라미터 존재 여부 출력
-
-        if (gameParamExists) { // 파라미터가 존재하는지만 체크
-            return '/Ranking';
-        }
-        return '/';
+        return `/Ranking?type=${gameType}`; // 게임 유형을 경로에 추가
     };
 
     const handleInputChange = (e) => {
@@ -29,16 +27,13 @@ function Login(props) {
     const validateUserName = (name) => {
         const regex = /^[가-힣a-zA-Z]{2,10}$/;
         return regex.test(name);
-    }
-
-
+    };
 
     const handleConfirmClick = async () => {
         if (validateUserName(userName)) {
             const userScore = localStorage.getItem('userScore');
-
             try {
-                await axios.post('http://localhost:5000/api/saveUser', { userName, userScore });
+                await axios.post(`http://localhost:5000/api/saveUser/${gameType.toLowerCase()}/${encodeURIComponent(userName)}/${userScore}`);
                 localStorage.setItem('userName', userName);
                 navigate(getLinkPath());
             } catch (error) {
