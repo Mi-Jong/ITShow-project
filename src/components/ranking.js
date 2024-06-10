@@ -3,19 +3,23 @@ import '../css/style.css';
 import Header from './commonHeader';
 import styles from '../css/ranking.module.css';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 function Ranking(props) {
     const [rankings, setRankings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const userName = localStorage.getItem('userName');
+    const location = useLocation();
 
     useEffect(() => {
-        const userScore = localStorage.getItem('userScore');
+        const searchParams = new URLSearchParams(location.search);
+        const gameType = searchParams.get('type'); // 'type' 파라미터 확인
+        const endpoint = gameType === 'Virtual' ? '/api/vitualRanking' : '/api/wordRanking'; // 서버의 엔드포인트
 
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/wordRanking');
+                const response = await axios.get(`http://localhost:5000${endpoint}`);
                 setRankings(response.data);
                 setLoading(false);
             } catch (error) {
@@ -24,34 +28,14 @@ function Ranking(props) {
             }
         };
         fetchData();
-
-        if (userName && userScore) {
-            const newUserScore = parseInt(userScore, 10);
-            const existingUserIndex = rankings.findIndex(rank => rank.name === userName);
-
-            let updatedRankings;
-
-            if (existingUserIndex !== -1) {
-                updatedRankings = rankings.map((rank, index) => 
-                    index === existingUserIndex ? { ...rank, score: newUserScore } : rank
-                );
-            } else {
-                updatedRankings = [...rankings, { name: userName, score: newUserScore }];
-            }
-
-            const sortedRankings = updatedRankings.sort((a, b) => b.score - a.score);
-            setRankings(sortedRankings);
-        }
-    }, [userName]);
-
-       
+    }, [location.search]);
 
     const calculateRanks = (rankings) => {
         let rank = 1;
         let result = [];
-    
+
         for (let i = 0; i < rankings.length; i++) {
-            if (i > 0 && rankings[i].wordGame !== rankings[i - 1].wordGame) {
+            if (i > 0 && rankings[i].score !== rankings[i - 1].score) {
                 rank = i + 1;
             }
             result.push({ ...rankings[i], rank: rank });
@@ -60,6 +44,9 @@ function Ranking(props) {
     };
 
     const rankedRankings = calculateRanks(rankings);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
 
     return (
         <div className='body'>
@@ -75,12 +62,12 @@ function Ranking(props) {
                     </thead>
                     <tbody>
                         {rankedRankings.map((rank, index) => (
-                            <tr key={index} className={rank.name === userName ? styles.highlightedRow : null}>
+                            <tr key={index} className={rank.username === userName ? styles.highlightedRow : null}>
                                 <td>
                                     <div className={`${styles.rankNum} ${styles[`rankNum${rank.rank}`]}`}>{rank.rank}</div>
                                 </td>
                                 <td>{rank.username}</td>
-                                <td>{rank.wordGame}</td>
+                                <td>{rank.score}</td>
                             </tr>
                         ))}
                     </tbody>
