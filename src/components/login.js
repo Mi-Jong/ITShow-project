@@ -2,21 +2,24 @@ import '../css/style.css';
 import styles from '../css/login.module.css';
 import { GoX } from "react-icons/go";
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login(props) {
     const [userName, setUserName] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
-    const location = useLocation();
 
     const getLinkPath = () => {
-        switch (location.pathname) {
-            case '/StudyGame':
-                return '/Ranking';
-            default:
-                return '/';
+        const searchParams = new URLSearchParams(window.location.search);
+        const gameParamExists = searchParams.has('Game'); // 'has'를 사용하여 존재 여부만 확인
+        console.log('Full query string:', window.location.search); // 전체 쿼리 스트링 출력
+        console.log('Game parameter exists:', gameParamExists); // 'Game' 파라미터 존재 여부 출력
+
+        if (gameParamExists) { // 파라미터가 존재하는지만 체크
+            return '/Ranking';
         }
+        return '/';
     };
 
     const handleInputChange = (e) => {
@@ -28,9 +31,12 @@ function Login(props) {
         return regex.test(name);
     }
 
+
+
     const handleConfirmClick = async () => {
         if (validateUserName(userName)) {
             const userScore = localStorage.getItem('userScore');
+
             try {
                 await axios.post('http://localhost:5000/api/saveUser', { userName, userScore });
                 localStorage.setItem('userName', userName);
@@ -49,7 +55,12 @@ function Login(props) {
             <div className={styles.loginInner}>
                 <div className={styles.innerHeader}>
                     <span>닉네임 설정</span>
-                    <Link to={getLinkPath()} ><GoX style={{ paddingRight: "20px" }} size="25" /></Link>
+                    <button 
+                        onClick={() => navigate(getLinkPath())} 
+                        style={{ paddingRight: "20px", background: 'none', border: 'none', cursor: 'pointer' }}
+                    >
+                        <GoX size="25" />
+                    </button>
                 </div>
                 <div className={styles.innerCont}>
                     <h1>랭킹에 기록될 닉네임을 입력해주세요.</h1>
