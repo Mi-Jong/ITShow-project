@@ -28,7 +28,7 @@ function VirtualThisResult(props) {
             <div className={styles['result-inner']}>
                 <div className={styles['inner-header']}>
                     <p>결과</p>
-                    <GoX style={{ paddingRight: "20px" }} />
+                    <GoX size="25" style={{ paddingRight: "20px" }} />
                 </div>
                 <div className={styles['inner-cont']}>
                     <div className={styles.cont}>

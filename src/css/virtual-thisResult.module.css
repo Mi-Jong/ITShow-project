@@ -1,6 +1,6 @@
 .VirtualThisResult {
     position: fixed;
-  top: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -82,7 +82,8 @@
 
 .assess-title, .assess-cont {
     border-left: 0.4px var(--black) solid;
-    text-align: center;line-height: 29px;
+    text-align: center;
+    line-height: 29px;
 }
 
 .sub-cont, .assess-cont {
@@ -104,7 +105,12 @@
 .result-inner .inner-cont .nextButton {
     width: 210px;
     height: 55px;
+    width: 210px;
+    height: 55px;
     margin-top: 45px;
     border-radius: 30px;
     background-color: var(--yellow2);
+    color: var(--second-color);
+    font-size: 16px;
+    font-weight: 600;
 }

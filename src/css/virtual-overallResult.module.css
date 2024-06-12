@@ -46,12 +46,13 @@
 }
 
 .inner-cont .day-table, .inner-cont .result-table {
+    border-collapse: collapse;
     width: 750px;
     height: 110px;
     border-radius: 10px;
     text-align: center;
     overflow: hidden;
-    background-color: var(--gray3);
+    background-color: var(--gray4);
 } 
 
 .inner-cont .result-table td {
@@ -62,6 +63,17 @@
     margin: 50px;
 }
 
+.day-table td {
+    height: 50px;
+    color: #747474;
+}
+
+.pro {
+    padding-top: 10px;
+    font-size: 28px;
+    color: var(--black2);
+}
+
 .inner-cont .result-table {
     height: 195px;
 }
@@ -69,15 +81,31 @@
 .inner-cont .result-table th {
     height: 50px;
 }
+
 .inner-cont .result-table tr td {
-    width: 50%;
+    width: 50%;    
+}
+
+.inner-cont .result-table thead tr th:last-child {
+    border-style: none;
+    border-left: 0.4px var(--black) solid;
 }
 
 .inner-cont .nextButton {
+    width: 210px;
+    height: 55px;
     width: 210px;
     height: 55px;
     margin-top: 45px;
     border-radius: 30px;
     background-color: var(--yellow2);
     color: var(--second-color);
+    font-size: 16px;
+    font-weight: 600;
 }
+
+.totalReview {
+    font-size: 22px;
+    border-left: 0.4px var(--black) solid;
+}
+
