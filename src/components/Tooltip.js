@@ -1,16 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import '../css/Tooltip.css';
 
-const Tooltip = ({ children, text }) => {
-  const tooltipElement = (
-    <div className="tooltip-container">
-      {children}
-      <span className="tooltip-text">{text}</span>
-    </div>
-  );
-
-  return ReactDOM.createPortal(tooltipElement, document.body);
-};
-
-export default Tooltip;
+<div>
+  <p>리액트 포탈을 사용하려고 합니다.</p>
+  {createPortal(
+    <p>리액트 포탈의 모달 컴포넌트</p>,
+    document.getElementById('aside-root')
+  )}
+</div>

@@ -23,10 +23,10 @@ function Part3({ updateNewsItems, handleResult, quarterCount, seedMoney, updateE
                 </div>
             </div>
             <div className='list-grid'>
-                <ListMoney title="시드머니" money={seedMoney} />
-                <ListMoney title="추정자산" money={updateEstimated()} /> {/* call the function here */}
-                <ListMoney title="주문 가능 금액" money={money} />
-                <ListMoney title="평가손익" money={updateTotal()} />
+                <ListMoney title="시드머니" desc= "시드머니 설명입니다"  money={seedMoney} />
+                <ListMoney title="추정자산"  desc= "추정자산 설명입니다"  money={updateEstimated()} />
+                <ListMoney title="주문 가능 금액"  desc= "주문 가능 금액 설명입니다"  money={money} />
+                <ListMoney title="평가손익" desc= "평가손익 설명입니다"   money={updateTotal()} />
                 <div className='rate'>
                     <p>수익률</p>
                     <div className='percent'>
