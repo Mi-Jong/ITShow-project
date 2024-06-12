@@ -15,8 +15,10 @@ function Ranking(props) {
 
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
-        const type = searchParams.get('type'); // 'type' 파라미터 확인
-        const endpoint = type === 'Virtual' ? '/api/vitualRanking' : '/api/wordRanking'; // 서버의 엔드포인트
+        const gameType = searchParams.get('type'); // 'type' 파라미터 확인
+        setType(gameType); // 'type' 상태 설정
+
+        const endpoint = gameType === 'Virtual' ? '/api/virtualRanking' : '/api/wordRanking'; // 올바른 엔드포인트 사용
 
         const fetchData = async () => {
             try {
@@ -36,7 +38,7 @@ function Ranking(props) {
         let result = [];
 
         for (let i = 0; i < rankings.length; i++) {
-            if (i > 0 && rankings[i].score !== rankings[i - 1].score) {
+            if (i > 0 && rankings[i].Score !== rankings[i - 1].Score) { // Score 필드 확인
                 rank = i + 1;
             }
             result.push({ ...rankings[i], rank: rank });
@@ -68,7 +70,7 @@ function Ranking(props) {
                                     <div className={`${styles.rankNum} ${styles[`rankNum${rank.rank}`]}`}>{rank.rank}</div>
                                 </td>
                                 <td>{rank.username}</td>
-                                <td>{type === 'Virtual' ? rank.vitualGame : rank.wordGame}</td>
+                                <td>{rank.Score}</td>
                             </tr>
                         ))}
                     </tbody>

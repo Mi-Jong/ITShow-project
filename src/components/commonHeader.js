@@ -23,7 +23,12 @@ const Header = () => {
     }
   };
 
+  const localClear = () => {
+    window.localStorage.clear();
+  }
+
   const handleCloseExp = () => {
+    window.localStorage.clear();
     setShowExp(false);
     setShowDarkExp(false);
   };
@@ -49,7 +54,7 @@ const Header = () => {
         <div className="header__inner">
           <div className="header__logo">
             <h1>
-              <a href="/">GEMMI</a>
+              <a href="/" onClick={localClear}>GEMMI</a>
             </h1>
           </div>
           <nav 
