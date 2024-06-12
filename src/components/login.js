@@ -32,8 +32,15 @@ function Login(props) {
     const handleConfirmClick = async () => {
         if (validateUserName(userName)) {
             const userScore = localStorage.getItem('userScore');
+            const searchParams = new URLSearchParams(window.location.search);
+            let gameType = 'word'; // Default to 'word' game type
+    
+            if (searchParams.has('Virtual')) {
+                gameType = 'virtual';
+            }
+    
             try {
-                await axios.post(`http://localhost:5000/api/saveUser/${gameType.toLowerCase()}/${encodeURIComponent(userName)}/${userScore}`);
+                await axios.post(`http://localhost:5000/api/saveUser/${gameType}/${userName}/${userScore}`);
                 localStorage.setItem('userName', userName);
                 navigate(getLinkPath());
             } catch (error) {
