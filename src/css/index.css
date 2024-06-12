@@ -47,7 +47,7 @@
 }
 
 .section-text > .heading2 {
-  color: #404040;
+  color: var(--black2);
   font-size: 24px;
   font-weight: 500;
 }
@@ -69,7 +69,7 @@
 }
 
 .learning-container > p {
-  width: 78vw;
+  width: var(--content-width);
   font-size: 20px;
   color: var(--black);
   font-weight: bold;
@@ -79,7 +79,7 @@
 
 
 .learning{
-  width: 78vw;
+  width: var(--content-width);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,7 +104,7 @@
   height: 280px;
   padding: 20px;
   overflow: hidden;
-  background-color: #404040;
+  background-color: var(--black2);
   border-radius: 10px;
   border: 1px solid rgba(20, 43, 111, 0.9);
 }
@@ -120,12 +120,12 @@
 .learn > button{
   width: 25%;
   height: 10%;
-  background-color: #FFD601;
-  border: #FFD601;
+  background-color: var(--first-color);
+  border: var(--first-color);
   border-radius: 25px;
 }
 .learn > h2{
-  color: aliceblue;
+  color: var(--body-color);
 }
 
 .overlay {
@@ -167,7 +167,7 @@
 
 .slide-show-container > p {
   margin: 0 auto;
-  width: 78vw;
+  width: var(--content-width);
   font-size: 20px;
   color: var(--body-color);
   font-weight: bold;
@@ -185,7 +185,7 @@
   align-items: center;
 }
 .video-wrapper > iframe {
-  background-color: aliceblue;
+  background-color: var(--body-color);
   border-radius: 10px;
   width: 350px;
   height: 200px;
@@ -205,7 +205,7 @@
   outline: none;
   cursor: pointer;
   z-index: 99999;
-  color: rgb(255, 255, 255);
+  color: var(--body-color);
   font-size: 40px;
 }
 
@@ -226,7 +226,7 @@
 }
 
 .stockTable-container > p {
-  width: 78vw;
+  width: var(--content-width);
   font-size: 20px;
   color: var(--black);
   font-weight: bold;
@@ -235,7 +235,7 @@
 }
 
 .stockPopularTable{
-  width: 78vw;
+  width: var(--content-width);
   height: auto;
   display: flex;
   margin: 0 auto;
@@ -253,7 +253,7 @@
   border-radius: 10px;
   border-style: hidden;
   overflow: hidden;
-  background-color: #fff;
+  background-color: var(--body-color);
 }
 
 .stockPopularTable>table>thead {
