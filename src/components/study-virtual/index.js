@@ -20,18 +20,18 @@ function shuffleArray(array) {
 }
 
 function App() {
-    const seedMoney = 300000;
+    const seedMoney = 3000000;
     const [money, setMoney] = useState(seedMoney);
     const [newsItems, setNewsItems] = useState([]);
     const [isNextVisible, setNextVisibility] = useState(false);
     const [isTableShown, setIsTableShown] = useState(true);
     const [items, setItems] = useState([
-        { id: 0, name: 'SN', quantity: 0, price: 10100, purchasePrice: 0, currentPrice: 10100, count: 0 },
-        { id: 1, name: 'JYB', quantity: 0, price: 200000, purchasePrice: 0, currentPrice: 200000, count: 0 },
-        { id: 2, name: '소노공마라탕', quantity: 0, price: 1500000, purchasePrice: 0, currentPrice: 1500000, count: 0 },
-        { id: 3, name: '왕카탕후루', quantity: 0, price: 10000, purchasePrice: 0, currentPrice: 10000, count: 0 },
-        { id: 4, name: '삼쉉', quantity: 0, price: 2000, purchasePrice: 0, currentPrice: 2000, count: 0 },
-        { id: 5, name: '네이비', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 15000, count: 0 }
+        { id: 0, name: 'SN', quantity: 0, price: 5000, purchasePrice: 0, currentPrice: 5000, count: 0 },
+        { id: 1, name: 'JYB', quantity: 0, price: 4800, purchasePrice: 0, currentPrice: 4800, count: 0 },
+        { id: 2, name: '소노공마라탕', quantity: 0, price: 15000, purchasePrice: 0, currentPrice: 15000, count: 0 },
+        { id: 3, name: '왕카탕후루', quantity: 0, price: 13000, purchasePrice: 0, currentPrice: 13000, count: 0 },
+        { id: 4, name: '삼쉉', quantity: 0, price: 7500, purchasePrice: 0, currentPrice: 7500, count: 0 },
+        { id: 5, name: '네이비', quantity: 0, price: 7100, purchasePrice: 0, currentPrice: 7100, count: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false);
