@@ -31,6 +31,8 @@ function App() {
         <Route path="/VirtualOverallResult"  element={<VirtualOverallResult />}  />
         <Route path="/TooltipHeader"  element={<TooltipHeader />}  />
         <Route path="/Login"  element={<Login />}  />
+         {/* 툴팁을 사용할 페이지에 해당하는 라우트 추가 */}
+         <Route path="/StudyWithTooltip" element={<StudyVirtual />} />
       </Routes>
   </BrowserRouter>
   );
