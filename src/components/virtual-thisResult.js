@@ -38,8 +38,8 @@ function VirtualThisResult(props) {
                             </div>
                             <div className={styles['sub-cont']}>
                                 <ul>
-                                    <li>수익 : <span className={styles.profit}>{props.updateRate().toFixed(2)}</span></li>
-                                    <li>잔고 : <span className={styles.balance}>{props.money}</span></li>
+                                    <li>수익 : <span className={styles.profit}>{props.updateRate().toFixed(2)}%</span></li>
+                                    <li>잔고 : <span className={styles.balance}>{props.money}원</span></li>
                                 </ul>
                             </div>
                         </div>
