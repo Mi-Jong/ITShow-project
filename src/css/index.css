@@ -87,8 +87,6 @@
   margin: 0 auto;
 }
 
-
-
 .learning__inner .learning_text {
   width: 590px;
   height: 80px;
@@ -96,7 +94,6 @@
   text-align: left;
   font-size: 19px;
 }
-
 
 .learn{
   position: relative;
@@ -111,7 +108,6 @@
   border-radius: 10px;
   border: 1px solid rgba(20, 43, 111, 0.9);
 }
-
 
 .learn > img{
   position: absolute;
@@ -221,7 +217,6 @@
   right: 150px;
 }
 
-
 /* stockTable-container 부분  */
 .stockTable-container {
   width: 100vw;
@@ -239,7 +234,6 @@
   margin: 0 auto;
 }
 
-
 .stockPopularTable{
   width: 78vw;
   height: auto;
@@ -247,7 +241,6 @@
   margin: 0 auto;
   justify-content: center;
 }
-
 
 .stockPopularTable {
   border-radius: 10px;
@@ -263,12 +256,10 @@
   background-color: #fff;
 }
 
-
 .stockPopularTable>table>thead {
   background-color: #E1DEE6;
 
 }
-
 
 .stockPopularTable>table>thead>tr>th,
 .stockPopularTable>table>tbody>tr>td {
