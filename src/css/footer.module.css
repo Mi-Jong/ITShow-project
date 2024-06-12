@@ -4,11 +4,11 @@ footer {
     width: 100%;
     height: 200px;
     background-color: rgba(225, 222, 230, 0.5);
-    color: #696969;
+    color: var(--gray5);
 }
 
 .footer__inner {
-    width: 78vw;
+    width: var(--content-width);
     height: 100%;
     display: flex;
     align-items: center;
@@ -17,7 +17,7 @@ footer {
 .cont {
     width: 33%;
     height: 50%;
-    border-right: 1px solid black;
+    border-right: 1px solid var(--black);
     display: flex;
     flex-direction: column;
     justify-content: space-around;

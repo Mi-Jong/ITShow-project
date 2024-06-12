@@ -16,7 +16,7 @@
 }
 
 .StudyGameDetail__inner {
-    width: 78vw;
+    width: var(--content-width);
     height: 80vh;
     background-color: var(--body-color);
     display: flex;

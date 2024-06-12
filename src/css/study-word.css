@@ -23,7 +23,7 @@
 
 .ban .ban__inner {
     display: flex;
-    width: 78vw;
+    width: var(--content-width);
 }
 
 .ban__inner .ban-text, .ban__inner .ban-img {
@@ -97,7 +97,7 @@
 }
 
 .game>p {
-    color: white;
+    color: var(--body-color);
 }
 
 .game>button {
@@ -118,7 +118,7 @@
 
 .search input {
     padding: 20px;
-    width: calc(78vw - 40px);
+    width: calc(var(--content-width) - 40px);
     border-radius: 40px;
     border: 2px solid #44444484;   
 }
@@ -168,7 +168,7 @@
     padding: 20px;
     margin-bottom: 16px;
     border-radius: 10px;
-    width: calc(78vw - 40px);
+    width: calc(var(--content-width) - 40px);
     text-align: left;
     display: flex;
     flex-direction: row;
@@ -176,7 +176,7 @@
 }
 
 .card-container {
-    width: 78vw;
+    width: var(--content-width);
     height: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
