@@ -34,24 +34,18 @@ function FinalResult({ quarterlyProfitRates }) {
             <div className={styles['VirtualOverallResult-inner']}>
                 <div className={styles['inner-header']}>
                     <p>전체 결과</p>
-                    <GoX style={{paddingRight:"20px"}}/>
+                    <GoX size="25" style={{paddingRight:"20px"}}/>
                 </div>
                 <div className={styles['inner-cont']}>
                     <table className={styles['day-table']}>
-                        <thead>
-                            <tr>
-                                {quarterlyProfitRates.map((_, index) => (
-                                    <th key={index} scope="col">{index + 1}일차 내용</th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                {quarterlyProfitRates.map((rate, index) => (
-                                    <td key={index}>{rate.toFixed(2)}%</td>
-                                ))}
-                            </tr>
-                        </tbody>
+                        <tr>
+                            {quarterlyProfitRates.map((rate, index) => (
+                              <td key={index}>
+                                    <p>{index + 1}일차 내용</p>
+                                    <p className={styles['pro']}>{rate.toFixed(2)}%</p>
+                                </td>
+                            ))}
+                        </tr>
                     </table>
                     <table className={styles['result-table']}>
                         <thead>
@@ -70,12 +64,12 @@ function FinalResult({ quarterlyProfitRates }) {
                                 >
                                     {totalProfitRate.toFixed(2)}%
                                 </td>
-                                <td>{totalReview}</td>
+                                <td className={styles['totalReview']}>{totalReview}</td>
                             </tr>
                         </tbody>
                     </table>
                     <button className={styles.nextButton} onClick={handleNext}>
-                        다음으로
+                        랭킹 보기
                     </button>
                 </div>
             </div>
