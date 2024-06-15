@@ -71,7 +71,7 @@ function App() {
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
         const selectedNews = shuffledNews.slice(0, 4);
-        if (quarterCount != 1) {
+        if (quarterCount != 1) { // ===로 비교해야 합니다.
             let totalImpact = {}; // 뉴스별 영향을 누적할 객체
 
             selectedNews.forEach(news => {
@@ -91,31 +91,21 @@ function App() {
     };
 
     const updatePrices = (totalImpact) => {
-        // 각 종목에 대한 변경값을 totalImpact 값으로 초기화합니다.
-        const changes = Object.values(totalImpact);
-
-        // 변경된 항목들을 담을 배열을 초기화합니다.
+        const changes = [];
         const updatedItems = [];
-
-        // 기존 항목 배열을 순회하면서 변경값을 적용합니다.
+        setItems(updatedItems);
         items.forEach((item, index) => {
-            const change = changes[index] || 0; // 해당 종목에 대한 변경값을 가져옵니다. 없으면 0으로 처리
+            const change = changes[index] || 0;
             const newPrice = item.currentPrice + change;
-
-            // 변경된 항목을 새로운 객체로 생성하고 배열에 추가합니다.
             updatedItems.push({
                 ...item,
                 percentageIncrease: change,
                 currentPrice: newPrice
             });
         });
-
-        // 변경된 항목 배열을 상태에 업데이트합니다.
-        setItems(updatedItems);
+        changes = Object.values(totalImpact);
     };
-
-
-
+    
     const handleBuy = () => {
         if (selectedItem) {
             handle = "매수";
@@ -165,17 +155,28 @@ function App() {
 
     // 수익률
     const calculateProfitPercentage = (item) => {
-        if (item.purchasePrice === 0 || item.quantity === 0) return 0; // Check if quantity is zero
+        if (item.purchasePrice === 0 || item.quantity === 0) return 0; // 매수 가격이 0이거나 보유 수량이 0이면 수익률은 0으로 처리
         const currentTotalPrice = item.currentPrice * item.quantity;
         const purchaseTotalPrice = item.purchasePrice * item.quantity;
-        if (purchaseTotalPrice === 0) return 0; // Check if purchaseTotalPrice is zero
+        if (purchaseTotalPrice === 0) return 0; // 총 매수 비용이 0이면 수익률은 0으로 처리
         return ((currentTotalPrice - purchaseTotalPrice) / purchaseTotalPrice) * 100;
-    };
+    };    
 
-
+    useEffect(() => {
+        // 초기 분기의 전체 수익률 계산
+        const initialProfitRate = items.reduce((sum, item) => {
+            return sum + calculateProfitPercentage(item);
+        }, 0);
+        setInitialQuarterProfitRate(initialProfitRate);
+        
+        // 초기 마운트 시 뉴스 아이템 업데이트
+        updateNewsItems();
+    }, []);
+    
     useEffect(() => {
         updateNewsItems();
     }, []);
+    
 
     return (
         <div>
@@ -205,6 +206,7 @@ function App() {
                     updateTotal={updateTotal}
                     updateRate={updateRate}
                 />
+                
                 {isVirtualThisResultVisible && (
                     <VirtualThisResult
                         handleResult={handleResult}
