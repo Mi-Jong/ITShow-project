@@ -25,6 +25,18 @@ function StockGraph({ firstItemPrice, updatePrices, item }) {
             ]);
             // 현재 가격을 이전 가격으로 설정
             setBeforePrice(firstItemPrice);
+        } else if (countNum <= 1) { // 값이 변하지 않았을 때 빈 값을 추가
+            setPriceData(priceData => [
+                ...priceData,
+                [
+                    getDayOfWeek(priceData.length),
+                    0, // 빈 값
+                    0, // 빈 값
+                    0, // 빈 값
+                    0, // 빈 값
+                    'transparent' // 색상 없음
+                ]
+            ]);
         }
     }, [beforePrice, firstItemPrice]);
 
