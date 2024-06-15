@@ -4,6 +4,15 @@ import { GoX } from "react-icons/go";
 import FinalResult from './virtual-overallResult'; // Import the new component
 
 function VirtualThisResult(props) {
+    let totalReview = '';
+    if (totalProfitRate > 0) {
+        totalReview = '오 주식 좀 잘 이해하셨네요';
+    } else if (totalProfitRate < 0) {
+        totalReview = '조금 더 공부를 해보아요!';
+    } else {
+        totalReview = '우리 조금 더 머릴 써보아요';
+    }
+
     const addQuarter = () => {
         if (props.quarterCount < 6) {
             const currentRate = props.updateRate();
@@ -48,7 +57,7 @@ function VirtualThisResult(props) {
                                 이번 분기 한줄평
                             </div>
                             <div className={styles['assess-cont']}>
-                                정말 아쉬워요 다음번 뉴스를 잘 확인합시다
+                                {totalReview}
                             </div>
                         </div>
                     </div>
