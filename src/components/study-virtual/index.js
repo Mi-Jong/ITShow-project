@@ -167,15 +167,16 @@ function App() {
         const initialProfitRate = items.reduce((sum, item) => {
             return sum + calculateProfitPercentage(item);
         }, 0);
-        setInitialQuarterProfitRate(initialProfitRate);
-        
+        // setInitialQuarterProfitRate(initialProfitRate); // 이 부분을 어떻게 사용할지 파악 필요
+    
         // 초기 마운트 시 뉴스 아이템 업데이트
         updateNewsItems();
-    }, []);
+    }, []); // 빈 배열로 전달하여 한 번만 실행되도록 설정
     
     useEffect(() => {
         updateNewsItems();
-    }, []);
+    }, [quarterCount]); // quarterCount가 변경될 때만 업데이트NewsItems 호출
+    
     
 
     return (
