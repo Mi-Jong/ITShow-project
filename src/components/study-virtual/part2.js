@@ -3,26 +3,29 @@ import News from './news';
 import Graph from './StockGraph';
 
 function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem, selectedItemIndex, calculateProfitPercentage, quarterCount, selectItem }) {
-    const [selectedItemIndexInternal, setSelectedItemIndexInternal] = useState(selectedItemIndex); // Use internal state for selected item index
-    const [quarter, setQuarter] = useState(1); // Initialize with the first quarter
+    const [selectedItemIndexInternal, setSelectedItemIndexInternal] = useState(selectedItemIndex); // 선택된 항목의 내부 인덱스 상태
+
+    // 분기 상태 관리
+    const [quarter, setQuarter] = useState(1); // 처음에 1분기로 초기화
 
     useEffect(() => {
-        // Logic to determine quarter change (example: every 3 months)
-        // For demonstration, I'll increment quarter every 3 seconds
+        // 분기가 변경되는 로직 (예: 매 3개월마다)
+        // 예시로 매 3초마다 분기를 변경하는 것으로 설정
         const interval = setInterval(() => {
             setQuarter(prevQuarter => prevQuarter === 4 ? 1 : prevQuarter + 1);
-        }, 3000); // Change quarter every 3 seconds for demonstration, adjust as per your logic
+        }, 3000); // 3초마다 분기 변경 (실제 로직에 맞게 조정 필요)
 
-        return () => clearInterval(interval);
+        return () => clearInterval(interval); // 컴포넌트 언마운트 시 clearInterval로 인터벌 정리
     }, []);
 
     useEffect(() => {
-        setSelectedItemIndexInternal(selectedItemIndex); // Update internal state when external selectedItemIndex changes
+        setSelectedItemIndexInternal(selectedItemIndex); // 외부에서 선택된 항목 인덱스가 변경될 때 내부 상태 업데이트
     }, [selectedItemIndex]);
 
+    // 항목 클릭 시 처리 함수
     const handleClick = (index) => {
-        setSelectedItemIndexInternal(index); // Update internal state
-        selectItem(items[index], index); // Trigger selectItem function from parent
+        setSelectedItemIndexInternal(index); // 내부 상태 업데이트
+        selectItem(items[index], index); // 부모 컴포넌트의 selectItem 함수 호출
     };
 
     return (
@@ -32,7 +35,7 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
 
                 return (
                     <div key={index} className={`graph ${isHidden}`}>
-                        <Graph firstItemPrice={item.currentPrice} item={item} quarter={quarter} quarterCount={quarterCount} /> {/* Pass quarter to StockGraph */}
+                        <Graph firstItemPrice={item.currentPrice} item={item} quarter={quarter} quarterCount={quarterCount} /> {/* StockGraph에 분기 정보 전달 */}
                     </div>
                 );
             })}
