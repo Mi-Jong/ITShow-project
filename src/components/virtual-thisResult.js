@@ -4,6 +4,24 @@ import { GoX } from "react-icons/go";
 import FinalResult from './virtual-overallResult'; // Import the new component
 
 function VirtualThisResult(props) {
+    let totalProfitRate = 0;
+
+    if (props.money !== 0) {
+        totalProfitRate = (props.seedMoney / props.money) * 100 - 100;
+    } else {
+        // Handle division by zero case
+        totalProfitRate = 0; // or set to a default value
+    }
+
+    let totalReview = '';
+
+    if (totalProfitRate > 0) {
+        totalReview = '오 주식 좀 하시는데요?';
+    } else if (totalProfitRate < 0) {
+        totalReview = '우~ 루저';
+    } else {
+        totalReview = 'ㅋ 원금은 안잃었네요 ㅋ';
+    }
     const addQuarter = () => {
         if (props.quarterCount < 6) {
             const currentRate = props.updateRate();
@@ -20,7 +38,7 @@ function VirtualThisResult(props) {
     };
 
     if (props.quarterCount >= 6) {
-        return <FinalResult quarterlyProfitRates={props.quarterlyProfitRates} />;
+        return <FinalResult quarterlyProfitRates={props.quarterlyProfitRates} money={props.money} seedMoney={props.seedMoney}/>;
     }
 
     return (
@@ -48,7 +66,7 @@ function VirtualThisResult(props) {
                                 이번 분기 한줄평
                             </div>
                             <div className={styles['assess-cont']}>
-                                정말 아쉬워요 다음번 뉴스를 잘 확인합시다
+                                {totalReview}
                             </div>
                         </div>
                     </div>

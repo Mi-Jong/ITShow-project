@@ -2,27 +2,37 @@ import React, { useState, useEffect } from 'react';
 import News from './news';
 import Graph from './StockGraph';
 
-function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem, calculateProfitPercentage }) {
-    const [selectedItemIndex, setSelectedItemIndex] = useState(selectedItem != null ? selectedItem.id : 0);
+function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNewsItems, items, selectedItem, selectedItemIndex, calculateProfitPercentage, quarterCount, selectItem }) {
+    const [selectedItemIndexInternal, setSelectedItemIndexInternal] = useState(selectedItemIndex); // Use internal state for selected item index
+    const [quarter, setQuarter] = useState(1); // Initialize with the first quarter
 
     useEffect(() => {
-        if (selectedItem != null) {
-            setSelectedItemIndex(selectedItem.id);
-        }
-    }, [selectedItem]);
+        // Logic to determine quarter change (example: every 3 months)
+        // For demonstration, I'll increment quarter every 3 seconds
+        const interval = setInterval(() => {
+            setQuarter(prevQuarter => prevQuarter === 4 ? 1 : prevQuarter + 1);
+        }, 3000); // Change quarter every 3 seconds for demonstration, adjust as per your logic
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        setSelectedItemIndexInternal(selectedItemIndex); // Update internal state when external selectedItemIndex changes
+    }, [selectedItemIndex]);
 
     const handleClick = (index) => {
-        setSelectedItemIndex(index);
+        setSelectedItemIndexInternal(index); // Update internal state
+        selectItem(items[index], index); // Trigger selectItem function from parent
     };
 
     return (
         <section className="part" id="part2">
             {items.map((item, index) => {
-                const isHidden = selectedItemIndex !== index ? 'hidden' : '';
+                const isHidden = selectedItemIndexInternal !== index ? 'hidden' : '';
 
                 return (
                     <div key={index} className={`graph ${isHidden}`}>
-                        <Graph firstItemPrice={item.currentPrice} item={item}/>
+                        <Graph firstItemPrice={item.currentPrice} item={item} quarter={quarter} quarterCount={quarterCount} /> {/* Pass quarter to StockGraph */}
                     </div>
                 );
             })}

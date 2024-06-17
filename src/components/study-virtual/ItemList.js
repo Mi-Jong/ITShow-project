@@ -13,8 +13,8 @@ function ItemList({ items, selectItem }) {
         setShowItems(!showItems);
     };
 
-    const handleClickItem = (item) => {
-        selectItem(item);
+    const handleClickItem = (item, index) => {
+        selectItem(item, index); // Pass index along with item
     };
 
     return (
@@ -28,7 +28,7 @@ function ItemList({ items, selectItem }) {
             {showItems && (
                 <ul>
                     {items.map((item, index) => (
-                        <li key={item.id || index} onClick={() => handleClickItem(item)}>
+                        <li key={item.id || index} onClick={() => handleClickItem(item, index)}>
                             <p className="coin-name">{item.name}</p>
                             <div className='change' style={{ display: 'flex', alignItems: 'center' }}>
                                 <p style={{ color: item.percentageIncrease < 0 ? 'blue' : item.percentageIncrease > 0 ? 'red' : 'gray' }}>

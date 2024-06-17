@@ -3,8 +3,16 @@ import '../css/style.css';
 import styles from '../css/virtual-overallResult.module.css';
 import { GoX } from "react-icons/go";
 
-function FinalResult({ quarterlyProfitRates }) {
-    const totalProfitRate = quarterlyProfitRates.reduce((acc, rate) => acc + rate, 0);
+function FinalResult({ quarterlyProfitRates, money, seedMoney }) {
+    let totalProfitRate = 0;
+
+    if (money !== 0) {
+        totalProfitRate = (seedMoney / money) * 100 - 100;
+    } else {
+        // Handle division by zero case
+        totalProfitRate = 0; // or set to a default value
+    }
+
     let totalReview = '';
 
     if (totalProfitRate > 0) {
@@ -38,14 +46,16 @@ function FinalResult({ quarterlyProfitRates }) {
                 </div>
                 <div className={styles['inner-cont']}>
                     <table className={styles['day-table']}>
-                        <tr>
-                            {quarterlyProfitRates.map((rate, index) => (
-                              <td key={index}>
-                                    <p>{index + 1}일차 내용</p>
-                                    <p className={styles['pro']}>{rate.toFixed(2)}%</p>
-                                </td>
-                            ))}
-                        </tr>
+                        <tbody>
+                            <tr>
+                                {quarterlyProfitRates.map((rate, index) => (
+                                    <td key={index}>
+                                        <p>{index + 1}일차 내용</p>
+                                        <p className={styles['pro']}>{rate.toFixed(2)}%</p>
+                                    </td>
+                                ))}
+                            </tr>
+                        </tbody>
                     </table>
                     <table className={styles['result-table']}>
                         <thead>

@@ -34,6 +34,7 @@ function App() {
         { id: 5, name: '네이비', quantity: 0, price: 7100, purchasePrice: 0, currentPrice: 7100, count: 0 }
     ]);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItemIndex, setSelectedItemIndex] = useState(0); // Track selected item index
     const [isVirtualThisResultVisible, setVirtualThisResultVisibility] = useState(false);
     const [quarterCount, setQuarterCount] = useState(1);
     const [previousProfitRate, setPreviousProfitRate] = useState(0);
@@ -71,8 +72,8 @@ function App() {
     const updateNewsItems = () => {
         const shuffledNews = shuffleArray(newsData);
         const selectedNews = shuffledNews.slice(0, 4);
-        if (quarterCount != 1) {
-            let totalImpact = {}; // 뉴스별 영향을 누적할 객체
+        if (quarterCount !== 1) {
+            let totalImpact = {}; // Accumulate impact of news on stocks
 
             selectedNews.forEach(news => {
                 const stockImpact = news.stock_impact;
@@ -80,29 +81,33 @@ function App() {
                     if (totalImpact[stockIndex] === undefined) {
                         totalImpact[stockIndex] = 0;
                     }
-                    totalImpact[stockIndex] += stockImpact[stockIndex]; // 동일 인덱스의 값 누적
+                    totalImpact[stockIndex] += stockImpact[stockIndex]; // Accumulate impact for the same index
                 });
             });
 
-            updatePrices(totalImpact); // 영향 적용하여 가격 업데이트
+            updatePrices(totalImpact); // Update prices based on impact
             console.log("뉴스별 주식 영향:", totalImpact);
         }
         setNewsItems(selectedNews);
     };
 
     const updatePrices = (totalImpact) => {
-        // 각 종목에 대한 변경값을 totalImpact 값으로 초기화합니다.
+        // Initialize changes array with values from totalImpact
         const changes = Object.values(totalImpact);
 
-        // 변경된 항목들을 담을 배열을 초기화합니다.
+        // Initialize array to hold updated items
         const updatedItems = [];
 
-        // 기존 항목 배열을 순회하면서 변경값을 적용합니다.
+        // Iterate through existing items array and apply changes
         items.forEach((item, index) => {
-            const change = changes[index] || 0; // 해당 종목에 대한 변경값을 가져옵니다. 없으면 0으로 처리
-            const newPrice = item.currentPrice + change;
-
-            // 변경된 항목을 새로운 객체로 생성하고 배열에 추가합니다.
+            const change = changes[index] || 0; // Get change for the specific item index or default to 0
+            let newPrice = item.currentPrice + change; // Use let instead of const
+        
+            if (newPrice < 0) {
+                newPrice = 0; // If newPrice is negative, set it to 0
+            }
+        
+            // Create new object for updated item and add to updatedItems array
             updatedItems.push({
                 ...item,
                 percentageIncrease: change,
@@ -110,11 +115,9 @@ function App() {
             });
         });
 
-        // 변경된 항목 배열을 상태에 업데이트합니다.
+        // Update state with updatedItems array
         setItems(updatedItems);
     };
-
-
 
     const handleBuy = () => {
         if (selectedItem) {
@@ -136,8 +139,9 @@ function App() {
         }
     };
 
-    const selectItem = (item) => {
+    const selectItem = (item, index) => {
         setSelectedItem(item);
+        setSelectedItemIndex(index); // Update selected item index
     };
 
     const handleClose = () => {
@@ -163,7 +167,7 @@ function App() {
         setMoney(newMoney);
     };
 
-    // 수익률
+    // Calculate profit percentage
     const calculateProfitPercentage = (item) => {
         if (item.purchasePrice === 0 || item.quantity === 0) return 0; // Check if quantity is zero
         const currentTotalPrice = item.currentPrice * item.quantity;
@@ -192,7 +196,10 @@ function App() {
                     updateNewsItems={updateNewsItems}
                     items={items}
                     selectedItem={selectedItem}
+                    selectedItemIndex={selectedItemIndex}
                     calculateProfitPercentage={calculateProfitPercentage}
+                    quarterCount={quarterCount}
+                    selectItem={selectItem} // Pass selectItem function to Part2
                 />
                 <Part3
                     key="part3"
@@ -209,6 +216,7 @@ function App() {
                     <VirtualThisResult
                         handleResult={handleResult}
                         money={money}
+                        seedMoney={seedMoney}
                         quarterCount={quarterCount}
                         updateRate={updateRate}
                         setQuarterCount={setQuarterCount}
