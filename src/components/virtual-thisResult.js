@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from '../css/virtual-thisResult.module.css';
 import { GoX } from "react-icons/go";
-import FinalResult from './virtual-overallResult'; // Import the new component
+import FinalResult from './virtual-overallResult'; // Assuming this is the correct path to FinalResult component
 
 function VirtualThisResult(props) {
     let totalProfitRate = 0;
 
-    if (props.money !== 0) {
-        totalProfitRate = (props.seedMoney / props.money) * 100 - 100;
+    if (props.seedMoney !== 0) {
+        totalProfitRate = ((props.money - props.seedMoney) / props.seedMoney) * 100;
     } else {
         // Handle division by zero case
         totalProfitRate = 0; // or set to a default value
@@ -22,8 +22,8 @@ function VirtualThisResult(props) {
     } else {
         totalReview = 'ㅋ 원금은 안잃었네요 ㅋ';
     }
+
     const addQuarter = () => {
-        if (props.quarterCount < 6) {
             const currentRate = props.updateRate();
             props.setQuarterlyProfitRates(prevRates => [...prevRates, currentRate]);
             props.setQuarterCount(prevCount => prevCount + 1);
@@ -34,7 +34,6 @@ function VirtualThisResult(props) {
             
             const currentInvestment = props.updateEstimated();
             props.setTotalInvestment(prevTotalInvestment => prevTotalInvestment + currentInvestment);
-        }
     };
 
     if (props.quarterCount >= 6) {

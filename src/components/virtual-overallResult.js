@@ -6,8 +6,8 @@ import { GoX } from "react-icons/go";
 function FinalResult({ quarterlyProfitRates, money, seedMoney }) {
     let totalProfitRate = 0;
 
-    if (money !== 0) {
-        totalProfitRate = (seedMoney / money) * 100 - 100;
+    if (seedMoney !== 0) {
+        totalProfitRate = ((money - seedMoney) / seedMoney) * 100;
     } else {
         // Handle division by zero case
         totalProfitRate = 0; // or set to a default value
