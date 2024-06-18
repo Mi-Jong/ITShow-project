@@ -25,7 +25,7 @@ const useInterval = (callback, delay) => {
 
 
 function StudyGame() {
-    const [count, setCount] = useState(5);
+    const [count, setCount] = useState(40);
     const [active, setActive] = useState(true);
     const [currentProblem, setCurrentProblem] = useState(null);
     const [score, setScore] = useState(0);
@@ -73,7 +73,7 @@ function StudyGame() {
     };
 
     const timeBarStyle = {
-        height: `${100 - (count / 5) * 100}%`,
+        height: `${100 - (count / 40) * 100}%`,
         transition: "height 1s linear"
     };
 
