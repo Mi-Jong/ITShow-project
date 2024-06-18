@@ -10,6 +10,7 @@ function Ranking(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [type, setType] = useState('');
+    const [highlightedRow, setHighlightedRow] = useState(null); // 최근 useridx 상태 추가
     const userName = localStorage.getItem('userName');
     const location = useLocation();
 
@@ -23,13 +24,35 @@ function Ranking(props) {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000${endpoint}`);
-                setRankings(response.data);
+                const data = response.data;
+                setRankings(data);
+                
+                // 각 username 별로 가장 높은 useridx를 찾기
+                const maxUseridxPerUsername = {};
+                data.forEach(item => {
+                    const { username, useridx } = item;
+                    if (!(username in maxUseridxPerUsername) || useridx > maxUseridxPerUsername[username]) {
+                        maxUseridxPerUsername[username] = useridx;
+                    }
+                });
+
+                // 가장 높은 useridx 선택
+                let maxUseridx = null;
+                Object.keys(maxUseridxPerUsername).forEach(username => {
+                    if (maxUseridx === null || maxUseridxPerUsername[username] > maxUseridx) {
+                        maxUseridx = maxUseridxPerUsername[username];
+                    }
+                });
+
+                setHighlightedRow(maxUseridx);
+
                 setLoading(false);
             } catch (error) {
                 setError(error);
                 setLoading(false);
             }
         };
+
         fetchData();
     }, [location.search]);
 
@@ -65,7 +88,7 @@ function Ranking(props) {
                     </thead>
                     <tbody>
                         {rankedRankings.map((rank, index) => (
-                            <tr key={index} className={rank.username === userName ? styles.highlightedRow : null}>
+                            <tr key={index} className={rank.useridx === highlightedRow ? styles.highlightedRow : null}>
                                 <td>
                                     <div className={`${styles.rankNum} ${styles[`rankNum${rank.rank}`]}`}>{rank.rank}</div>
                                 </td>
