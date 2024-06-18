@@ -7,8 +7,8 @@
 
 .tooltip {
     position: absolute;
-    width: 200px;
-    height:100px;
+    width: 220px;
+    height:140px;
     top: 600px; 
     right: 0px;
     background-color: var(--body-color);
