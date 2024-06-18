@@ -67,6 +67,8 @@ tr .tdAlign {
     margin: 20px 20px;
     border-radius: 20px;
     color: var(--second-color);
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .buttons .cancel {

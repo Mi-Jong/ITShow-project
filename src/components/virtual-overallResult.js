@@ -8,6 +8,7 @@ function FinalResult({ quarterlyProfitRates, money, seedMoney }) {
 
     if (seedMoney !== 0) {
         totalProfitRate = ((money - seedMoney) / seedMoney) * 100;
+        localStorage.setItem('userScore', totalProfitRate);
     } else {
         // Handle division by zero case
         totalProfitRate = 0; // or set to a default value
