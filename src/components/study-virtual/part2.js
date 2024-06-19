@@ -53,15 +53,22 @@ function Part2({ seedMoney, isTableShown, setIsTableShown, newsItems, updateNews
                             <th>매입 단가</th>
                             <th>수익률</th>
                         </tr>
-                        {items.map((item, index) => (
-                            <tr key={index} onClick={() => handleClick(index)}>
-                                <th>{item.name}</th>
-                                <th>{item.quantity}</th>
-                                <th>{item.currentPrice}</th>
-                                <th>{item.purchasePrice}</th>
-                                <th>{isNaN(calculateProfitPercentage(item)) ? '0%' : `${calculateProfitPercentage(item).toFixed(2)}%`}</th>
-                            </tr>
-                        ))}
+                        {items.map((item, index) => {
+                            const profitPercentage = calculateProfitPercentage(item);
+                            const profitColor = profitPercentage < 0 ? 'blue' : profitPercentage > 0 ? 'red' : 'black';
+                            
+                            return (
+                                <tr key={index} onClick={() => handleClick(index)}>
+                                    <th>{item.name}</th>
+                                    <th>{item.quantity}</th>
+                                    <th>{item.currentPrice}</th>
+                                    <th>{item.purchasePrice}</th>
+                                    <th style={{ color: profitColor }}>
+                                        {isNaN(profitPercentage) ? '0%' : `${profitPercentage.toFixed(2)}%`}
+                                    </th>
+                                </tr>
+                            );
+                        })}
                 </table>
             </div>
             <div className="view" id={isTableShown ? '' : 'news'}>
