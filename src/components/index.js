@@ -112,6 +112,7 @@ const StockApp = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,6 +128,13 @@ const StockApp = () => {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = today.toDateString();
+    setCurrentDate(formattedDate);
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -138,6 +146,7 @@ const StockApp = () => {
   return ( 
     <div id='popular' className='container stockTable-container'>
       <p>인기종목</p>
+      <p className='date'>{currentDate + '(현재 데이터)'}</p>
       <div className='stockPopularTable'>
       <table>
         <thead>
