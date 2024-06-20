@@ -3,16 +3,9 @@ import '../css/style.css';
 import styles from '../css/virtual-overallResult.module.css';
 import { GoX } from "react-icons/go";
 
-function FinalResult({ quarterlyProfitRates, money, seedMoney }) {
-    let totalProfitRate = 0;
-
-    if (seedMoney !== 0) {
-        totalProfitRate = ((money - seedMoney) / seedMoney) * 100;
+function FinalResult({ quarterlyProfitRates, totalProfitRate }) {
         localStorage.setItem('userScore', totalProfitRate);
-    } else {
-        // Handle division by zero case
-        totalProfitRate = 0; // or set to a default value
-    }
+        console.log(totalProfitRate);
 
     let totalReview = '';
 
@@ -73,7 +66,7 @@ function FinalResult({ quarterlyProfitRates, money, seedMoney }) {
                                         fontSize: '40px'
                                     }}
                                 >
-                                    {totalProfitRate.toFixed(2)}%
+                                    {totalProfitRate}%
                                 </td>
                                 <td className={styles['totalReview']}>{totalReview}</td>
                             </tr>

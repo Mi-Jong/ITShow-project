@@ -4,13 +4,11 @@ import { GoX } from "react-icons/go";
 import FinalResult from './virtual-overallResult'; // Assuming this is the correct path to FinalResult component
 
 function VirtualThisResult(props) {
-    let totalProfitRate = 0;
+    let totalProfitRate = props.updateRate().toFixed(2);
 
-    if (props.seedMoney !== 0) {
-        totalProfitRate = ((props.money - props.seedMoney) / props.seedMoney) * 100;
+    if (props.updateRate().toFixed(2) !== 0) {
     } else {
-        // Handle division by zero case
-        totalProfitRate = 0; // or set to a default value
+        totalProfitRate = 0; 
     }
 
     let totalReview = '';
@@ -37,7 +35,7 @@ function VirtualThisResult(props) {
     };
 
     if (props.quarterCount >= 6) {
-        return <FinalResult quarterlyProfitRates={props.quarterlyProfitRates} money={props.money} seedMoney={props.seedMoney}/>;
+        return <FinalResult quarterlyProfitRates={props.quarterlyProfitRates} totalProfitRate={props.updateRate().toFixed(2)}/>;
     }
 
     return (
