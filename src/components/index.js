@@ -22,8 +22,8 @@ function Banner() {
           </p>
           <p className="heading2">
             <span>주식 투자의 첫걸음 떼는 당신을 위한 웹사이트</span>
-            <br/><span>“GEMMI”에서 주식 투자의 기초를 배우고,</span>
-            <br/><span>시뮬레이션을 통해 실전 감각을 키울 수 있습니다.</span>
+            <br /><span>“GEMMI”에서 주식 투자의 기초를 배우고,</span>
+            <br /><span>시뮬레이션을 통해 실전 감각을 키울 수 있습니다.</span>
           </p>
         </div>
       </div>
@@ -44,34 +44,34 @@ function Learn({ title, imageUrl, buttonText, onClick, linkTo }) {
 };
 
 function Learning() {
-  
+
   return (
-    <div id='learn'  className='container learning-container'>
+    <div id='learn' className='container learning-container'>
       <p>주식배우기</p>
       <div className='learning'>
         <div className='learning__inner'>
           <Learn
             title="주식 시뮬레이션"
-            imageUrl= {virtualImg}
+            imageUrl={virtualImg}
             buttonText="Click me"
             linkTo="/StudyVirtual"
           />
           <div className='learning_text'>
             실전 감각을 키우기 위한 주식 시뮬레이션.뉴스를 확인하여
-            수익률을 높여보세요. 전체 결과와 랭킹을 확인할 수 있습니다. 
-          </div>   
+            수익률을 높여보세요. 전체 결과와 랭킹을 확인할 수 있습니다.
+          </div>
         </div>
         <div className='learning__inner'>
           <Learn
             title="주식 단어"
-            imageUrl= {studyWordImg}
+            imageUrl={studyWordImg}
             buttonText="Click me"
             linkTo="/StudyWord"
           />
           <div className='learning_text'>
-          쉽게 익히는 주식 단어 게임. 암기 학습과 퀴즈로 주식 용어를
-          더욱 자세히 배울 수 있습니다.
-          </div>   
+            쉽게 익히는 주식 단어 게임. 암기 학습과 퀴즈로 주식 용어를
+            더욱 자세히 배울 수 있습니다.
+          </div>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@ const StockApp = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/data');
+        const response = await axios.get('http://localhost:3004/api/data');
         setData(response.data.stocks);
         setLoading(false);
       } catch (error) {
@@ -143,33 +143,35 @@ const StockApp = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  return ( 
+  return (
     <div id='popular' className='container stockTable-container'>
-      <p>인기종목</p>
-      <p className='date'>{currentDate + '(현재 데이터)'}</p>
+      <div>
+        <p>인기종목</p>
+        <p className='date'>{currentDate + '(현재 데이터)'}</p>
+      </div>
       <div className='stockPopularTable'>
-      <table>
-        <thead>
-          <tr>
-            <th>순위</th>
-            <th>종목명</th>
-            <th>종목코드</th>
-            <th>등락률</th>
-            <th>현재가</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((stock, index) => (
-            <tr key={stock.itemCode}>
-              <td>{index + 1}</td>
-              <td>{stock.stockName}</td>
-              <td>{stock.itemCode}</td>
-              <td>{stock.fluctuationsRatio}%</td>
-              <td>{stock.closePrice}</td>
+        <table>
+          <thead>
+            <tr>
+              <th>순위</th>
+              <th>종목명</th>
+              <th>종목코드</th>
+              <th>등락률</th>
+              <th>현재가</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((stock, index) => (
+              <tr key={stock.itemCode}>
+                <td>{index + 1}</td>
+                <td>{stock.stockName}</td>
+                <td>{stock.itemCode}</td>
+                <td>{stock.fluctuationsRatio}%</td>
+                <td>{stock.closePrice}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

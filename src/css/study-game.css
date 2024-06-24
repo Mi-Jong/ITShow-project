@@ -96,3 +96,11 @@
     height: 100%;
     background-color: var(--gray1);
 }
+
+.score {
+    position: absolute; 
+    right: 0;
+    font-size: 32px;
+    top: 2%; 
+    right: 5%;
+}

@@ -59,6 +59,8 @@ function StudyGame() {
 
         if (answer === currentProblem.correctAnswer) {
             setScore(score + 10);
+        }else {
+            setScore(score - 10);   
         }
         setCurrentProblem(problems[Math.floor(Math.random() * problems.length)]);
         setnumber(number + 1);
@@ -90,9 +92,11 @@ function StudyGame() {
                             <button className="answer" key={index} onClick={() => handleAnswerClick(answer)}>{answer}</button>
                         ))}
                     </div>
+                    
                     <div id="timeBar">
                         <div id="timer" style={timeBarStyle}></div>
                     </div>
+                    <div className="score">{score}</div>
                 </div>
             </div>{showLogin && (window.location.href = '/Login?Word')}
                             
