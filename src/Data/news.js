@@ -52,8 +52,8 @@ export const newsData = [
   },
   {
     image_url: enter05,
-    title: "‘jyb 신인’ 아일럿, 데뷔 타이틀 곡은 ‘KOSPI’",
-    content: "‘하이브 막내딸’이라고 불리는 신인 걸그룹 아일럿(eyelet)의 데뷔 타이틀 곡은 ‘KOSPI’이다. 아일럿(헤이즐넛, 라떼, 모카)은 x일 x시 공식 SNS에 데뷔 엘범인 미니 1집 ‘Stock’의 세번째 콘셉트 ‘개미’ 버전 포토와 필름을 공개했다.",
+    title: "‘jyb 신인’ 엔믝스, 데뷔 타이틀 곡은 ‘KOSPI’",
+    content: "‘jyb 막내딸’이라고 불리는 신인 걸그룹 엔믝스의 데뷔 타이틀 곡은 ‘KOSPI’이다. 엔믝스(헤이즐넛, 라떼, 모카)은 x일 x시 공식 SNS에 데뷔 엘범인 미니 1집 ‘Stock’의 세번째 콘셉트 ‘개미’ 버전 포토와 필름을 공개했다.",
     stock_impact: {
       0: 0,
       1: 1000
